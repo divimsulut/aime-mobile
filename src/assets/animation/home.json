@@ -1,0 +1,5130 @@
+{
+  "v": "5.10.2",
+  "fr": 59.9400024414063,
+  "ip": 0,
+  "op": 60.0000024438501,
+  "w": 70,
+  "h": 70,
+  "nm": "Comp Home Icon",
+  "ddd": 0,
+  "assets": [
+    {
+      "id": "image_0",
+      "w": 62,
+      "h": 56,
+      "u": "",
+      "p": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA4CAYAAAClmEtZAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJnSURBVHgB7Zo9ctNAGIbfTz9MCgjqDONMJhcg6AhKR5mcIOEG3AC4QThBwgmSliqmo4uAC7hwmLhCBAoyRl52hWEGsP6/XTlZPZU0kmbn8Ur7vpYNWAqhI+5sbD8XoF217UAcX08+vIJBzIsHYeDfFSdyK/rnSDz7RjtI4gQGMCv+INzyvUw6XHpcYDxLpfxlPIZmzIkraVecyRG3Cs8zJO/ABMMwrCStkOeoc315DTSifca9jTCS03giBwpQj0Qufns/JvEIGnChEX9ze58ETqX0GuqzJq878O8NvqRfp+/AjDZxT8YVCTpESwTRE299gPRq+haMaBHPpEEvwAZF3PLs4v7w8RERPQM7FLn3B8H8avoGDPAtbvnFhJuRLDp7bYsOj3hZMeGGIevbi1ctJty0lG9XYOoUE24WRUd98GhAY3FVTDzqSPo3St4T579KUj0areotiwk3jYpObXGuYsJN3aJTS5y/mHBTvehUFtdXTLipVnTK48xcMeGmsOgUi5suJtwUZH2+eFfFhJsc+eU53mUx4San6Pw34y3emKw6icy8ndlFHKudv2Y8KyYQZ7dQWhGAxLm/Ge6rnT9xtqrFhB2BXZX12a3uDx8dgJwjWMTiVqcIlrEQdw7l3I9hCUIudKXNzZWPgXNDH4O5mD9NLz4eLztm5peUFaQXt41e3DY8mGFUOy5F9gUpgiaMiMtYeZ1OlsdKHosYjaCJ/hm3jV7cNnpx2+jFbaMXt41e3DZ6cdvoxbUi3M/ogoJxS8VT3z1FS/w53qMmusct/w9McvndWX9I1PA1EIFeXn+K60toHvcnQqjl51eCaKoAAAAASUVORK5CYII=",
+      "e": 1
+    },
+    {
+      "layers": [
+        {
+          "isGuide": true,
+          "render": true,
+          "enabled": true,
+          "ddd": 0,
+          "ind": 1,
+          "ty": 4,
+          "isAdjustment": false,
+          "nm": "CONTROL",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 5,
+              "nm": "Size",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [100],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [100],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Stroke Control A",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 2,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [25],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [25],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Stroke Control B",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 3,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [10],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [10],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Color A",
+              "np": 3,
+              "mn": "ADBE Color Control",
+              "ix": 4,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Color Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Color B",
+              "np": 3,
+              "mn": "ADBE Color Control",
+              "ix": 5,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Color Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "shapes": [],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "enabled": true,
+          "render": true,
+          "ddd": 0,
+          "ind": 2,
+          "ty": 4,
+          "isAdjustment": false,
+          "nm": "Null",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": {
+              "k": [
+                {
+                  "s": [100, 100, 100],
+                  "t": 0,
+                  "i": { "x": [1, 1, 1], "y": [1, 1, 1] },
+                  "o": { "x": [0, 0, 0], "y": [0, 0, 0] }
+                },
+                {
+                  "s": [100, 100, 100],
+                  "t": 121,
+                  "i": { "x": [1, 1, 1], "y": [1, 1, 1] },
+                  "o": { "x": [0, 0, 0], "y": [0, 0, 0] }
+                }
+              ],
+              "l": 2
+            }
+          },
+          "ao": 0,
+          "shapes": [],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 3,
+          "ty": 4,
+          "isAdjustment": false,
+          "nm": "Line 2",
+          "parent": 2,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 15, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 13.9860005696615,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 120.986000569661,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [-149.303, 110.171]
+                      ],
+                      "o": [
+                        [-192.125, -155.875],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -124.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [10],
+                        "t": 13.9860005696615,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [10],
+                        "t": 120.986000569661,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 13.986,
+                    "s": [0]
+                  },
+                  { "t": 81.9180033365885, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 21.978,
+                    "s": [0]
+                  },
+                  { "t": 89.9100036621094, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            },
+            {
+              "ty": "rp",
+              "c": { "a": 0, "k": 11, "ix": 1 },
+              "o": { "a": 0, "k": 0, "ix": 2 },
+              "m": 1,
+              "ix": 3,
+              "tr": {
+                "ty": "tr",
+                "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                "r": { "a": 0, "k": 33, "ix": 4 },
+                "so": { "a": 0, "k": 100, "ix": 5 },
+                "eo": { "a": 0, "k": 100, "ix": 6 },
+                "nm": "Transform"
+              },
+              "nm": "Repeater 1",
+              "mn": "ADBE Vector Filter - Repeater",
+              "hd": false
+            }
+          ],
+          "ip": 13.9860005696615,
+          "op": 135.864005533854,
+          "st": 13.9860005696615,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 4,
+          "ty": 4,
+          "isAdjustment": false,
+          "nm": "Line",
+          "parent": 2,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [-149.303, 110.171]
+                      ],
+                      "o": [
+                        [-192.125, -155.875],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -124.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [25],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [25],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 0,
+                    "s": [0]
+                  },
+                  { "t": 67.9320027669271, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 7.992,
+                    "s": [0]
+                  },
+                  { "t": 75.9240030924479, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            },
+            {
+              "ty": "rp",
+              "c": { "a": 0, "k": 11, "ix": 1 },
+              "o": { "a": 0, "k": 0, "ix": 2 },
+              "m": 1,
+              "ix": 3,
+              "tr": {
+                "ty": "tr",
+                "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                "r": { "a": 0, "k": 33, "ix": 4 },
+                "so": { "a": 0, "k": 100, "ix": 5 },
+                "eo": { "a": 0, "k": 100, "ix": 6 },
+                "nm": "Transform"
+              },
+              "nm": "Repeater 1",
+              "mn": "ADBE Vector Filter - Repeater",
+              "hd": false
+            }
+          ],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "enabled": true,
+          "render": true,
+          "ddd": 0,
+          "ind": 5,
+          "ty": 5,
+          "isAdjustment": false,
+          "nm": "Setting Rules(do not delete)",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 5,
+              "nm": "copy",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0],
+                        "t": 0,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0],
+                        "t": 121,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "t": {
+            "d": {
+              "k": [
+                {
+                  "s": {
+                    "s": 209,
+                    "f": "Montserrat-Black",
+                    "t": "2.03333333333333",
+                    "ca": 1,
+                    "j": 2,
+                    "tr": 0,
+                    "lh": 250.800003051758,
+                    "ls": 0,
+                    "fc": [0.953, 0.949, 0.953]
+                  },
+                  "t": 0
+                }
+              ],
+              "x": "var $bm_rt;\n"
+            },
+            "p": {},
+            "m": { "g": 1, "a": { "a": 0, "k": [0, 0], "ix": 2 } },
+            "a": []
+          },
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        }
+      ],
+      "id": 186888653,
+      "nm": "Shape_Line_17 1",
+      "xt": 1,
+      "w": 1920,
+      "h": 1920
+    },
+    {
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 1,
+          "isAdjustment": false,
+          "nm": "Black Solid 1",
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [270, 540, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [270, 540, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "a": 0,
+                    "k": [0.870588243008, 0.784313738346, 0, 1],
+                    "ix": 3
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "sw": 540,
+          "sh": 1080,
+          "sc": "#000000",
+          "ip": 0,
+          "op": 60.0000024438501,
+          "st": 0,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 2,
+          "ty": 1,
+          "isAdjustment": false,
+          "nm": "Black Solid 1",
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [810, 540, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [270, 540, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "a": 0,
+                    "k": [0.019607843831, 0.109803922474, 0.184313729405, 1],
+                    "ix": 3
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "sw": 540,
+          "sh": 1080,
+          "sc": "#000000",
+          "ip": 0,
+          "op": 60.0000024438501,
+          "st": 0,
+          "bm": 0
+        }
+      ],
+      "id": 24,
+      "nm": "Comp Theme Color",
+      "xt": 1,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "id": "comp_0",
+      "nm": "Comp Theme Color",
+      "fr": 59.9400024414063,
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 1,
+          "nm": "Black Solid 1",
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [270, 540, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [270, 540, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "a": 0,
+                    "k": [0.870588243008, 0.784313738346, 0, 1],
+                    "ix": 3
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "sw": 540,
+          "sh": 1080,
+          "sc": "#000000",
+          "ip": 0,
+          "op": 60.0000024438501,
+          "st": 0,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 2,
+          "ty": 1,
+          "nm": "Black Solid 1",
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [810, 540, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [270, 540, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "a": 0,
+                    "k": [0.019607843831, 0.109803922474, 0.184313729405, 1],
+                    "ix": 3
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "sw": 540,
+          "sh": 1080,
+          "sc": "#000000",
+          "ip": 0,
+          "op": 60.0000024438501,
+          "st": 0,
+          "bm": 0
+        }
+      ]
+    },
+    {
+      "id": "comp_1",
+      "nm": "Shape_Line_37 1",
+      "fr": 30,
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 4,
+          "nm": "CONTROL",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 5,
+              "nm": "Size",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [100],
+                        "t": 4.00000016292334,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [100],
+                        "t": 64.0000001629233,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Stroke Control",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 2,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 4.00000016292334,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 64.0000001629233,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Color A",
+              "np": 3,
+              "mn": "ADBE Color Control",
+              "ix": 3,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Color Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 4.00000016292334,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 64.0000001629233,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Color B",
+              "np": 3,
+              "mn": "ADBE Color Control",
+              "ix": 4,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Color Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 4.00000016292334,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 64.0000001629233,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "shapes": [],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 2,
+          "ty": 4,
+          "nm": "Null",
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 1172, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": {
+              "k": [
+                {
+                  "s": [100, 100, 100],
+                  "t": 4.00000016292334,
+                  "i": { "x": [1, 1, 1], "y": [1, 1, 1] },
+                  "o": { "x": [0, 0, 0], "y": [0, 0, 0] }
+                },
+                {
+                  "s": [100, 100, 100],
+                  "t": 64.0000001629233,
+                  "i": { "x": [1, 1, 1], "y": [1, 1, 1] },
+                  "o": { "x": [0, 0, 0], "y": [0, 0, 0] }
+                }
+              ],
+              "l": 2
+            }
+          },
+          "ao": 0,
+          "shapes": [],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 3,
+          "ty": 4,
+          "nm": "Line 10",
+          "parent": 2,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": -90, "ix": 10 },
+            "p": { "a": 0, "k": [0, -7.286, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [73.2, 73.2, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 21.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 63.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 21.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 21.978,
+                    "s": [0]
+                  },
+                  { "t": 73.9260030110677, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 27.972,
+                    "s": [0]
+                  },
+                  { "t": 79.9200032552083, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 21.9780008951823,
+          "op": 143.856005859375,
+          "st": 21.9780008951823,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 4,
+          "ty": 4,
+          "nm": "Line 9",
+          "parent": 3,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 45, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 15.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 63.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 15.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 15.984,
+                    "s": [0]
+                  },
+                  { "t": 67.9320027669271, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 21.978,
+                    "s": [0]
+                  },
+                  { "t": 73.9260030110677, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 15.9840006510417,
+          "op": 137.862005615234,
+          "st": 15.9840006510417,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 5,
+          "ty": 4,
+          "nm": "Line 8",
+          "parent": 3,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 90, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 9.99000040690104,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 63.990000406901,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 9.99000040690104,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.990000406901,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 9.99,
+                    "s": [0]
+                  },
+                  { "t": 61.9380025227865, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 15.984,
+                    "s": [0]
+                  },
+                  { "t": 67.9320027669271, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 9.99000040690104,
+          "op": 131.868005371094,
+          "st": 9.99000040690104,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 6,
+          "ty": 4,
+          "nm": "Line 7",
+          "parent": 3,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 135, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 15.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 63.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 15.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9840006510417,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 15.984,
+                    "s": [0]
+                  },
+                  { "t": 67.9320027669271, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 21.978,
+                    "s": [0]
+                  },
+                  { "t": 73.9260030110677, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 15.9840006510417,
+          "op": 137.862005615234,
+          "st": 15.9840006510417,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 7,
+          "ty": 4,
+          "nm": "Line 6",
+          "parent": 3,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 180, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 21.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 63.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 21.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9780008951823,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 21.978,
+                    "s": [0]
+                  },
+                  { "t": 73.9260030110677, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 27.972,
+                    "s": [0]
+                  },
+                  { "t": 79.9200032552083, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 21.9780008951823,
+          "op": 143.856005859375,
+          "st": 21.9780008951823,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 8,
+          "ty": 4,
+          "nm": "Line 5",
+          "parent": 2,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": -90, "ix": 10 },
+            "p": { "a": 0, "k": [0, -7.286, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 11.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 63.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 11.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 11.988,
+                    "s": [0]
+                  },
+                  { "t": 63.9360026041667, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 17.982,
+                    "s": [0]
+                  },
+                  { "t": 69.9300028483073, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 11.9880004882813,
+          "op": 133.866005452474,
+          "st": 11.9880004882813,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 9,
+          "ty": 4,
+          "nm": "Line 4",
+          "parent": 8,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 45, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 5.99400024414063,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 63.9940002441406,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 5.99400024414063,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9940002441406,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 5.994,
+                    "s": [0]
+                  },
+                  { "t": 57.942002360026, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 11.988,
+                    "s": [0]
+                  },
+                  { "t": 63.9360026041667, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 5.99400024414063,
+          "op": 127.872005208333,
+          "st": 5.99400024414063,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 10,
+          "ty": 4,
+          "nm": "Line 3",
+          "parent": 9,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 45, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 4.00000016292334,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 64.0000001629233,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 4.00000016292334,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 64.0000001629233,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 0,
+                    "s": [0]
+                  },
+                  { "t": 51.9480021158854, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 5.994,
+                    "s": [0]
+                  },
+                  { "t": 57.942002360026, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 11,
+          "ty": 4,
+          "nm": "Line 2",
+          "parent": 10,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 45, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 5.99400024414063,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.082, 0.597, 0.957, 1],
+                        "t": 63.9940002441406,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 5.99400024414063,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9940002441406,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 5.994,
+                    "s": [0]
+                  },
+                  { "t": 57.942002360026, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 11.988,
+                    "s": [0]
+                  },
+                  { "t": 63.9360026041667, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 5.99400024414063,
+          "op": 127.872005208333,
+          "st": 5.99400024414063,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 12,
+          "ty": 4,
+          "nm": "Line",
+          "parent": 11,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 45, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 11.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.839, 1, 0.196, 1],
+                        "t": 63.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "o": [
+                        [0, 0],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -156.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [20],
+                        "t": 11.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [20],
+                        "t": 63.9880004882813,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 11.988,
+                    "s": [0]
+                  },
+                  { "t": 63.9360026041667, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [1], "y": [0] },
+                    "t": 17.982,
+                    "s": [0]
+                  },
+                  { "t": 69.9300028483073, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            }
+          ],
+          "ip": 11.9880004882813,
+          "op": 133.866005452474,
+          "st": 11.9880004882813,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 13,
+          "ty": 5,
+          "nm": "Setting Rules(do not delete)",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 5,
+              "nm": "copy",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0],
+                        "t": 4.00000016292334,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0],
+                        "t": 64.0000001629233,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "t": {
+            "d": {
+              "k": [
+                {
+                  "s": {
+                    "s": 209,
+                    "f": "Montserrat-Black",
+                    "t": "2.03333333333333",
+                    "ca": 1,
+                    "j": 2,
+                    "tr": 0,
+                    "lh": 250.800003051758,
+                    "ls": 0,
+                    "fc": [0.953, 0.949, 0.953]
+                  },
+                  "t": 0
+                }
+              ],
+              "x": "var $bm_rt;\n"
+            },
+            "p": {},
+            "m": { "g": 1, "a": { "a": 0, "k": [0, 0], "ix": 2 } },
+            "a": []
+          },
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        }
+      ]
+    },
+    {
+      "id": "comp_2",
+      "nm": "Shape_Line_17 1",
+      "fr": 30,
+      "layers": [
+        {
+          "ddd": 0,
+          "ind": 1,
+          "ty": 4,
+          "nm": "CONTROL",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 5,
+              "nm": "Size",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [100],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [100],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Stroke Control A",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 2,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [25],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [25],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Stroke Control B",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 3,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [10],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [10],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Color A",
+              "np": 3,
+              "mn": "ADBE Color Control",
+              "ix": 4,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Color Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "ty": 5,
+              "nm": "Color B",
+              "np": 3,
+              "mn": "ADBE Color Control",
+              "ix": 5,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Color Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "shapes": [],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 2,
+          "ty": 4,
+          "nm": "Null",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": {
+              "k": [
+                {
+                  "s": [100, 100, 100],
+                  "t": 6.00000024438501,
+                  "i": { "x": [1, 1, 1], "y": [1, 1, 1] },
+                  "o": { "x": [0, 0, 0], "y": [0, 0, 0] }
+                },
+                {
+                  "s": [100, 100, 100],
+                  "t": 66.000000244385,
+                  "i": { "x": [1, 1, 1], "y": [1, 1, 1] },
+                  "o": { "x": [0, 0, 0], "y": [0, 0, 0] }
+                }
+              ],
+              "l": 2
+            }
+          },
+          "ao": 0,
+          "shapes": [],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 3,
+          "ty": 4,
+          "nm": "Line 2",
+          "parent": 2,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 15, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 13.9860005696615,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.02, 0.11, 0.184, 1],
+                        "t": 65.9860005696615,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [-149.303, 110.171]
+                      ],
+                      "o": [
+                        [-192.125, -155.875],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -124.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [10],
+                        "t": 13.9860005696615,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [10],
+                        "t": 65.9860005696615,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 13.986,
+                    "s": [0]
+                  },
+                  { "t": 81.9180033365885, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 21.978,
+                    "s": [0]
+                  },
+                  { "t": 89.9100036621094, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            },
+            {
+              "ty": "rp",
+              "c": { "a": 0, "k": 11, "ix": 1 },
+              "o": { "a": 0, "k": 0, "ix": 2 },
+              "m": 1,
+              "ix": 3,
+              "tr": {
+                "ty": "tr",
+                "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                "r": { "a": 0, "k": 33, "ix": 4 },
+                "so": { "a": 0, "k": 100, "ix": 5 },
+                "eo": { "a": 0, "k": 100, "ix": 6 },
+                "nm": "Transform"
+              },
+              "nm": "Repeater 1",
+              "mn": "ADBE Vector Filter - Repeater",
+              "hd": false
+            }
+          ],
+          "ip": 13.9860005696615,
+          "op": 135.864005533854,
+          "st": 13.9860005696615,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 4,
+          "ty": 4,
+          "nm": "Line",
+          "parent": 2,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 21,
+              "nm": "Fill",
+              "np": 9,
+              "mn": "ADBE Fill",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 10,
+                  "nm": "Fill Mask",
+                  "mn": "ADBE Fill-0001",
+                  "ix": 1,
+                  "v": { "a": 0, "k": 0, "ix": 1 }
+                },
+                {
+                  "ty": 7,
+                  "nm": "All Masks",
+                  "mn": "ADBE Fill-0007",
+                  "ix": 2,
+                  "v": { "a": 0, "k": 0, "ix": 2 }
+                },
+                {
+                  "ty": 2,
+                  "nm": "Color",
+                  "mn": "ADBE Fill-0002",
+                  "ix": 3,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0.871, 0.784, 0, 1],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "ty": 7,
+                  "nm": "Invert",
+                  "mn": "ADBE Fill-0006",
+                  "ix": 4,
+                  "v": { "a": 0, "k": 0, "ix": 4 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Horizontal Feather",
+                  "mn": "ADBE Fill-0003",
+                  "ix": 5,
+                  "v": { "a": 0, "k": 0, "ix": 5 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Vertical Feather",
+                  "mn": "ADBE Fill-0004",
+                  "ix": 6,
+                  "v": { "a": 0, "k": 0, "ix": 6 }
+                },
+                {
+                  "ty": 0,
+                  "nm": "Opacity",
+                  "mn": "ADBE Fill-0005",
+                  "ix": 7,
+                  "v": { "a": 0, "k": 1, "ix": 7 }
+                }
+              ]
+            }
+          ],
+          "shapes": [
+            {
+              "ty": "gr",
+              "it": [
+                {
+                  "ind": 0,
+                  "ty": "sh",
+                  "ix": 1,
+                  "ks": {
+                    "a": 0,
+                    "k": {
+                      "i": [
+                        [0, 0],
+                        [-149.303, 110.171]
+                      ],
+                      "o": [
+                        [-192.125, -155.875],
+                        [0, 0]
+                      ],
+                      "v": [
+                        [0.125, -124.125],
+                        [1.303, -642.171]
+                      ],
+                      "c": false
+                    },
+                    "ix": 2
+                  },
+                  "nm": "Path 1",
+                  "mn": "ADBE Vector Shape - Group",
+                  "hd": false
+                },
+                {
+                  "ty": "st",
+                  "c": { "a": 0, "k": [1, 1, 1, 1], "ix": 3 },
+                  "o": { "a": 0, "k": 100, "ix": 4 },
+                  "w": {
+                    "k": [
+                      {
+                        "s": [25],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [25],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  },
+                  "lc": 1,
+                  "lj": 1,
+                  "ml": 4,
+                  "bm": 0,
+                  "nm": "Stroke 1",
+                  "mn": "ADBE Vector Graphic - Stroke",
+                  "hd": false
+                },
+                {
+                  "ty": "fl",
+                  "c": { "a": 0, "k": [1, 0, 0, 1], "ix": 4 },
+                  "o": { "a": 0, "k": 100, "ix": 5 },
+                  "r": 1,
+                  "bm": 0,
+                  "nm": "Fill 1",
+                  "mn": "ADBE Vector Graphic - Fill",
+                  "hd": true
+                },
+                {
+                  "ty": "tr",
+                  "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                  "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                  "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                  "r": { "a": 0, "k": 0, "ix": 6 },
+                  "o": { "a": 0, "k": 100, "ix": 7 },
+                  "sk": { "a": 0, "k": 0, "ix": 4 },
+                  "sa": { "a": 0, "k": 0, "ix": 5 },
+                  "nm": "Transform"
+                }
+              ],
+              "nm": "Shape 1",
+              "np": 3,
+              "cix": 2,
+              "bm": 0,
+              "ix": 1,
+              "mn": "ADBE Vector Group",
+              "hd": false
+            },
+            {
+              "ty": "tm",
+              "s": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 0,
+                    "s": [0]
+                  },
+                  { "t": 67.9320027669271, "s": [100] }
+                ],
+                "ix": 1
+              },
+              "e": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0], "y": [1] },
+                    "o": { "x": [0.875], "y": [0] },
+                    "t": 7.992,
+                    "s": [0]
+                  },
+                  { "t": 75.9240030924479, "s": [100] }
+                ],
+                "ix": 2
+              },
+              "o": { "a": 0, "k": 0, "ix": 3 },
+              "m": 1,
+              "ix": 2,
+              "nm": "Trim Paths 1",
+              "mn": "ADBE Vector Filter - Trim",
+              "hd": false
+            },
+            {
+              "ty": "rp",
+              "c": { "a": 0, "k": 11, "ix": 1 },
+              "o": { "a": 0, "k": 0, "ix": 2 },
+              "m": 1,
+              "ix": 3,
+              "tr": {
+                "ty": "tr",
+                "p": { "a": 0, "k": [0, 0], "ix": 2 },
+                "a": { "a": 0, "k": [0, 0], "ix": 1 },
+                "s": { "a": 0, "k": [100, 100], "ix": 3 },
+                "r": { "a": 0, "k": 33, "ix": 4 },
+                "so": { "a": 0, "k": 100, "ix": 5 },
+                "eo": { "a": 0, "k": 100, "ix": 6 },
+                "nm": "Transform"
+              },
+              "nm": "Repeater 1",
+              "mn": "ADBE Vector Filter - Repeater",
+              "hd": false
+            }
+          ],
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        },
+        {
+          "ddd": 0,
+          "ind": 5,
+          "ty": 5,
+          "nm": "Setting Rules(do not delete)",
+          "hd": true,
+          "sr": 1,
+          "ks": {
+            "o": { "a": 0, "k": 100, "ix": 11 },
+            "r": { "a": 0, "k": 0, "ix": 10 },
+            "p": { "a": 0, "k": [960, 960, 0], "ix": 2, "l": 2 },
+            "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+            "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+          },
+          "ao": 0,
+          "ef": [
+            {
+              "ty": 5,
+              "nm": "copy",
+              "np": 3,
+              "mn": "ADBE Slider Control",
+              "ix": 1,
+              "en": 1,
+              "ef": [
+                {
+                  "ty": 0,
+                  "nm": "Slider",
+                  "mn": "ADBE Slider Control-0001",
+                  "ix": 1,
+                  "v": {
+                    "k": [
+                      {
+                        "s": [0],
+                        "t": 6.00000024438501,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      },
+                      {
+                        "s": [0],
+                        "t": 66.000000244385,
+                        "i": { "x": [1], "y": [1] },
+                        "o": { "x": [0], "y": [0] }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "t": {
+            "d": {
+              "k": [
+                {
+                  "s": {
+                    "s": 209,
+                    "f": "Montserrat-Black",
+                    "t": "2.03333333333333",
+                    "ca": 1,
+                    "j": 2,
+                    "tr": 0,
+                    "lh": 250.800003051758,
+                    "ls": 0,
+                    "fc": [0.953, 0.949, 0.953]
+                  },
+                  "t": 0
+                }
+              ],
+              "x": "var $bm_rt;\n"
+            },
+            "p": {},
+            "m": { "g": 1, "a": { "a": 0, "k": [0, 0], "ix": 2 } },
+            "a": []
+          },
+          "ip": 0,
+          "op": 121.878004964193,
+          "st": 0,
+          "ct": 1,
+          "bm": 0
+        }
+      ]
+    }
+  ],
+  "fonts": {
+    "list": [
+      {
+        "fName": "Montserrat-Black",
+        "fFamily": "Montserrat",
+        "fStyle": "Black",
+        "ascent": 79.1989135742188
+      }
+    ]
+  },
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 0,
+      "nm": "Comp Theme Color",
+      "hd": true,
+      "refId": "comp_0",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [35, 35, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [540, 540, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [6.481, 6.481, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "w": 1080,
+      "h": 1080,
+      "ip": 0,
+      "op": 60.0000024438501,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 2,
+      "ty": 3,
+      "nm": "Null 1",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 0, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [35, 35, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [0, 0, 0], "ix": 1, "l": 2 },
+        "s": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.667, 0.667, 0.667], "y": [1, 1, 1] },
+              "o": { "x": [0.333, 0.333, 0.333], "y": [0, 0, 0] },
+              "t": 0,
+              "s": [100, 100, 100]
+            },
+            {
+              "i": { "x": [0.667, 0.667, 0.667], "y": [1, 1, 1] },
+              "o": { "x": [0.333, 0.333, 0.333], "y": [0, 0, 0] },
+              "t": 15,
+              "s": [80, 80, 100]
+            },
+            {
+              "i": { "x": [0.667, 0.667, 0.667], "y": [1, 1, 1] },
+              "o": { "x": [0.333, 0.333, 0.333], "y": [0, 0, 0] },
+              "t": 30,
+              "s": [170, 170, 100]
+            },
+            {
+              "i": { "x": [0.667, 0.667, 0.667], "y": [1, 1, 1] },
+              "o": { "x": [0.333, 0.333, 0.333], "y": [0, 0, 0] },
+              "t": 45,
+              "s": [80, 80, 100]
+            },
+            { "t": 59.0000024031193, "s": [100, 100, 100] }
+          ],
+          "ix": 6,
+          "l": 2
+        }
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 60.0000024438501,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 3,
+      "ty": 2,
+      "nm": "HomeIcon.png",
+      "cl": "png",
+      "parent": 2,
+      "refId": "image_0",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [31, 28, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [60, 60, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "hasMask": true,
+      "masksProperties": [
+        {
+          "inv": false,
+          "mode": "a",
+          "pt": {
+            "a": 1,
+            "k": [
+              {
+                "i": { "x": 0, "y": 1 },
+                "o": { "x": 0.333, "y": 0 },
+                "t": 15,
+                "s": [
+                  {
+                    "i": [
+                      [0, 0],
+                      [0, 0],
+                      [0, 0],
+                      [0, 0]
+                    ],
+                    "o": [
+                      [0, 0],
+                      [0, 0],
+                      [0, 0],
+                      [0, 0]
+                    ],
+                    "v": [
+                      [100.583, 60.083],
+                      [-39.417, 60.083],
+                      [-39.417, 61.75],
+                      [100.583, 61.75]
+                    ],
+                    "c": true
+                  }
+                ]
+              },
+              {
+                "t": 59.0000024031193,
+                "s": [
+                  {
+                    "i": [
+                      [0, 0],
+                      [0, 0],
+                      [0, 0],
+                      [0, 0]
+                    ],
+                    "o": [
+                      [0, 0],
+                      [0, 0],
+                      [0, 0],
+                      [0, 0]
+                    ],
+                    "v": [
+                      [100.583, -4.5],
+                      [-39.417, -4.5],
+                      [-39.417, 61.75],
+                      [100.583, 61.75]
+                    ],
+                    "c": true
+                  }
+                ]
+              }
+            ],
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Mask 1"
+        }
+      ],
+      "ef": [
+        {
+          "ty": 21,
+          "nm": "Fill",
+          "np": 9,
+          "mn": "ADBE Fill",
+          "ix": 1,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 10,
+              "nm": "Fill Mask",
+              "mn": "ADBE Fill-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 0, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "All Masks",
+              "mn": "ADBE Fill-0007",
+              "ix": 2,
+              "v": { "a": 0, "k": 0, "ix": 2 }
+            },
+            {
+              "ty": 2,
+              "nm": "Color",
+              "mn": "ADBE Fill-0002",
+              "ix": 3,
+              "v": {
+                "a": 0,
+                "k": [0.870588302612, 0.784313797951, 0, 1],
+                "ix": 3
+              }
+            },
+            {
+              "ty": 7,
+              "nm": "Invert",
+              "mn": "ADBE Fill-0006",
+              "ix": 4,
+              "v": { "a": 0, "k": 0, "ix": 4 }
+            },
+            {
+              "ty": 0,
+              "nm": "Horizontal Feather",
+              "mn": "ADBE Fill-0003",
+              "ix": 5,
+              "v": { "a": 0, "k": 0, "ix": 5 }
+            },
+            {
+              "ty": 0,
+              "nm": "Vertical Feather",
+              "mn": "ADBE Fill-0004",
+              "ix": 6,
+              "v": { "a": 0, "k": 0, "ix": 6 }
+            },
+            {
+              "ty": 0,
+              "nm": "Opacity",
+              "mn": "ADBE Fill-0005",
+              "ix": 7,
+              "v": { "a": 0, "k": 1, "ix": 7 }
+            }
+          ]
+        }
+      ],
+      "ip": 0,
+      "op": 60.0000024438501,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 4,
+      "ty": 2,
+      "nm": "HomeIcon.png",
+      "cl": "png",
+      "parent": 2,
+      "refId": "image_0",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [0, 0, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [31, 28, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [60, 60, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 60.0000024438501,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 5,
+      "ty": 1,
+      "nm": "Black Solid 2",
+      "hd": true,
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [35, 35, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [20, 20, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "ef": [
+        {
+          "ty": 21,
+          "nm": "Fill",
+          "np": 9,
+          "mn": "ADBE Fill",
+          "ix": 1,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 10,
+              "nm": "Fill Mask",
+              "mn": "ADBE Fill-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 0, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "All Masks",
+              "mn": "ADBE Fill-0007",
+              "ix": 2,
+              "v": { "a": 0, "k": 0, "ix": 2 }
+            },
+            {
+              "ty": 2,
+              "nm": "Color",
+              "mn": "ADBE Fill-0002",
+              "ix": 3,
+              "v": { "a": 0, "k": [1, 0, 0, 1], "ix": 3 }
+            },
+            {
+              "ty": 7,
+              "nm": "Invert",
+              "mn": "ADBE Fill-0006",
+              "ix": 4,
+              "v": { "a": 0, "k": 0, "ix": 4 }
+            },
+            {
+              "ty": 0,
+              "nm": "Horizontal Feather",
+              "mn": "ADBE Fill-0003",
+              "ix": 5,
+              "v": { "a": 0, "k": 0, "ix": 5 }
+            },
+            {
+              "ty": 0,
+              "nm": "Vertical Feather",
+              "mn": "ADBE Fill-0004",
+              "ix": 6,
+              "v": { "a": 0, "k": 0, "ix": 6 }
+            },
+            {
+              "ty": 0,
+              "nm": "Opacity",
+              "mn": "ADBE Fill-0005",
+              "ix": 7,
+              "v": { "a": 0, "k": 1, "ix": 7 }
+            }
+          ]
+        }
+      ],
+      "sw": 40,
+      "sh": 40,
+      "sc": "#000000",
+      "ip": 0,
+      "op": 60.0000024438501,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 6,
+      "ty": 0,
+      "nm": "Comp Theme Color",
+      "hd": true,
+      "refId": "comp_0",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [35, 35, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [540, 540, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "w": 1080,
+      "h": 1080,
+      "ip": 0,
+      "op": 60.0000024438501,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 7,
+      "ty": 0,
+      "nm": "Shape_Line_37 1",
+      "hd": true,
+      "refId": "comp_1",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [35, 35, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [960, 960, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [5.446, 5.446, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "ef": [
+        {
+          "ty": 5,
+          "nm": "Internal control",
+          "np": 3,
+          "mn": "ADBE Checkbox Control",
+          "ix": 1,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 7,
+              "nm": "Checkbox",
+              "mn": "ADBE Checkbox Control-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 0, "ix": 1 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Size",
+          "np": 3,
+          "mn": "ADBE Slider Control",
+          "ix": 2,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Slider",
+              "mn": "ADBE Slider Control-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 100, "ix": 1 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Stroke Control",
+          "np": 3,
+          "mn": "ADBE Slider Control",
+          "ix": 3,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Slider",
+              "mn": "ADBE Slider Control-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 20, "ix": 1 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Color A",
+          "np": 3,
+          "mn": "ADBE Color Control",
+          "ix": 4,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 2,
+              "nm": "Color",
+              "mn": "ADBE Color Control-0001",
+              "ix": 1,
+              "v": {
+                "a": 0,
+                "k": [0.839215695858, 1, 0.196078434587, 1],
+                "ix": 1
+              }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Color B",
+          "np": 3,
+          "mn": "ADBE Color Control",
+          "ix": 5,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 2,
+              "nm": "Color",
+              "mn": "ADBE Color Control-0001",
+              "ix": 1,
+              "v": {
+                "a": 0,
+                "k": [0.082352943718, 0.596770405769, 0.956862747669, 1],
+                "ix": 1
+              }
+            }
+          ]
+        }
+      ],
+      "w": 1920,
+      "h": 1920,
+      "ip": -4.00000016292334,
+      "op": 117.878004801269,
+      "st": -4.00000016292334,
+      "ct": 1,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 8,
+      "ty": 0,
+      "nm": "Shape_Line_17 1",
+      "refId": "comp_2",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 0,
+              "s": [0]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 30,
+              "s": [100]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 45,
+              "s": [100]
+            },
+            { "t": 59.0000024031193, "s": [0] }
+          ],
+          "ix": 11
+        },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [35, 35, 0], "ix": 2, "l": 2 },
+        "a": { "a": 0, "k": [960, 960, 0], "ix": 1, "l": 2 },
+        "s": { "a": 0, "k": [4.946, 4.946, 100], "ix": 6, "l": 2 }
+      },
+      "ao": 0,
+      "ef": [
+        {
+          "ty": 5,
+          "nm": "Internal control",
+          "np": 3,
+          "mn": "ADBE Checkbox Control",
+          "ix": 1,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 7,
+              "nm": "Checkbox",
+              "mn": "ADBE Checkbox Control-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 0, "ix": 1 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Size",
+          "np": 3,
+          "mn": "ADBE Slider Control",
+          "ix": 2,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Slider",
+              "mn": "ADBE Slider Control-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 100, "ix": 1 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Stroke Control A",
+          "np": 3,
+          "mn": "ADBE Slider Control",
+          "ix": 3,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Slider",
+              "mn": "ADBE Slider Control-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 25, "ix": 1 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Stroke Control B",
+          "np": 3,
+          "mn": "ADBE Slider Control",
+          "ix": 4,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Slider",
+              "mn": "ADBE Slider Control-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 10, "ix": 1 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Color A",
+          "np": 3,
+          "mn": "ADBE Color Control",
+          "ix": 5,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 2,
+              "nm": "Color",
+              "mn": "ADBE Color Control-0001",
+              "ix": 1,
+              "v": {
+                "a": 0,
+                "k": [0.870588302612, 0.784313797951, 0, 1],
+                "ix": 1
+              }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Color B",
+          "np": 3,
+          "mn": "ADBE Color Control",
+          "ix": 6,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 2,
+              "nm": "Color",
+              "mn": "ADBE Color Control-0001",
+              "ix": 1,
+              "v": {
+                "a": 0,
+                "k": [0.019607843831, 0.109803929925, 0.184313729405, 1],
+                "ix": 1
+              }
+            }
+          ]
+        }
+      ],
+      "w": 1920,
+      "h": 1920,
+      "ip": -6.00000024438501,
+      "op": 115.878004719808,
+      "st": -6.00000024438501,
+      "ct": 1,
+      "bm": 0
+    }
+  ],
+  "markers": [],
+  "chars": []
+}
