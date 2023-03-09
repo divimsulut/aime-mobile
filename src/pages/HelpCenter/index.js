@@ -12,7 +12,7 @@ import { Header } from "../../components";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function HelpCenter({ navigation }) {
-  const [open, setOpen] = useState(false);
+  const [openId, setOpenId] = React.useState(null);
   const [data, setData] = React.useState([]);
   const date = new Date();
   const currentTime = date.getHours();
@@ -34,25 +34,25 @@ export default function HelpCenter({ navigation }) {
   React.useEffect(() => {
     setData([
       {
-        id: 1,
+        id: "1",
         question: "How to scan the QR-Code?",
         answer:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 1Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
       },
       {
-        id: 2,
+        id: "2",
         question: "how to change checkin status?",
         answer:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
       },
       {
-        id: 3,
+        id: "3",
         question: "How to change the registered email at AIME?",
         answer:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 3Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
       },
       {
-        id: 4,
+        id: "4",
         question: "where I visited did not provide a barcode that I could scan",
         answer:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 4Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
@@ -88,12 +88,12 @@ export default function HelpCenter({ navigation }) {
             <View className="flex right-[70px] top-[53px] bg-yellow-500 opacity-80 w-3 h-3 absolute rounded-full"></View>
             <View className="py-3 px-6">
               <Text
-                className="text-white text-left ml-2 text-base font-sans"
+                className="text-white text-left ml-2 text-base "
                 id="greeting"
               >
                 {greeting}
               </Text>
-              <Text className="text-white text-left ml-2 text-xl font-bold ">
+              <Text className="text-white text-left ml-2 text-xl  ">
                 What can we help you?
               </Text>
             </View>
@@ -115,25 +115,24 @@ export default function HelpCenter({ navigation }) {
 
           {/* FAQ */}
           <View className="flex flex-col mt-10 px-6 ">
-            <Text className="text-white text-left ml-2 text-xl font-bold">
-              FAQs
-            </Text>
+            <Text className="text-white text-left ml-2 text-xl ">FAQs</Text>
             {data.map((item) => (
-              <View className="flex mt-3 overflow-y-scroll">
+              <View key={item.id} className="flex mt-3 overflow-y-scroll">
                 <View className="flex flex-col items-center pb-4 border-b-2 border-[#4A4848]">
                   <View className="flex flex-row-reverse items-center justify-between w-full">
                     <TouchableOpacity
-                      className="items-center justify-center w-10 h-10 border border-white rounded-full"
-                      id="ReadMoreBtn"
-                      onPress={() => setOpen(!open)}
+                      className="items-center justify-center w-6 h-6 border border-white rounded-full"
+                      onPress={() =>
+                        setOpenId(item.id === openId ? null : item.id)
+                      }
                     >
-                      <Text className="text-white text-2xl font-bold">
-                        {open ? "-" : "+"}
+                      <Text className="text-white text-1xl ">
+                        {item.id === openId ? "-" : "+"}
                       </Text>
                     </TouchableOpacity>
 
                     <Text
-                      className="text-white text-left ml-2 text-base font-normal"
+                      className="text-white text-left ml-2 text-base "
                       id="question"
                     >
                       {item.question}
@@ -141,8 +140,8 @@ export default function HelpCenter({ navigation }) {
                   </View>
                   <View className="flex flex-col items-center justify-center">
                     <Text
-                      className={`text-[#636363] text-left ml-2 text-base font-normal ${
-                        open ? "block" : "hidden"
+                      className={`text-[#636363] text-left ml-2 text-base  ${
+                        item.id === openId ? "block" : "hidden"
                       }`}
                       id="answer"
                     >
@@ -158,16 +157,16 @@ export default function HelpCenter({ navigation }) {
             <View className="flex mt-10 h-20 w-[px] rounded-3xl bg-[#C69D0E]">
               <View className="absolute flex flex-col items-center justify-center left-3 top-4 w-12 h-12 bg-[#002347] rounded-full">
                 <View className="absolute flex flex-row items-center justify-center mt-2 w-8 h-8 bg-[#001424] border border-white rounded-full">
-                  <Text className="absolute text-white text-left ml-2 text-base font-normal">
+                  <Text className="absolute text-white text-left ml-2 text-base ">
                     ?
                   </Text>
                 </View>
               </View>
               <View className="flex flex-col items-start px-16 mt-3 justify-center">
-                <Text className="text-white text-left ml-2 text-base font-normal">
+                <Text className="text-white text-left ml-2 text-base ">
                   Still have any question?
                 </Text>
-                <Text className="text-white text-left ml-2 text-xs font-light">
+                <Text className="text-white text-left ml-2 text-xs ">
                   Start chat with "HELP"
                 </Text>
               </View>
@@ -177,7 +176,7 @@ export default function HelpCenter({ navigation }) {
                   onPress={() => navigation.navigate("HelpChat")}
                 >
                   <Text
-                    className="text-white text-left ml-2 text-base font-normal"
+                    className="text-white text-left ml-2 text-base "
                     id="chatBtn"
                   >
                     Start Chat

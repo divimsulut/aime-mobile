@@ -21,6 +21,7 @@ import {
 } from "../../../components";
 import { IconBack } from "../../../assets";
 import { signIn } from "../../../config";
+import { CommonActions, useNavigation } from "@react-navigation/native";
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -34,7 +35,12 @@ const SignIn = ({ navigation }) => {
     signIn({ email, password })
       .then((user) => {
         console.log("after success login: ", user);
-        navigation.replace("Tabs");
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: "Tabs" }],
+          })
+        );
       })
       .catch((error) => {
         // clear input when error

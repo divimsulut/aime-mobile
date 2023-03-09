@@ -3,6 +3,7 @@ import DataCheckinhist from "./checkinhist";
 import DataImage from "./image";
 import DataKantorImigrasi from "./kantorimigrasi";
 import DataNews from "./news";
+import DataFavoriteList from "./favoritelist";
 
 export {
   DataCheckinhist,
@@ -10,4 +11,5 @@ export {
   DataImage,
   DataKantorImigrasi,
   DataNews,
+  DataFavoriteList,
 };

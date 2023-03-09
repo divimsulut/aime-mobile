@@ -11,6 +11,9 @@ import ActivityLog_Day from "./ActivityLogSection/ActivityLog_Day";
 import ActivityLog_Activity_CheckIn from "./ActivityLogSection/ActivityLog_Activity_CheckIn";
 import ActivityLog_Activity_CheckOut from "./ActivityLogSection/ActivityLog_Activity_CheckOut";
 
+// Favorite List Section
+import ItemFavoriteList from "./FavoriteListSection/ItemFavoriteList";
+
 export {
   HomeHeader,
   Header,
@@ -24,6 +27,9 @@ export {
   ActivityLog_Day,
   ActivityLog_Activity_CheckIn,
   ActivityLog_Activity_CheckOut,
+
+  // Favorite List Section
+  ItemFavoriteList,
 };
 
 export * from "./ListComponents";

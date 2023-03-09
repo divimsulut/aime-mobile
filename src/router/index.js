@@ -30,6 +30,7 @@ import {
   PassChanged,
   HelpChat,
   Notification,
+  FavoriteList,
 
   //Profile Section
   EditProfile,
@@ -378,6 +379,13 @@ const Router = () => {
       <Stack.Screen
         name="Notification"
         component={Notification}
+        options={{ headerShown: false }}
+      />
+
+      {/* Favorite List */}
+      <Stack.Screen
+        name="FavoriteList"
+        component={FavoriteList}
         options={{ headerShown: false }}
       />
 

@@ -6,6 +6,7 @@ import {
   TextInput,
   FlatList,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
 import { ImageLandscape3 } from "../../../assets";
@@ -29,14 +30,11 @@ const ExploreDestination = ({ navigation }) => {
   });
 
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <ButtonBack navigation={navigation} />
-      <ScrollView>
+      <ScrollView stickyHeaderIndices={[1]}>
         <View style={styles.mainImageContainer}>
           <Image source={ImageLandscape3} style={{ flex: 1 }} />
-        </View>
-
-        <View style={styles.contentContainer}>
           <Shadow
             startColor="#ffffff"
             distance={50}
@@ -44,37 +42,68 @@ const ExploreDestination = ({ navigation }) => {
           >
             <View style={styles.shadowContainer} />
           </Shadow>
-          <View style={styles.searchHelperContainer}>
-            <Shadow distance={30}>
-              <View style={styles.searchContainer}>
-                <Svg
-                  // style={{backgroundColor: 'red'}}
-                  width={18}
-                  height={18}
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <Path
-                    d="M12.5 11h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34A6.505 6.505 0 00.05 7.32c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L12.5 11zm-6 0C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11z"
-                    fill="#353535"
-                  />
-                </Svg>
-                <View style={styles.textSearchContainer}>
-                  <TextInput
-                    placeholder="Where are you heading today?"
-                    onChangeText={(value) => setSearch(value)}
-                  />
-                </View>
+        </View>
+
+        {/* SEARCH BAR */}
+        <View style={styles.searchHelperContainer}>
+          <Shadow distance={30}>
+            <View style={styles.searchContainer}>
+              <Svg
+                // style={{backgroundColor: 'red'}}
+                width={18}
+                height={18}
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <Path
+                  d="M12.5 11h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34A6.505 6.505 0 00.05 7.32c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L12.5 11zm-6 0C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11z"
+                  fill="#353535"
+                />
+              </Svg>
+              <View style={styles.textSearchContainer}>
+                <TextInput
+                  placeholder="Where are you heading today?"
+                  onChangeText={(value) => setSearch(value)}
+                />
               </View>
-            </Shadow>
-          </View>
+            </View>
+          </Shadow>
+        </View>
+        <View style={styles.contentContainer}>
+          {/* <Shadow
+            startColor="#ffffff"
+            distance={50}
+            sides={{ bottom: false, start: false, end: false, top: true }}
+          >
+            <View style={styles.shadowContainer} />
+          </Shadow> */}
+
           <View
             style={{
               marginTop: verticalScale(70),
             }}
           >
             <Text style={styles.textTitle}>Explore Destination</Text>
+
+            {/* temporary button -roger */}
+            <TouchableOpacity
+              onPress={() => navigation.navigate("FavoriteList")}
+            >
+              <View
+                style={{
+                  height: verticalScale(50),
+                  width: "100%",
+                  backgroundColor: "black",
+                  justifyContent: "center",
+                }}
+              >
+                <Text style={{ textAlign: "center", color: "white" }}>
+                  {"Favorite List :) | temporary button -roger"}
+                </Text>
+              </View>
+            </TouchableOpacity>
+
             <View style={{ marginTop: verticalScale(24) }}>
               <FlatList
                 data={filteredData}
@@ -118,8 +147,12 @@ const styles = StyleSheet.create({
   },
   searchHelperContainer: {
     position: "absolute",
-    top: verticalScale(-23),
+    // top: verticalScale(-23),
+    paddingTop: verticalScale(80),
+    marginTop: verticalScale(-80),
     alignSelf: "center",
+    // backgroundColor: "red",
+    height: verticalScale(0),
   },
   searchContainer: {
     height: verticalScale(46),

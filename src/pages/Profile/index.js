@@ -172,7 +172,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
                     style={[styles.button.x, styles.buttonClose.x]}
                     onPress={() => setModalVisible(!modalVisible)}
                   >
-                    <Text style={styles.textStyle.x}>X</Text>
+                    <Text style={styles.x}>X</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -361,12 +361,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
-
-    x: {
-      color: "black",
-      fontWeight: "bold",
-      textAlign: "center",
-    },
+  },
+  x: {
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
   },
   modalText: {
     marginBottom: 15,

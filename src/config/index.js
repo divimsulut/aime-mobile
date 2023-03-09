@@ -32,7 +32,9 @@ export default firebase;
 
 const auth = getAuth(firebase);
 // console.log(auth);
-setPersistence(auth, "local");
+setPersistence(auth, "local").catch((error) => {
+  console.log("setPresistence error: ", error.message);
+});
 
 // Sign Up function
 export const createUser = (fullName, email, password, navigation) => {
@@ -89,6 +91,6 @@ export const getCurrentUser = () =>
 export const signOut = async (navigation) => {
   await auth
     .signOut()
-    .then(() => navigation.navigate("SignIn"))
+    .then(() => navigation.replace("SignIn"))
     .catch((error) => console.log("sign out function: ", error));
 };

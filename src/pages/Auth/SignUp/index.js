@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-SemiBold",
     fontSize: moderateScale(15),
     color: "#00284D",
-    textDecorationStyle: "",
+    textDecorationLine: "underline",
   },
   textOr: {
     fontFamily: "Poppins-Regular",

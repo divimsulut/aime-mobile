@@ -18,14 +18,17 @@ import PassChanged from "./Auth/SignIn/PassChanged";
 import HomeNextGen from "./Home";
 import Notification from "./Home/Notification";
 import ActivityLog from "./Home/ActivityLog";
+import News from "./Home/News";
+// -> Sub Pages
+import FavoriteList from "./SubPages/FavoriteList";
 import ExploreDestination from "./SubPages/Explore Destination";
 import DestionationDetail from "./SubPages/DestinationDetail";
-import News from "./Home/News";
 
 // Imigration Section
 import ImigrationInfo from "./ImigrationInfo";
 import NearbyOffice from "./ImigrationInfo/NearbyOffice";
 import OfficeDetail from "./ImigrationInfo/OfficeDetail";
+import OfficeDetail2 from "./ImigrationInfo/OfficeDetail2";
 import ScanBarcode from "./ScanBarcode";
 
 // Help Section
@@ -63,11 +66,13 @@ export {
   ExploreDestination,
   DestionationDetail,
   News,
+  FavoriteList,
 
   // Imigration Section
   ImigrationInfo,
   NearbyOffice,
   OfficeDetail,
+  OfficeDetail2,
   ScanBarcode,
 
   // Help Section
