@@ -60,7 +60,6 @@ const Tabs = () => {
           tabBarHideOnKeyboard: true,
           tabBarShowLabel: false,
           tabBarStyle: {
-            zIndex: 2,
             backgroundColor: "white",
             position: "absolute",
             bottom: 0,
@@ -77,20 +76,17 @@ const Tabs = () => {
             headerShown: false,
             tabBarIcon: ({ focused }) => {
               return (
-                <View style={{ width: 70, height: 70 }}>
-                  {/* <Svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={32}
-                    height={29}
-                    fill="none"
-                  >
-                    <Path
-                      fill={focused ? "#DEC800" : "#051C2F"}
-                      d="M12.667 26.667v-8.334h6.666v8.334c0 .916.75 1.666 1.667 1.666h5c.917 0 1.667-.75 1.667-1.666V15H30.5c.767 0 1.133-.95.55-1.45L17.117 1a1.68 1.68 0 0 0-2.234 0L.95 13.55C.383 14.05.733 15 1.5 15h2.833v11.667c0 .916.75 1.666 1.667 1.666h5c.917 0 1.667-.75 1.667-1.666z"
-                    />
-                  </Svg> */}
-                  <LottieView source={Home} autoPlay={focused} loop={false} />
-                </View>
+                <Svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={32}
+                  height={29}
+                  fill="none"
+                >
+                  <Path
+                    fill={focused ? "#DEC800" : "#051C2F"}
+                    d="M12.667 26.667v-8.334h6.666v8.334c0 .916.75 1.666 1.667 1.666h5c.917 0 1.667-.75 1.667-1.666V15H30.5c.767 0 1.133-.95.55-1.45L17.117 1a1.68 1.68 0 0 0-2.234 0L.95 13.55C.383 14.05.733 15 1.5 15h2.833v11.667c0 .916.75 1.666 1.667 1.666h5c.917 0 1.667-.75 1.667-1.666z"
+                  />
+                </Svg>
               );
             },
           }}
@@ -145,6 +141,7 @@ const Tabs = () => {
             tabBarIcon: ({ focused }) => {
               return (
                 <TouchableOpacity
+                  style={{ zIndex: 2 }}
                   activeOpacity={0.8}
                   onPress={() => {
                     navigation.navigate("ScanBarcode");
@@ -220,7 +217,7 @@ const Tabs = () => {
           listeners={{
             tabPress: (e) => {
               Animated.spring(animatedValue, {
-                toValue: getWidth() * 3.35,
+                toValue: getWidth() * 3.325,
                 useNativeDriver: true,
               }).start();
             },
@@ -260,21 +257,20 @@ const Tabs = () => {
           }}
         />
       </Tab.Navigator>
-
       <Animated.View
         style={{
           zIndex: 0,
           width: getWidth() - 20,
           height: verticalScale(5),
-          backgroundColor: "#DEC800",
+          backgroundColor: "#BEAE1E",
           position: "absolute",
-          bottom: 63,
+          bottom: 0,
           borderTopLeftRadius: moderateScale(10),
           borderTopRightRadius: moderateScale(10),
           left: 15,
           transform: [{ translateX: animatedValue }],
         }}
-      ></Animated.View>
+      />
     </View>
   );
 };

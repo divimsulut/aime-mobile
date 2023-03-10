@@ -15,6 +15,8 @@ import { Scanner } from "../../assets";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
 const ScanBarcode = ({ navigation }) => {
+  const [qrData, setQrData] = useState("");
+
   // Camera Frame
   const CameraFrame = () => {
     return (
@@ -151,9 +153,10 @@ const ScanBarcode = ({ navigation }) => {
           barCodeScannerSettings={{
             barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
           }}
-          onBarCodeScanned={({ data }) =>
-            console.log("Scanned. the data is: " + data)
-          }
+          onBarCodeScanned={({ data }) => {
+            setQrData(qrData);
+            console.log("Scanned. the data is: " + qrData);
+          }}
           style={[
             styles.cameraPreview,
             { marginTop: imagePadding, marginBottom: imagePadding },

@@ -8,7 +8,7 @@ const ButtonNext = ({ text, navigation }) => {
     <TouchableOpacity
       style={{ width: horizontalScale(300) }}
       onPress={() => {
-        navigation.navigate("SignUp");
+        navigation.replace("SignUp");
       }}
     >
       <LinearGradient style={styles.button} colors={["#FFF504", "#C69D0E"]}>

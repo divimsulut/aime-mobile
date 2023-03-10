@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -17,7 +17,7 @@ export default function HelpCenter({ navigation }) {
   const date = new Date();
   const currentTime = date.getHours();
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState([]);
 
   let greeting = "";
 
@@ -28,8 +28,6 @@ export default function HelpCenter({ navigation }) {
   } else {
     greeting = "Good Evening";
   }
-
-  let [MoreButton, setMoreButton] = useState(false);
 
   React.useEffect(() => {
     setData([
@@ -59,6 +57,16 @@ export default function HelpCenter({ navigation }) {
       },
     ]);
   }, []);
+
+  useEffect(() => {
+    setFilter(
+      data.filter(
+        (item) =>
+          item.question.toLowerCase().includes(search.toLowerCase()) ||
+          item.answer.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, data]);
 
   return (
     <SafeAreaView className="flex-1 bg-[#002347] ">
@@ -104,6 +112,7 @@ export default function HelpCenter({ navigation }) {
             <TextInput
               className="bg-white rounded-2xl h-[46px] w-full px-4 pl-10"
               placeholder="What is your question?"
+              onChangeText={(text) => setSearch(text)}
             />
             <Fontisto
               name="search"
@@ -116,7 +125,7 @@ export default function HelpCenter({ navigation }) {
           {/* FAQ */}
           <View className="flex flex-col mt-10 px-6 ">
             <Text className="text-white text-left ml-2 text-xl ">FAQs</Text>
-            {data.map((item) => (
+            {filter.map((item) => (
               <View key={item.id} className="flex mt-3 overflow-y-scroll">
                 <View className="flex flex-col items-center pb-4 border-b-2 border-[#4A4848]">
                   <View className="flex flex-row-reverse items-center justify-between w-full">
