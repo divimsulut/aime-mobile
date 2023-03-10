@@ -44,7 +44,7 @@ export const createUser = (fullName, email, password, navigation) => {
         displayName: fullName,
       });
       sendEmailVerification(userCredential.user).then(() =>
-        navigation.navigate("Verify")
+        navigation.navigate("Verify", { email: email })
       );
 
       // console.log(userCredential.user.displayName);
@@ -61,6 +61,13 @@ export const signIn = ({ email, password }) => {
   return new Promise((resolve, reject) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        if (!userCredential.user.emailVerified) {
+          alert("Please verify your email first");
+          signOut()
+            .then(() => console.log("sign out"))
+            .catch((error) => console.log(error));
+          return;
+        }
         resolve(userCredential.user);
         console.log("success");
       })

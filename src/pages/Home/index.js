@@ -22,7 +22,7 @@ const HomeNextGen = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get("http://10.180.92.51:3000/news")
+      .get("http://10.180.72.187:3000/news")
       // .get("https://alphacast.id/x/ptktp/aime/newsapi.js")
       .then((res) => {
         console.log(res.data);

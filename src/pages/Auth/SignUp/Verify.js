@@ -9,7 +9,8 @@ import { IconBack } from "../../../assets";
 import { ImageEmail } from "../../../assets";
 import ButtonResendVCode from "./components/ButtonResendVCode";
 
-const Verify = ({ navigation }) => {
+const Verify = ({ navigation, route }) => {
+  const { email } = route.params;
   return (
     <View style={styles.page}>
       <TouchableOpacity
@@ -33,9 +34,10 @@ const Verify = ({ navigation }) => {
           <Image source={ImageEmail} />
         </View>
         <Text style={styles.textFooter}>
-          An email has been sent to yakikato123@gmail.com with a link to verify
-          your account. if you have not received the email after few minutes,
-          please check your spam folder.
+          An email has been sent to{" "}
+          <Text style={{ fontFamily: "Poppins-SemiBold" }}>{email}</Text> with a
+          link to verify your account. if you have not received the email after
+          few minutes, please check your spam folder.
         </Text>
         <View
           style={{
@@ -91,7 +93,6 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(50),
   },
   textFooter: {
-    // fontFamily: "Montserrat-Medium",
     alignItems: "center",
     color: "#817575",
     fontSize: moderateScale(12),

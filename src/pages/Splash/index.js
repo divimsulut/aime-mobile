@@ -7,7 +7,7 @@ import { horizontalScale, verticalScale } from "../../constant";
 const Splash = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate("Welcome");
+      navigation.replace("Welcome");
     }, 3000);
   }, [navigation]);
 

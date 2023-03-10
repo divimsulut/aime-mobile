@@ -1,34 +1,132 @@
 import {
-  Image,
-  ScrollView,
   StyleSheet,
   Text,
   View,
-  Alert,
-  Modal,
-  Pressable,
   TouchableOpacity,
   Linking,
+  Animated,
 } from "react-native";
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Header } from "../../components";
 import { ImageLandscape3 } from "../../assets";
 import { verticalScale, horizontalScale, moderateScale } from "../../constant";
-import { Shadow } from "react-native-shadow-2";
-import ButtonNearbyOffice from "./components/ButtonNearbyOffice";
 import Button1Direction from "./components/Button1Direction";
 import Button2Call from "./components/Button2Call";
 import Button3Website from "./components/Button3Website";
-import Button4More from "./components/Button4More";
+import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 
 const OfficeDetail = ({ navigation }) => {
-  const [modalVisibleCall, setModalVisibleCall] = useState(false);
-  const [modalVisibleMore, setModalVisibleMore] = useState(false);
+  // opacity
+  const opacity = React.useRef(new Animated.Value(1)).current;
+
+  // y position
+  const yPosition = React.useRef(new Animated.Value(260)).current;
+
+  // variables
+  const snapPoints = React.useMemo(() => ["20%", "88%"], []);
+
+  // handleAnimation
+  const handleAnimation = (index) => {
+    if (index === 1) {
+      Animated.sequence([
+        Animated.timing(opacity, {
+          toValue: 0.25,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacity, {
+          toValue: 0.5,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacity, {
+          toValue: 0.75,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+      ]).start();
+      Animated.sequence([
+        Animated.timing(yPosition, {
+          toValue: 0,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(yPosition, {
+          toValue: 55.5,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(yPosition, {
+          toValue: 111,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(yPosition, {
+          toValue: 240,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else {
+      Animated.sequence([
+        Animated.timing(opacity, {
+          toValue: 0.75,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacity, {
+          toValue: 0.5,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacity, {
+          toValue: 0.25,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacity, {
+          toValue: 0,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+      ]).start();
+      Animated.sequence([
+        Animated.timing(yPosition, {
+          toValue: 222,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(yPosition, {
+          toValue: 111,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(yPosition, {
+          toValue: 55.5,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+        Animated.timing(yPosition, {
+          toValue: 0,
+          duration: 100,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }
+  };
+
+  // Action buttons
   const [VarPhoneNumber, setVarPhoneNumber] = useState("(+62)811-43260010");
   const [VarWebsite, setVarWebsite] = useState("https://manado.imigrasi.go.id");
-  // const VarAddress = '1600 Amphitheatre Parkway, Mountain View, CA';
-  const VarAddress =
-    "Jl. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado, Sulawesi Utara";
+  const [VarAddress, setVarAdrress] = useState(
+    "Jl. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado, Sulawesi Utara"
+  );
+
   const openMapsApp = (address) => {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
       address
@@ -37,315 +135,103 @@ const OfficeDetail = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.page}>
-      <Header label={"Our Office Detail"} navigation={navigation} />
-      {/* ---------------------------MAIN CONTAINER------------------------------ */}
-
-      <ScrollView style={{ zIndex: 1 }}>
-        <Image
+    <View style={{ flex: 1 }}>
+      <Header navigation={navigation} />
+      <Text>NearbyOffice</Text>
+      <BottomSheet
+        index={0}
+        snapPoints={snapPoints}
+        onChange={handleAnimation}
+        backgroundStyle={styles.bottomSheetContainer}
+        handleIndicatorStyle={{ backgroundColor: "white" }}
+      >
+        <Animated.Image
           source={ImageLandscape3}
-          style={{
-            marginTop: verticalScale(120),
-            height: verticalScale(222),
-            width: "100%",
-            borderRadius: moderateScale(15),
-          }}
+          style={[styles.imageContainer, { opacity }]}
         />
-
-        <Shadow
-          style={{ width: "100%" }}
-          startColor="#062035"
-          offset={[0, -15]}
-          distance={32}
+        <Animated.View
+          style={{
+            flex: 1,
+            paddingHorizontal: horizontalScale(18),
+            transform: [{ translateY: yPosition }],
+          }}
         >
+          <Text style={styles.textKantor}>
+            Kantor Imigrasi Kelas 1 - Manado
+          </Text>
+          <Text style={styles.textKantorTipe}>Government Complex</Text>
+
+          {/* Action Buttons */}
           <View
             style={{
-              marginTop: verticalScale(-10),
-              paddingHorizontal: horizontalScale(18),
-              backgroundColor: "#062035",
-              paddingTop: verticalScale(20),
-              marginBottom: verticalScale(20),
+              marginVertical: verticalScale(10),
+              flexDirection: "row",
+              justifyContent: "space-between",
             }}
           >
-            <Text
-              style={{
-                fontFamily: "Poppins-SemiBold",
-                fontSize: moderateScale(20),
-                color: "white",
-              }}
+            <TouchableOpacity onPress={() => openMapsApp(VarAddress)}>
+              <Button1Direction />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => Linking.openURL(`tel:${VarPhoneNumber}`)}
             >
-              Kantor Imigrasi Kelas 1 - Mando
-            </Text>
-            <Text
-              style={{
-                fontFamily: "Poppins-Light",
-                fontSize: moderateScale(15),
-                color: "white",
-              }}
-            >
-              Government Complex
-            </Text>
+              <Button2Call />
+            </TouchableOpacity>
 
-            {/* <View style={{ marginVertical: verticalScale(20) }}>
-              <ButtonNearbyOffice />
-            </View> */}
-
-            {/* Action Buttons */}
-            <View
-              style={{
-                marginVertical: verticalScale(20),
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <TouchableOpacity onPress={() => openMapsApp(VarAddress)}>
-                <Button1Direction />
-              </TouchableOpacity>
-
-              {/* <TouchableOpacity onPress={() => setModalVisibleCall(true)}> */}
-              <TouchableOpacity
-                onPress={() => Linking.openURL(`tel:${VarPhoneNumber}`)}
-              >
-                <Button2Call />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => Linking.openURL(`${VarWebsite}`)}
-              >
-                <Button3Website />
-              </TouchableOpacity>
-
-              {/* <TouchableOpacity onPress={() => setModalVisibleMore(true)}>
-                <Button4More />
-              </TouchableOpacity> */}
-            </View>
-
-            {/* MODAL CALL */}
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisibleCall}
-              onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisibleCall(!modalVisibleCall);
-              }}
-            >
-              <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => {
-                      // navigation.navigate("SignIn");
-                      setModalVisibleCall(!modalVisibleCall);
-                      Linking.openURL(`tel:${VarPhoneNumber}`);
-                    }}
-                  >
-                    {/* <Text style={styles.textStyle}>Call (+62)811-4326010</Text> */}
-                    <Text style={styles.textStyle}>
-                      {"Call  "}
-                      {VarPhoneNumber}
-                    </Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => {
-                      // navigation.navigate("SignIn");
-                      setModalVisibleCall(!modalVisibleCall);
-                    }}
-                  >
-                    <Text style={styles.textStyle}>Cancel</Text>
-                  </Pressable>
-                </View>
-              </View>
-            </Modal>
-
-            {/* MODAL MORE*/}
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisibleMore}
-              onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisibleMore(!modalVisibleMore);
-              }}
-            >
-              <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => {
-                      // navigation.navigate("SignIn");
-                      setModalVisibleMore(!modalVisibleMore);
-                    }}
-                  >
-                    {/* <Text style={styles.textStyle}>Call (+62)811-4326010</Text> */}
-                    <Text style={styles.textStyle}>Add to Guides</Text>
-                  </Pressable>
-
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => {
-                      // navigation.navigate("SignIn");
-                      setModalVisibleMore(!modalVisibleMore);
-                    }}
-                  >
-                    <Text style={styles.textStyle}>Add to Favorites</Text>
-                  </Pressable>
-                </View>
-              </View>
-            </Modal>
-
-            <Text
-              style={{
-                fontFamily: "Poppins-SemiBold",
-                fontSize: moderateScale(15),
-                color: "white",
-              }}
-            >
-              Details
-            </Text>
-            {/* Hours information */}
-            <View
-              style={{
-                backgroundColor: "#213545",
-                height: verticalScale(72),
-                width: "100%",
-                paddingLeft: horizontalScale(20),
-                marginTop: verticalScale(25),
-                borderRadius: moderateScale(15),
-                justifyContent: "center",
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "Poppins-Medium",
-                  fontSize: moderateScale(15),
-                  color: "#A5A5A5",
-                }}
-              >
-                Hours
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Poppins-Medium",
-                  fontSize: moderateScale(18),
-                  color: "#E5CF00",
-                }}
-              >
-                9 AM - 10 PM
-              </Text>
-            </View>
-            {/* Hours information */}
-            <View
-              style={{
-                backgroundColor: "#213545",
-                height: verticalScale(347),
-                width: "100%",
-                paddingHorizontal: horizontalScale(20),
-                marginTop: verticalScale(20),
-                borderRadius: moderateScale(15),
-                paddingTop: verticalScale(15),
-              }}
-            >
-              {/* Pohone Container */}
-              <View
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: "#666666",
-                  paddingBottom: verticalScale(10),
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Poppins-Medium",
-                    fontSize: moderateScale(15),
-                    color: "#A5A5A5",
-                  }}
-                >
-                  Phone
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "Poppins-Medium",
-                    fontSize: moderateScale(18),
-                    color: "#E5CF00",
-                  }}
-                >
-                  {VarPhoneNumber}
-                </Text>
-              </View>
-              {/* Pohone Container */}
-
-              {/* Website Container */}
-              <View
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: "#666666",
-                  paddingBottom: verticalScale(25),
-                  marginTop: verticalScale(20),
-                }}
-              >
-                <Text
-                  style={{
-                    fontFamily: "Poppins-Medium",
-                    fontSize: moderateScale(15),
-                    color: "#A5A5A5",
-                  }}
-                >
-                  Website
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "Poppins-Medium",
-                    fontSize: moderateScale(18),
-                    color: "#E5CF00",
-                  }}
-                >
-                  {/* manado.imigrasi.go.id */}
-                  {VarWebsite}
-                </Text>
-              </View>
-              {/* Website Container */}
-
-              {/* Address Container */}
-              <View style={{ marginTop: verticalScale(20) }}>
-                <Text
-                  style={{
-                    fontFamily: "Poppins-Medium",
-                    fontSize: moderateScale(15),
-                    color: "#A5A5A5",
-                  }}
-                >
-                  Address
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "Poppins-Medium",
-                    fontSize: moderateScale(18),
-                    color: "white",
-                  }}
-                >
-                  {/* l. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado,
-                  Sulawesi Utara */}
-                  {VarAddress}
-                </Text>
-              </View>
-              {/* Address Container */}
-            </View>
+            <TouchableOpacity onPress={() => Linking.openURL(`${VarWebsite}`)}>
+              <Button3Website />
+            </TouchableOpacity>
           </View>
-        </Shadow>
-      </ScrollView>
 
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          backgroundColor: "red",
-        }}
-      ></View>
-      {/* ---------------------------MAIN CONTAINER------------------------------ */}
+          {/* Helper View for Scrollable */}
+          <View
+            style={{
+              borderTopEndRadius: 10,
+              borderTopStartRadius: 10,
+              overflow: "hidden",
+              flex: 1,
+            }}
+          >
+            <BottomSheetScrollView showsVerticalScrollIndicator={false}>
+              <Text style={styles.textDetail}>Details</Text>
+              {/* Hours information  */}
+              <View style={styles.hoursContainer}>
+                <Text style={styles.textLabel}>Hours</Text>
+                <Text style={styles.textItem}>9 AM - 10 PM</Text>
+              </View>
+              {/* Hours information  */}
+
+              <View style={styles.secondContainer}>
+                {/* Pohone Container  */}
+                <View style={styles.phoneContainer}>
+                  <Text style={styles.textLabel}>Phone</Text>
+                  <Text style={styles.textItem}>+62 811 43260010</Text>
+                </View>
+                {/* Pohone Container  */}
+
+                {/* Website Container  */}
+                <View style={styles.webContainer}>
+                  <Text style={styles.textLabel}>Website</Text>
+                  <Text style={styles.textItem}>manado.imigrasi.go.id</Text>
+                </View>
+                {/* Website Container  */}
+
+                {/* Address Container */}
+                <View style={{ marginTop: verticalScale(20) }}>
+                  <Text style={styles.textLabel}>Address</Text>
+                  <Text style={styles.textItemAddress}>
+                    l. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado,
+                    Sulawesi Utara
+                  </Text>
+                </View>
+                {/* Address Container  */}
+              </View>
+              <View style={{ height: 260 }} />
+            </BottomSheetScrollView>
+          </View>
+        </Animated.View>
+      </BottomSheet>
     </View>
   );
 };
@@ -353,62 +239,82 @@ const OfficeDetail = ({ navigation }) => {
 export default OfficeDetail;
 
 const styles = StyleSheet.create({
-  page: {
+  bottomSheetContainer: {
     backgroundColor: "#062035",
-    flex: 1,
+    borderTopLeftRadius: moderateScale(20),
+    borderTopRightRadius: moderateScale(20),
+    paddingBottom: 20,
   },
-
-  //LOG OUT MODAL
-  centeredView: {
-    flex: 1,
-    // justifyContent: "center",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    // marginTop: 22,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-  },
-  modalView: {
-    // margin: 0,
-    // flex: 1,
-    justifyContent: "flex-end",
-    // backgroundColor: "#E5E5E5",
-    borderRadius: 30,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+  imageContainer: {
     width: "100%",
+    height: 222,
+    position: "absolute",
+    zIndex: 0,
   },
-  button: {
-    borderRadius: 15,
-    padding: 10,
-    marginTop: 15,
-    elevation: 2,
-    height: 40,
-    // width: 250,
-    width: "100%",
+  sliderIndicator: {
+    width: horizontalScale(54),
+    height: verticalScale(5),
+    backgroundColor: "white",
+    alignSelf: "center",
+    marginTop: verticalScale(10),
   },
-
-  buttonOpen: {
-    backgroundColor: "#213545",
-  },
-  buttonClose: {
-    backgroundColor: "#213545",
-  },
-  textStyle: {
+  textKantor: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: moderateScale(20),
     color: "white",
-    // fontWeight: "bold",
-    textAlign: "center",
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-    fontWeight: "bold",
+  textKantorTipe: {
+    fontFamily: "Poppins-Light",
+    fontSize: moderateScale(15),
+    color: "white",
+  },
+  textDetail: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: moderateScale(15),
+    color: "white",
+    marginTop: 15,
+  },
+  hoursContainer: {
+    backgroundColor: "#213545",
+    height: verticalScale(72),
+    width: "100%",
+    paddingLeft: horizontalScale(20),
+    marginTop: verticalScale(25),
+    borderRadius: moderateScale(15),
+    justifyContent: "center",
+  },
+  textLabel: {
+    fontFamily: "Poppins-Medium",
+    fontSize: moderateScale(15),
+    color: "#A5A5A5",
+  },
+  textItem: {
+    fontFamily: "Poppins-Medium",
+    fontSize: moderateScale(18),
+    color: "#E5CF00",
+  },
+  secondContainer: {
+    backgroundColor: "#213545",
+    width: "100%",
+    paddingHorizontal: horizontalScale(20),
+    marginTop: verticalScale(20),
+    borderRadius: moderateScale(15),
+    paddingVertical: verticalScale(15),
+  },
+  phoneContainer: {
+    borderBottomWidth: 1,
+    borderColor: "#666666",
+    paddingBottom: verticalScale(10),
+  },
+  webContainer: {
+    borderBottomWidth: 1,
+    borderColor: "#666666",
+    paddingBottom: verticalScale(25),
+    marginTop: verticalScale(20),
+  },
+  textItemAddress: {
+    fontFamily: "Poppins-Medium",
+    fontSize: moderateScale(18),
+    color: "white",
   },
 });

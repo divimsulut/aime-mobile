@@ -11,7 +11,6 @@ import {
 import React, { useState } from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { Header } from "../../components";
-import ButtonNearbyOffice from "./components/ButtonNearbyOffice";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { ImageLandscape3 } from "../../assets";
 import Button1Direction from "./components/Button1Direction";

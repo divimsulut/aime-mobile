@@ -1,12 +1,20 @@
-import { StyleSheet, Text, View, Dimensions, Platform } from "react-native";
-import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Platform,
+  Linking,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState, useEffect, useRef } from "react";
 import { Camera } from "expo-camera";
 import { Svg, Path } from "react-native-svg";
 import LottieView from "lottie-react-native";
 import { Scanner } from "../../assets";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
-const ScanBarcode = () => {
+const ScanBarcode = ({ navigation }) => {
   // Camera Frame
   const CameraFrame = () => {
     return (
@@ -48,11 +56,21 @@ const ScanBarcode = () => {
   // on screen  load, ask for permission to use the camera
   useEffect(() => {
     async function getCameraStatus() {
-      const { status } = await Camera.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(status == "granted");
     }
     getCameraStatus();
   }, []);
+
+  // unmount the camera when the screen is closed
+  useEffect(() => {
+    return () => {
+      if (camera) {
+        camera.pausePreview();
+        camera.release();
+      }
+    };
+  }, [camera]);
 
   // set the camera ratio and padding.
   // this code assumes a portrait mode screen
@@ -115,6 +133,9 @@ const ScanBarcode = () => {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>No access to camera</Text>
+        <TouchableOpacity onPress={() => Linking.openSettings()}>
+          <Text>Enable Manually</Text>
+        </TouchableOpacity>
       </View>
     );
   } else {
