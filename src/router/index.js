@@ -142,7 +142,7 @@ const Tabs = () => {
               return (
                 <TouchableOpacity
                   style={{ zIndex: 2 }}
-                  activeOpacity={0.8}
+                  activeOpacity={0.9}
                   onPress={() => {
                     navigation.navigate("ScanBarcode");
                     Animated.spring(animatedValue, {
@@ -278,7 +278,7 @@ const Tabs = () => {
 const Router = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Tabs"
+      initialRouteName="SignIn"
       // initialRouteName="SignUp" //Bypass langsung ke Profile SEMENTARA
     >
       <Stack.Screen

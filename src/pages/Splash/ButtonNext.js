@@ -6,6 +6,7 @@ import { horizontalScale, verticalScale, moderateScale } from "../../constant";
 const ButtonNext = ({ text, navigation }) => {
   return (
     <TouchableOpacity
+      activeOpacity={0.8}
       style={{ width: horizontalScale(300) }}
       onPress={() => {
         navigation.replace("SignUp");

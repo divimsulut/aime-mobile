@@ -15,7 +15,9 @@ import { Scanner } from "../../assets";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
 const ScanBarcode = ({ navigation }) => {
+  // QR Data
   const [qrData, setQrData] = useState("");
+  console.log("Scanned. the data is: " + qrData);
 
   // Camera Frame
   const CameraFrame = () => {
@@ -47,6 +49,7 @@ const ScanBarcode = ({ navigation }) => {
   // Camera perissions
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   // Screen ratio and image padding
   const [imagePadding, setImagePadding] = useState(0);
@@ -66,13 +69,17 @@ const ScanBarcode = ({ navigation }) => {
 
   // unmount the camera when the screen is closed
   useEffect(() => {
+    const focusListener = navigation.addListener("focus", () => {
+      setLoaded(true);
+    });
+    const blurListener = navigation.addListener("blur", () => {
+      setLoaded(false);
+    });
     return () => {
-      if (camera) {
-        camera.pausePreview();
-        camera.release();
-      }
+      focusListener.remove();
+      blurListener.remove();
     };
-  }, [camera]);
+  }, []);
 
   // set the camera ratio and padding.
   // this code assumes a portrait mode screen
@@ -149,22 +156,23 @@ const ScanBarcode = ({ navigation }) => {
             <LottieView source={Scanner} autoPlay resizeMode="cover" loop />
           </View>
         </View>
-        <Camera
-          barCodeScannerSettings={{
-            barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
-          }}
-          onBarCodeScanned={({ data }) => {
-            setQrData(qrData);
-            console.log("Scanned. the data is: " + qrData);
-          }}
-          style={[
-            styles.cameraPreview,
-            { marginTop: imagePadding, marginBottom: imagePadding },
-          ]}
-          onCameraReady={setCameraReady}
-          ratio={ratio}
-          ref={(ref) => setCamera(ref)}
-        />
+        {loaded && (
+          <Camera
+            barCodeScannerSettings={{
+              barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
+            }}
+            onBarCodeScanned={({ data }) => {
+              setQrData(data);
+            }}
+            style={[
+              styles.cameraPreview,
+              { marginTop: imagePadding, marginBottom: imagePadding },
+            ]}
+            onCameraReady={setCameraReady}
+            ratio={ratio}
+            ref={(ref) => setCamera(ref)}
+          />
+        )}
       </View>
     );
   }
@@ -194,3 +202,64 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+// import React, { useState, useEffect, useRef } from "react";
+// import { StyleSheet, Text, View } from "react-native";
+// import { Camera } from "expo-camera";
+
+// const CameraRatio = [16, 9];
+
+// const ScanBarcode = ({ navigation }) => {
+//   const [camType, setCamType] = useState(Camera.Constants.Type.back);
+//   const [loaded, setLoaded] = useState(false);
+//   const cameraRef = useRef(null);
+
+//   useEffect(() => {
+//     const focusListener = navigation.addListener("focus", () => {
+//       console.log("hey man you are looking to me");
+//       setLoaded(true);
+//     });
+//     const blurListener = navigation.addListener("blur", () => {
+//       console.log("hey man where are you going?");
+//       setLoaded(false);
+//     });
+//     return () => {
+//       focusListener.remove();
+//       blurListener.remove();
+//     };
+//   }, []);
+
+//   return (
+//     <View style={styles.container}>
+//       {loaded && (
+//         <Camera
+//           style={styles.camera}
+//           type={camType}
+//           ratio={`${CameraRatio[0]}:${CameraRatio[1]}`}
+//           ref={cameraRef}
+//         />
+//       )}
+//       <Text style={styles.text}>Camera Component</Text>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "#F5FCFF",
+//   },
+//   camera: {
+//     flex: 1,
+//     width: "100%",
+//   },
+//   text: {
+//     fontSize: 20,
+//     textAlign: "center",
+//     margin: 10,
+//   },
+// });
+
+// export default ScanBarcode;
