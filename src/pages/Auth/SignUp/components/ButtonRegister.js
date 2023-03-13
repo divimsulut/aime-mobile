@@ -11,17 +11,39 @@ const ButtonRegister = ({
   confirmPass,
   fullName,
   onError,
+  loadingState,
 }) => {
+  // regex email
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => {
-        if (password !== confirmPass) {
-          onError();
+      onPress={async () => {
+        if (
+          (fullName === "" &&
+            email === "" &&
+            password === "" &&
+            confirmPass === "") ||
+          fullName === "" ||
+          !emailRegex.test(email) ||
+          password.length < 8 ||
+          password !== confirmPass
+        ) {
+          onError(); // show error message
           return;
         }
 
-        createUser(fullName, email, password, navigation);
+        loadingState(true); // show loading
+        onError(); // reset error message
+        await createUser(fullName, email, password, navigation)
+          .then(() => {
+            loadingState(false); // hide loading
+          })
+          .catch((error) => {
+            onError(error.message); // show error message
+            loadingState(false); // hide loading
+          });
       }}
     >
       <View style={styles.button}>

@@ -38,22 +38,26 @@ setPersistence(auth, "local").catch((error) => {
 
 // Sign Up function
 export const createUser = (fullName, email, password, navigation) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      updateProfile(userCredential.user, {
-        displayName: fullName,
-      });
-      sendEmailVerification(userCredential.user).then(() =>
-        navigation.navigate("Verify", { email: email })
-      );
+  return new Promise((resolve, reject) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        updateProfile(userCredential.user, {
+          displayName: fullName,
+        });
+        sendEmailVerification(userCredential.user).then(() =>
+          navigation.navigate("Verify", { email: email })
+        );
 
-      // console.log(userCredential.user.displayName);
-      console.log("success");
-    })
-    .catch((error) => {
-      console.log(error.code);
-      console.log("error");
-    });
+        // console.log(userCredential.user.displayName);
+        resolve(userCredential.user);
+        console.log("success");
+      })
+      .catch((error) => {
+        reject(error);
+        console.log(error.code);
+        console.log("error");
+      });
+  });
 };
 
 // Sign In function

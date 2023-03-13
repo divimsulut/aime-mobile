@@ -6,6 +6,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Animated,
+  Modal,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState, useRef } from "react";
 import {
@@ -17,41 +19,116 @@ import { ButtonFacebook, ButtonGoogle, Input } from "../../../components";
 import ButtonRegister from "./components/ButtonRegister";
 
 const SignUp = ({ navigation }) => {
+  // State
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [errorMess, setErrorMess] = useState("");
-  const [errorColor, setErrorColor] = useState("transparent");
+
+  // Loading state
+  const [isLoading, setIsLoading] = useState(false);
+  const loadingState = (state) => {
+    setIsLoading(state);
+  };
+
+  // Color Error
+  const [nameErrorColor, setNameErrorColor] = useState("transparent");
+  const [emailErrorColor, setEmailErrorColor] = useState("transparent");
+  const [passErrorColor, setPassErrorColor] = useState("transparent");
+  const [confirmPassErrorColor, setConfirmPassErrorColor] =
+    useState("transparent");
+
+  // Animation
   const shakeAnimation = useRef(new Animated.Value(0)).current;
   console.log(fullName, email, password, confirmPass);
 
+  // regex email
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+  // Function shake
+  const shake = () => {
+    Animated.sequence([
+      Animated.timing(shakeAnimation, {
+        toValue: 10,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(shakeAnimation, {
+        toValue: -10,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(shakeAnimation, {
+        toValue: 10,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(shakeAnimation, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  // Function handle error message and color
   const handleErrorMessage = () => {
+    if (
+      fullName === "" &&
+      email === "" &&
+      password === "" &&
+      confirmPass === ""
+    ) {
+      setErrorMess("All fields must be filled");
+      setNameErrorColor("#8F1E2F");
+      setEmailErrorColor("#8F1E2F");
+      setPassErrorColor("#8F1E2F");
+      setConfirmPassErrorColor("#8F1E2F");
+      shake();
+      return;
+    }
+    if (fullName === "") {
+      setErrorMess("Full name must be filled");
+      setNameErrorColor("#8F1E2F");
+      setConfirmPassErrorColor("transparent");
+      setPassErrorColor("transparent");
+      setEmailErrorColor("transparent");
+      shake();
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      setErrorMess("Email is not valid");
+      setEmailErrorColor("#8F1E2F");
+      setConfirmPassErrorColor("transparent");
+      setPassErrorColor("transparent");
+      setNameErrorColor("transparent");
+      shake();
+      return;
+    }
+    if (password.length < 8) {
+      setErrorMess("Password must be at least 8 characters");
+      setPassErrorColor("#8F1E2F");
+      setConfirmPassErrorColor("transparent");
+      setNameErrorColor("transparent");
+      setEmailErrorColor("transparent");
+      shake();
+      return;
+    }
     if (password !== confirmPass) {
-      setErrorColor("#8F1E2F");
       setErrorMess("Those passwords didn’t match, Try again");
-      Animated.sequence([
-        Animated.timing(shakeAnimation, {
-          toValue: 10,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(shakeAnimation, {
-          toValue: -10,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(shakeAnimation, {
-          toValue: 10,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(shakeAnimation, {
-          toValue: 0,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]).start();
+      setConfirmPassErrorColor("#8F1E2F");
+      setPassErrorColor("transparent");
+      setNameErrorColor("transparent");
+      setEmailErrorColor("transparent");
+      shake();
+      return;
+    } else {
+      setErrorMess("");
+      setNameErrorColor("transparent");
+      setEmailErrorColor("transparent");
+      setPassErrorColor("transparent");
+      setConfirmPassErrorColor("transparent");
     }
   };
 
@@ -86,35 +163,31 @@ const SignUp = ({ navigation }) => {
             <Input
               placeholder="Full Name"
               onChangeText={(e) => setFullName(e)}
+              error={nameErrorColor}
             />
-            <Input placeholder="Email" onChangeText={(e) => setEmail(e)} />
+            <Input
+              placeholder="Email"
+              onChangeText={(e) => setEmail(e)}
+              error={emailErrorColor}
+            />
             <Input
               placeholder="Password"
               password
               onChangeText={(e) => setPassword(e)}
-              error={errorColor}
+              error={passErrorColor}
             />
             <Input
               placeholder="Re-enter Paswword"
               password
               onChangeText={(e) => setConfirmPass(e)}
-              error={errorColor}
+              error={confirmPassErrorColor}
             />
           </View>
           {/* Form End */}
 
-          {/* Wrong password */}
+          {/* Error Message */}
           {errorMess ? (
-            <Animated.Text
-              style={[
-                {
-                  fontFamily: "Poppins-Regular",
-                  fontSize: moderateScale(10),
-                  color: "#8F1E2F",
-                },
-                animatedStyle,
-              ]}
-            >
+            <Animated.Text style={[styles.animatedText, animatedStyle]}>
               {errorMess}
             </Animated.Text>
           ) : null}
@@ -129,6 +202,7 @@ const SignUp = ({ navigation }) => {
               fullName={fullName}
               confirmPass={confirmPass}
               onError={handleErrorMessage}
+              loadingState={loadingState}
             />
           </View>
 
@@ -151,6 +225,13 @@ const SignUp = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
+        {isLoading && (
+          <Modal transparent={true}>
+            <View style={styles.modalContainer}>
+              <ActivityIndicator size={100} color="#08C755" />
+            </View>
+          </Modal>
+        )}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -201,6 +282,11 @@ const styles = StyleSheet.create({
     color: "#00284D",
     textDecorationLine: "underline",
   },
+  animatedText: {
+    fontFamily: "Poppins-Regular",
+    fontSize: moderateScale(10),
+    color: "#8F1E2F",
+  },
   textOr: {
     fontFamily: "Poppins-Regular",
     fontSize: moderateScale(12),
@@ -226,5 +312,16 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-SemiBold",
     fontSize: moderateScale(16),
     color: "#00284D",
+  },
+  modalContainer: {
+    width: 200,
+    height: 200,
+    position: "absolute",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    top: 300,
+    borderRadius: 10,
+    backgroundColor: "rgba(0,0,0,0.5)",
   },
 });
