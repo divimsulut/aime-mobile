@@ -5,6 +5,7 @@ import ButtonLogin from "../pages/Auth/SignIn/components/ButtonLogin";
 import ButtonBack from "./ButtonBack";
 import HomeHeader from "../pages/Home/component/HomeHeader";
 import Header from "./Header";
+import LoadingModal from "./LoadingModal";
 
 // Activity Log section
 import ActivityLog_Day from "./ActivityLogSection/ActivityLog_Day";
@@ -22,6 +23,7 @@ export {
   ButtonGoogle,
   ButtonFacebook,
   ButtonLogin,
+  LoadingModal,
 
   // Activity log section
   ActivityLog_Day,

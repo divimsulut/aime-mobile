@@ -8,6 +8,8 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   setPersistence,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -31,10 +33,32 @@ const firebase = initializeApp(firebaseConfig);
 export default firebase;
 
 const auth = getAuth(firebase);
-// console.log(auth);
+console.log(auth);
 setPersistence(auth, "local").catch((error) => {
   console.log("setPresistence error: ", error.message);
 });
+
+// Google Sign In
+export const googleSignIn = () => {
+  const provider = new GoogleAuthProvider();
+  console.log(provider);
+  return new Promise((resolve, reject) => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        resolve(user);
+        console.log(user);
+        console.log("success");
+      })
+      .catch((error) => {
+        console.log("error yuhu");
+        reject(error);
+      });
+  });
+};
 
 // Sign Up function
 export const createUser = (fullName, email, password, navigation) => {

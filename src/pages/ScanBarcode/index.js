@@ -6,18 +6,28 @@ import {
   Platform,
   Linking,
   TouchableOpacity,
+  Modal,
+  Image,
 } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { Camera } from "expo-camera";
 import { Svg, Path } from "react-native-svg";
 import LottieView from "lottie-react-native";
-import { Scanner } from "../../assets";
+import { ImageGreenChecklist, Scanner } from "../../assets";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import axios from "axios";
+import { LoadingModal } from "../../components";
+import { horizontalScale, moderateScale, verticalScale } from "../../constant";
+import moment from "moment";
 
 const ScanBarcode = ({ navigation }) => {
-  // QR Data
-  const [qrData, setQrData] = useState("");
-  console.log("Scanned. the data is: " + qrData);
+  //  Data Destination
+  const [destinationData, setDestinationData] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  // loading
+  const [isLoadingData, setIsLoadingData] = useState(true);
+  const [isHandlingScan, setIsHandlingScan] = useState(false);
 
   // Camera Frame
   const CameraFrame = () => {
@@ -132,6 +142,48 @@ const ScanBarcode = ({ navigation }) => {
     }
   };
 
+  // get the data from api
+  useEffect(() => {
+    setIsLoadingData(true);
+    axios
+      .get("https://lydian-misty-grass.glitch.me/destination")
+      .then((response) => {
+        setDestinationData(response.data);
+        setIsLoadingData(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoadingData(false);
+      });
+  }, []);
+
+  // handle the scanned data
+  const handleScanned = (data) => {
+    try {
+      setIsHandlingScan(true);
+      const destination = destinationData.find(
+        (destination) => destination.id === data.data
+      );
+      if (destination) {
+        const date = moment().unix();
+        const { id } = destination;
+        console.log(date, id);
+        setModalVisible(true);
+      } else {
+        setIsHandlingScan(false);
+        console.log("not matched");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleBarCodeScanned = (data) => {
+    if (!isHandlingScan) {
+      handleScanned(data);
+    }
+  };
+
   if (hasCameraPermission == null) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -152,17 +204,19 @@ const ScanBarcode = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.frameContainer}>
           <CameraFrame />
-          <View style={styles.animationStyle}>
-            <LottieView source={Scanner} autoPlay resizeMode="cover" loop />
-          </View>
+          {!modalVisible && (
+            <View style={styles.animationStyle}>
+              <LottieView source={Scanner} autoPlay resizeMode="cover" loop />
+            </View>
+          )}
         </View>
         {loaded && (
           <Camera
             barCodeScannerSettings={{
               barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
             }}
-            onBarCodeScanned={({ data }) => {
-              setQrData(data);
+            onBarCodeScanned={(data) => {
+              handleBarCodeScanned(data);
             }}
             style={[
               styles.cameraPreview,
@@ -173,6 +227,24 @@ const ScanBarcode = ({ navigation }) => {
             ref={(ref) => setCamera(ref)}
           />
         )}
+        {isLoadingData && <LoadingModal />}
+        <Modal visible={modalVisible} animationType={"fade"} transparent={true}>
+          <View style={styles.modalContainer}>
+            <Image source={ImageGreenChecklist} />
+            <Text style={styles.modalText}>Check-in Succeeded</Text>
+            <Text style={styles.modalTextSuccess}>Have a nice trip</Text>
+            <TouchableOpacity
+              style={styles.modalCloseBtn}
+              onPress={() => {
+                setModalVisible(false);
+                setIsHandlingScan(false);
+                console.log("closed");
+              }}
+            >
+              <Text style={styles.modalTextBtn}>CLOSE</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -201,65 +273,39 @@ const styles = StyleSheet.create({
   cameraPreview: {
     flex: 1,
   },
+  modalContainer: {
+    position: "absolute",
+    width: 300,
+    height: 300,
+    backgroundColor: "#021726",
+
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    borderRadius: 20,
+    top: "30%",
+  },
+  modalText: {
+    fontSize: moderateScale(18),
+    fontFamily: "Poppins-SemiBold",
+    color: "#08C755",
+  },
+  modalTextSuccess: {
+    fontFamily: "Poppins-Light",
+    fontSize: moderateScale(10),
+    color: "white",
+  },
+  modalCloseBtn: {
+    width: horizontalScale(180),
+    height: verticalScale(30),
+    backgroundColor: "#E6E6E6",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 25,
+  },
+  modalTextBtn: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: moderateScale(18),
+    color: "#1E1E1E",
+  },
 });
-
-// import React, { useState, useEffect, useRef } from "react";
-// import { StyleSheet, Text, View } from "react-native";
-// import { Camera } from "expo-camera";
-
-// const CameraRatio = [16, 9];
-
-// const ScanBarcode = ({ navigation }) => {
-//   const [camType, setCamType] = useState(Camera.Constants.Type.back);
-//   const [loaded, setLoaded] = useState(false);
-//   const cameraRef = useRef(null);
-
-//   useEffect(() => {
-//     const focusListener = navigation.addListener("focus", () => {
-//       console.log("hey man you are looking to me");
-//       setLoaded(true);
-//     });
-//     const blurListener = navigation.addListener("blur", () => {
-//       console.log("hey man where are you going?");
-//       setLoaded(false);
-//     });
-//     return () => {
-//       focusListener.remove();
-//       blurListener.remove();
-//     };
-//   }, []);
-
-//   return (
-//     <View style={styles.container}>
-//       {loaded && (
-//         <Camera
-//           style={styles.camera}
-//           type={camType}
-//           ratio={`${CameraRatio[0]}:${CameraRatio[1]}`}
-//           ref={cameraRef}
-//         />
-//       )}
-//       <Text style={styles.text}>Camera Component</Text>
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor: "#F5FCFF",
-//   },
-//   camera: {
-//     flex: 1,
-//     width: "100%",
-//   },
-//   text: {
-//     fontSize: 20,
-//     textAlign: "center",
-//     margin: 10,
-//   },
-// });
-
-// export default ScanBarcode;

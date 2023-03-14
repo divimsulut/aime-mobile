@@ -30,7 +30,7 @@ const ButtonRegister = ({
           password.length < 8 ||
           password !== confirmPass
         ) {
-          onError(); // show error message
+          onError();
           return;
         }
 

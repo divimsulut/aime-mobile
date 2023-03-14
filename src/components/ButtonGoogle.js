@@ -3,11 +3,20 @@ import React from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../constant";
 import { IconGoogle } from "../assets";
 import { Svg } from "react-native-svg";
-import { signInWithGoogle } from "../config";
+import { googleSignIn } from "../config";
+import { useNavigation } from "@react-navigation/native";
 
 const ButtonGoogle = ({ text }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={() => signInWithGoogle()}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() =>
+        googleSignIn()
+          .then(() => navigation.navigate("Tabs"))
+          .catch(() => console.log("error"))
+      }
+    >
       <View style={styles.button}>
         <Svg height="36" width="36" viewBox="0 0 44 44">
           <IconGoogle />

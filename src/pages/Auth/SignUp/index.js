@@ -15,7 +15,12 @@ import {
   moderateScale,
   verticalScale,
 } from "../../../constant";
-import { ButtonFacebook, ButtonGoogle, Input } from "../../../components";
+import {
+  ButtonFacebook,
+  ButtonGoogle,
+  Input,
+  LoadingModal,
+} from "../../../components";
 import ButtonRegister from "./components/ButtonRegister";
 
 const SignUp = ({ navigation }) => {
@@ -201,7 +206,7 @@ const SignUp = ({ navigation }) => {
               password={password}
               fullName={fullName}
               confirmPass={confirmPass}
-              onError={handleErrorMessage}
+              onError={() => handleErrorMessage()}
               loadingState={loadingState}
             />
           </View>
@@ -225,13 +230,7 @@ const SignUp = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-        {isLoading && (
-          <Modal transparent={true}>
-            <View style={styles.modalContainer}>
-              <ActivityIndicator size={100} color="#08C755" />
-            </View>
-          </Modal>
-        )}
+        {isLoading && <LoadingModal />}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -312,16 +311,5 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-SemiBold",
     fontSize: moderateScale(16),
     color: "#00284D",
-  },
-  modalContainer: {
-    width: 200,
-    height: 200,
-    position: "absolute",
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
-    top: 300,
-    borderRadius: 10,
-    backgroundColor: "rgba(0,0,0,0.5)",
   },
 });
