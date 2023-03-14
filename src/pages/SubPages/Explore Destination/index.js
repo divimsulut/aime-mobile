@@ -9,7 +9,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import { ImageLandscape3 } from "../../../assets";
+import {
+  IconArrowRight,
+  ImageLandscape3,
+  ImageNoResult,
+} from "../../../assets";
 import {
   horizontalScale,
   moderateScale,
@@ -17,8 +21,9 @@ import {
 } from "../../../constant";
 import { Svg, Path } from "react-native-svg";
 import { Shadow } from "react-native-shadow-2";
-import { ButtonBack, FlatCard } from "../../../components";
+import { ButtonBack, FlatCard, Header } from "../../../components";
 import { DataDestination } from "../../../data";
+import { Platform } from "react-native";
 
 const ExploreDestination = ({ navigation }) => {
   const [search, setSearch] = useState("");
@@ -31,7 +36,14 @@ const ExploreDestination = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <ButtonBack navigation={navigation} />
+      <Header
+        navigation={navigation}
+        intensity={Platform.OS === "ios" ? 30 : 1}
+        // set the background color of the header to transparent if the os is android and default value if the os is ios
+        backgroundColor={
+          Platform.OS === "ios" ? "rgba(16, 50, 84, 0.6)" : "rgba(0,0,0,0.2)"
+        }
+      />
       <ScrollView stickyHeaderIndices={[1]}>
         <View style={styles.mainImageContainer}>
           <Image source={ImageLandscape3} style={{ flex: 1 }} />
@@ -82,27 +94,32 @@ const ExploreDestination = ({ navigation }) => {
           <View
             style={{
               marginTop: verticalScale(70),
+              paddingHorizontal: horizontalScale(15),
             }}
           >
-            <Text style={styles.textTitle}>Explore Destination</Text>
-
-            {/* temporary button -roger */}
-            <TouchableOpacity
-              onPress={() => navigation.navigate("FavoriteList")}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
             >
-              <View
-                style={{
-                  height: verticalScale(50),
-                  width: "100%",
-                  backgroundColor: "black",
-                  justifyContent: "center",
-                }}
+              <Text style={styles.textTitle}>Explore Destination</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("FavoriteList")}
+                style={{ flexDirection: "row", alignItems: "center" }}
               >
-                <Text style={{ textAlign: "center", color: "white" }}>
-                  {"Favorite List :) | temporary button -roger"}
+                <Text
+                  style={{
+                    textAlign: "center",
+                    color: "black",
+                  }}
+                >
+                  Favorite Destination
                 </Text>
-              </View>
-            </TouchableOpacity>
+                <IconArrowRight />
+              </TouchableOpacity>
+            </View>
 
             <View style={{ marginTop: verticalScale(24) }}>
               <FlatList
@@ -117,6 +134,30 @@ const ExploreDestination = ({ navigation }) => {
                   paddingHorizontal: horizontalScale(14),
                 }}
               />
+              {filteredData.length === 0 && (
+                <View style={{ alignItems: "center", marginTop: "10%" }}>
+                  <Image source={ImageNoResult} />
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-SemiBold",
+                      fontSize: moderateScale(15),
+                      color: "#1E1E1E",
+                      marginTop: verticalScale(18),
+                    }}
+                  >
+                    No Results Found
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-Light",
+                      fontSize: moderateScale(7),
+                      color: "#6F6F6F",
+                    }}
+                  >
+                    Please make sure written correctly
+                  </Text>
+                </View>
+              )}
             </View>
           </View>
         </View>
@@ -148,8 +189,8 @@ const styles = StyleSheet.create({
   searchHelperContainer: {
     position: "absolute",
     // top: verticalScale(-23),
-    paddingTop: verticalScale(80),
-    marginTop: verticalScale(-80),
+    paddingTop: verticalScale(110),
+    marginTop: verticalScale(-110),
     alignSelf: "center",
     // backgroundColor: "red",
     height: verticalScale(0),
@@ -172,6 +213,5 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-SemiBold",
     fontSize: moderateScale(20),
     color: "black",
-    marginHorizontal: horizontalScale(14),
   },
 });

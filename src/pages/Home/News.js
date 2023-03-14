@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Platform,
+} from "react-native";
 import React from "react";
 import { ButtonBack, Header } from "../../components";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
@@ -12,8 +19,10 @@ const News = ({ navigation, route }) => {
       <Header
         navigation={navigation}
         color={"black"}
-        intensity={1}
-        backgroundColor={"transparent"}
+        intensity={Platform.OS === "ios" ? 30 : 1}
+        backgroundColor={
+          Platform.OS === "ios" ? "rgba(255,255,255, 0.2)" : "transparent"
+        }
       />
       <ScrollView>
         <View style={styles.imageContainer}>

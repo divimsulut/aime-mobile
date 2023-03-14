@@ -1,7 +1,8 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { ImageLandScape } from "../../assets";
+import { IconDelete, ImageLandScape } from "../../assets";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.1)";
@@ -13,60 +14,101 @@ const ItemFavoriteList = ({ item }) => {
         <View style={styles.item_row}>
           <View
             style={{
-              shadowColor: "#000",
-              shadowOffset: {
-                width: 0,
-                height: 12,
-              },
-              shadowOpacity: 0.58,
-              shadowRadius: 16.0,
-
-              elevation: 24,
+              flexDirection: "row",
+              justifyContent: "center",
             }}
           >
-            <Image
-              source={{ uri: item.image }}
+            {/* Image Section */}
+            <View
               style={{
-                height: verticalScale(56),
-                width: horizontalScale(84),
-                borderRadius: 8,
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 12,
+                },
+                shadowOpacity: 0.58,
+                shadowRadius: 16.0,
+
+                elevation: 24,
               }}
-            />
+            >
+              <Image
+                source={{ uri: item.image }}
+                style={{
+                  height: verticalScale(56),
+                  width: horizontalScale(84),
+                  borderRadius: 8,
+                }}
+              />
+            </View>
+
+            {/* Text Section */}
+            <View
+              style={{
+                marginLeft: 15,
+
+                width: horizontalScale(220),
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  fontSize: moderateScale(18),
+                  color: "#E5E7E5",
+                }}
+              >
+                {item.destination}
+                {/* {Destination} */}
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  fontSize: moderateScale(12),
+                  color: "#BDBDBD",
+                }}
+              >
+                {item.location}
+                {/* {Location} */}
+              </Text>
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  fontSize: moderateScale(10),
+                  color: "#525252",
+                }}
+              >
+                Jan 22, 2023 at 10: 15am
+              </Text>
+            </View>
           </View>
 
-          <View style={{ marginLeft: 15 }}>
+          {/* Delete Section */}
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#8F1E2F",
+              paddingVertical: 5,
+              paddingHorizontal: 8,
+              borderRadius: 8,
+            }}
+          >
+            <IconDelete />
             <Text
               style={{
                 fontFamily: "Poppins-Medium",
-                fontSize: moderateScale(18),
-                color: "#E5E7E5",
+                fontSize: moderateScale(8),
+                color: "white",
+                marginLeft: 5,
               }}
             >
-              {item.destination}
-              {/* {Destination} */}
+              Delete
             </Text>
-            <Text
-              style={{
-                fontFamily: "Poppins-Medium",
-                fontSize: moderateScale(12),
-                color: "#3B3D3B",
-                marginTop: -5,
-              }}
-            >
-              {item.location}
-              {/* {Location} */}
-            </Text>
-          </View>
+          </TouchableOpacity>
         </View>
-
-        <View
-          style={{
-            borderBottomColor: seperator_color,
-            borderBottomWidth: seperator,
-            marginTop: 25,
-            marginBottom: -5,
-          }}
-        />
       </View>
     </View>
   );
@@ -83,8 +125,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
 
-    spacebetween: {
-      justifyContent: "space-between",
-    },
+    borderBottomColor: seperator_color,
+    borderBottomWidth: seperator,
+    paddingBottom: verticalScale(30),
+    justifyContent: "space-between",
   },
 });

@@ -2,7 +2,8 @@ export default [
   {
     key: "1",
     destination: "Paal Beach",
-    location: "Likupang Timur, North Minahasa",
+    location:
+      "Likupang Timur, North Minahasaasdfaskdfjasdjf;kljdf;klajsdfkl;ajsdl;fkja;sdklfj;",
     image: "https://picsum.photos/id/1010/800/600",
   },
   {

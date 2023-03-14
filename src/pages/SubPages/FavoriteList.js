@@ -31,26 +31,9 @@ const FavoriteList = ({ navigation }) => {
             data={DataFavoriteList}
             // keyExtractor={(item) => item.key}
             renderItem={({ item }) => {
-              return (
-                <ItemFavoriteList item={item} />
-                // <ItemFavoriteList
-                //   Destination={item.destination}
-                //   Location={item.location}
-                // />
-              );
+              return <ItemFavoriteList item={item} />;
             }}
           />
-
-          {/* <ItemFavoriteList
-              fototempat={ImageLandscape2}
-              namatempat={"Bunaken Island"}
-              alamattempat={"Manado, North Minahasa"}
-            />
-            <ItemFavoriteList
-              fototempat={ImageLandScape}
-              namatempat={"Bunaken Island"}
-              alamattempat={"Manado, North Minahasa"}
-            /> */}
         </ScrollView>
       </View>
     </View>

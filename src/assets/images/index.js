@@ -11,6 +11,7 @@ import ImageLandscape2 from "./landscapeImage2.png";
 import ImageLandscape3 from "./landscapeImage3.png";
 import ImageRadar from "./radarImage.png";
 import ImageFLBanner from "./FavoriteListBanner1.png";
+import ImageNoResult from "./noResultImage.png";
 
 export {
   ImageChecklistWhite,
@@ -26,4 +27,5 @@ export {
   ImageEmail,
   ImageGreenChecklist,
   ImageFLBanner,
+  ImageNoResult,
 };
