@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import React, { Component, useState } from "react";
 import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
+import { getCurrentUser } from "../../config";
 
 import { ColorB_White, ColorC, ColorAA } from "../../constant";
-import { ImagePeople } from "../../assets";
 
 import {
   Header,
@@ -22,11 +22,33 @@ import {
   Settings_PP,
 } from "../../components";
 import { signOut } from "../../config";
-
-// import Svg from 'react-native-svg/lib/typescript/ReactNativeSVG';
+import { IconCross } from "../../assets";
 
 const AIME_SettingsScreen = ({ navigation }) => {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  console.log(user);
+
+  React.useEffect(() => {
+    getCurrentUser()
+      .then((user) => {
+        setUser(user);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <View>
       {/* HEADER */}
@@ -51,7 +73,11 @@ const AIME_SettingsScreen = ({ navigation }) => {
           >
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Image
-                source={ImagePeople}
+                source={{
+                  uri:
+                    user.photoURL ||
+                    "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                }}
                 style={{ height: 69, width: 69, borderRadius: 100 }}
               />
               <Text
@@ -64,7 +90,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
                   fontFamily: "Poppins-Light",
                 }}
               >
-                Yaki Kato
+                {user.displayName}
               </Text>
             </View>
             <TouchableOpacity
@@ -113,8 +139,8 @@ const AIME_SettingsScreen = ({ navigation }) => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={styles.ProfileCardDetail1}>+1 (800) 469-9269</Text>
-          <Text style={styles.ProfileCardDetail1}>yakikato232@gmail.com</Text>
+          <Text style={styles.ProfileCardDetail1}>{user.phoneNumber}</Text>
+          <Text style={styles.ProfileCardDetail1}>{user.email}</Text>
         </View>
 
         {/* SETTINGS ITEMS  */}
@@ -172,7 +198,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
                     style={[styles.button.x, styles.buttonClose.x]}
                     onPress={() => setModalVisible(!modalVisible)}
                   >
-                    <Text style={styles.x}>X</Text>
+                    <IconCross />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -342,6 +368,8 @@ const styles = StyleSheet.create({
       height: 40,
       // width: 250,
       width: 40,
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
 

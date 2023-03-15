@@ -32,6 +32,7 @@ import DotBlue from "./homeheader/dotBlue.svg";
 import IconWhiteChecklist2 from "./whiteChecklistIcon2.svg";
 import IconPencil from "./homeheader/Pencil.svg";
 import IconDelete from "./deleteIcon.svg";
+import IconCross from "./crossIcon.svg";
 
 export {
   IconWhiteChecklist2,
@@ -68,4 +69,5 @@ export {
   IconEmail2,
   IconChecklistWhite,
   IconDelete,
+  IconCross,
 };

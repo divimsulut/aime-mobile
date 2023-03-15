@@ -32,16 +32,6 @@ const HomeHeader = ({ navigation }) => {
       });
   }, []);
 
-  // get current user
-  // await getCurrentUser()
-  //   .then((user) => {
-  //     setUser(user);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // console.log("user", user);
-
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
