@@ -4,8 +4,9 @@ import {
   Text,
   View,
   TouchableOpacity,
+  RefreshControl,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   HomeHeader,
@@ -19,6 +20,7 @@ import axios from "axios";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
+  const [isRefreshing, setIsRefreshing] = React.useState(false);
 
   useEffect(() => {
     axios
@@ -43,9 +45,25 @@ const HomeNextGen = ({ navigation }) => {
   return (
     <LinearGradient colors={["#12365D", "#021726"]} style={{ flex: 1 }}>
       <View style={{ zIndex: 1 }}>
-        <HomeHeader navigation={navigation} />
+        <HomeHeader
+          navigation={navigation}
+          isRefreshing={isRefreshing}
+          onRefreshEnd={() => setIsRefreshing(false)}
+        />
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            colors={["#12365D", "#021726"]}
+            progressViewOffset={verticalScale(10)}
+            refreshing={isRefreshing}
+            onRefresh={() => {
+              setIsRefreshing(true);
+            }}
+          />
+        }
+        showsVerticalScrollIndicator={false}
+      >
         {/* Banner Section */}
         <View style={styles.bannerContainer}>
           <FlatBanner />

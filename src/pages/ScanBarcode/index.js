@@ -25,6 +25,7 @@ const ScanBarcode = ({ navigation }) => {
   //  Data Destination
   const [destinationData, setDestinationData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [status, setStatus] = useState("");
   const [uuid, setUuid] = useState(null);
 
   // loading
@@ -171,17 +172,22 @@ const ScanBarcode = ({ navigation }) => {
   }, []);
 
   // Push scanned data into firestore database
-  const pushData = (uuid, destinationId) => {
-    axios
+  const pushData = async (uuid, destinationId) => {
+    setIsLoadingData(true);
+    await axios
       .post("https://sharp-faceted-taleggio.glitch.me/destination/check", {
         uuid,
         destinationId,
       })
       .then((response) => {
-        console.log(response);
+        setStatus(response.data.status);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoadingData(false);
       });
   };
 
@@ -196,8 +202,9 @@ const ScanBarcode = ({ navigation }) => {
         const date = moment().unix();
         const { id } = destination;
         console.log(date, id);
-        pushData(uuid, id);
-        setModalVisible(true);
+        pushData(uuid, id).then(() => {
+          setModalVisible(true);
+        });
       } else {
         setIsHandlingScan(false);
         console.log("not matched");
@@ -260,7 +267,7 @@ const ScanBarcode = ({ navigation }) => {
         <Modal visible={modalVisible} animationType={"fade"} transparent={true}>
           <View style={styles.modalContainer}>
             <Image source={ImageGreenChecklist} />
-            <Text style={styles.modalText}>Check-in Succeeded</Text>
+            <Text style={styles.modalText}>{status} Succeeded</Text>
             <Text style={styles.modalTextSuccess}>Have a nice trip</Text>
             <TouchableOpacity
               style={styles.modalCloseBtn}

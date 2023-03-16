@@ -1,5 +1,12 @@
-import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React from "react";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import {
   horizontalScale,
   moderateScale,
@@ -13,24 +20,46 @@ import {
 } from "../../../assets/icons";
 import Svg, { Path } from "react-native-svg";
 import { LinearGradient } from "expo-linear-gradient";
-import { ImagePeople } from "../../../assets/images";
 import { BlurView } from "expo-blur";
 import { getCurrentUser } from "../../../config";
+import axios from "axios";
 
-const HomeHeader = ({ navigation }) => {
-  const [user, setUser] = React.useState(null);
-  const [isLoading, setIsLoading] = React.useState(true);
+const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastHistory, setLastHistory] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getCurrentUser()
       .then((user) => {
         setUser(user);
+        getLastHistory(user.uid);
         setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  // get last destination history
+  const getLastHistory = (id) => {
+    axios
+      .get(`https://sharp-faceted-taleggio.glitch.me/destination/history/${id}`)
+      .then(function (response) {
+        console.log(response.data.slice(-1)[0]);
+        setLastHistory(response.data.slice(-1)[0]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  if (isRefreshing && user) {
+    console.log("refreshing");
+    console.log(user.uid);
+    getLastHistory(user.uid);
+    onRefreshEnd();
+  }
 
   if (isLoading) {
     return (
@@ -187,42 +216,47 @@ const HomeHeader = ({ navigation }) => {
                   {user.displayName}
                 </Text>
               </View>
-              <View
-                style={{
-                  backgroundColor: "#08C755",
-                  width: horizontalScale(110),
-                  height: verticalScale(15),
-                  borderRadius: moderateScale(50),
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: verticalScale(15),
-                }}
-              >
-                <Svg height={8} width={8} viewBox="0 0 80 80">
-                  <IconWhiteChecklist2 />
-                </Svg>
-                <Text
+              {lastHistory && (
+                <View
                   style={{
-                    fontFamily: "Poppins-SemiBold",
-                    fontSize: moderateScale(7),
-                    color: "white",
-                    marginLeft: horizontalScale(4),
+                    backgroundColor: "#08C755",
+                    width: horizontalScale(110),
+                    height: verticalScale(15),
+                    borderRadius: moderateScale(50),
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: verticalScale(15),
                   }}
                 >
-                  CHECK-IN SUCCEEDED
+                  <Svg height={8} width={8} viewBox="0 0 80 80">
+                    <IconWhiteChecklist2 />
+                  </Svg>
+                  <Text
+                    style={{
+                      fontFamily: "Poppins-SemiBold",
+                      fontSize: moderateScale(7),
+                      color: "white",
+                      marginLeft: horizontalScale(4),
+                    }}
+                  >
+                    {lastHistory.status === "in" ? "CHECK-IN" : "CHECK-OUT"}{" "}
+                    SUCCESS
+                  </Text>
+                </View>
+              )}
+              {lastHistory && (
+                <Text
+                  style={{
+                    fontFamily: "Poppins-Medium",
+                    fontSize: moderateScale(10),
+                    color: "white",
+                    marginTop: verticalScale(5),
+                  }}
+                >
+                  {lastHistory.destination.destinationName}
                 </Text>
-              </View>
-              <Text
-                style={{
-                  fontFamily: "Poppins-Medium",
-                  fontSize: moderateScale(10),
-                  color: "white",
-                  marginTop: verticalScale(5),
-                }}
-              >
-                Bunaken Island, Manado
-              </Text>
+              )}
             </View>
           </LinearGradient>
           {/* -----------------------MAIN SHAPE-----------------------*/}
