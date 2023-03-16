@@ -19,15 +19,19 @@ import axios from "axios";
 import { LoadingModal } from "../../components";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import moment from "moment";
+import { getCurrentUser } from "../../config";
 
 const ScanBarcode = ({ navigation }) => {
   //  Data Destination
   const [destinationData, setDestinationData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [uuid, setUuid] = useState(null);
 
   // loading
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isHandlingScan, setIsHandlingScan] = useState(false);
+
+  // ------------------ Camera ------------------
 
   // Camera Frame
   const CameraFrame = () => {
@@ -142,11 +146,20 @@ const ScanBarcode = ({ navigation }) => {
     }
   };
 
+  // ------------------ Camera ------------------
+
+  // get user id
+  useEffect(() => {
+    getCurrentUser().then((user) => {
+      setUuid(user.uid);
+    });
+  }, []);
+
   // get the data from api
   useEffect(() => {
     setIsLoadingData(true);
     axios
-      .get("https://lydian-misty-grass.glitch.me/destination")
+      .get("https://sharp-faceted-taleggio.glitch.me/destination")
       .then((response) => {
         setDestinationData(response.data);
         setIsLoadingData(false);
@@ -156,6 +169,21 @@ const ScanBarcode = ({ navigation }) => {
         setIsLoadingData(false);
       });
   }, []);
+
+  // Push scanned data into firestore database
+  const pushData = (uuid, destinationId) => {
+    axios
+      .post("https://sharp-faceted-taleggio.glitch.me/destination/check", {
+        uuid,
+        destinationId,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   // handle the scanned data
   const handleScanned = (data) => {
@@ -168,6 +196,7 @@ const ScanBarcode = ({ navigation }) => {
         const date = moment().unix();
         const { id } = destination;
         console.log(date, id);
+        pushData(uuid, id);
         setModalVisible(true);
       } else {
         setIsHandlingScan(false);

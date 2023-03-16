@@ -22,10 +22,8 @@ const HomeNextGen = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get("https://lydian-misty-grass.glitch.me/news")
-      // .get("https://alphacast.id/x/ptktp/aime/newsapi.js")
+      .get("https://sharp-faceted-taleggio.glitch.me/news")
       .then((res) => {
-        console.log(res.data);
         const newData = res.data.map((item) => ({
           title: item.title,
           link: item.link,
