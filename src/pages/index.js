@@ -36,6 +36,7 @@ import HelpCenter from "./HelpCenter";
 import HelpChat from "./HelpCenter/HelpChat";
 
 //Profile Section
+import EditPassport from "./Profile/ProfileSection/EditPassport";
 import Profile from "./Profile";
 import EditProfile from "./Profile/ProfileSection/AIME_EditProfile";
 import Profile_Notification from "./Profile/ProfileSection/Profile_Notification";
@@ -81,6 +82,7 @@ export {
 
   //Profile Section
   Profile,
+  EditPassport,
   EditProfile,
   Profile_Notification,
   Profile_PP,

@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { IconArrowLeftBlack } from "../assets";
 
 const EditProfileHeader = ({
   titleSize = 20,
   borderBottomWidth = true,
   title,
+  navigation,
+  onDonePress,
 }) => {
   return (
     <View
@@ -20,11 +21,11 @@ const EditProfileHeader = ({
         },
       ]}
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <IconArrowLeftBlack />
       </TouchableOpacity>
       <Text style={[styles.textTitle, { fontSize: titleSize }]}>{title}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onDonePress}>
         <Text style={styles.textDone}>Done</Text>
       </TouchableOpacity>
     </View>
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#E6E6E6",
     width: "100%",
     height: 100,
-    position: "absolute",
     zIndex: 1,
 
     paddingTop: 40,

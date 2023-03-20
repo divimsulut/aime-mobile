@@ -34,6 +34,7 @@ import {
 
   //Profile Section
   EditProfile,
+  EditPassport,
   Profile_Notification,
   Profile_PP,
   Profile_AboutApp,
@@ -279,7 +280,7 @@ const Router = () => {
   return (
     <Stack.Navigator
       // initialRouteName="SignIn"
-      initialRouteName="EditProfile" //Bypass langsung ke Profile SEMENTARA
+      initialRouteName="EditPassport" //Bypass langsung ke Profile SEMENTARA
     >
       <Stack.Screen
         name="Splash"
@@ -389,6 +390,11 @@ const Router = () => {
       <Stack.Screen
         name="EditProfile"
         component={EditProfile}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EditPassport"
+        component={EditPassport}
         options={{ headerShown: false }}
       />
       <Stack.Screen

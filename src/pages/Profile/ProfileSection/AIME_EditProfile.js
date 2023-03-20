@@ -11,7 +11,6 @@ import { Svg, Path, G, Defs, ClipPath } from "react-native-svg";
 
 import { ImageLandscape3, ImagePeople } from "../../../assets";
 import { EditProfileHeader } from "../../../components";
-
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.3)";
 
@@ -22,6 +21,7 @@ const AIME_EditProfile = ({ navigation }) => {
         titleSize={30}
         borderBottomWidth={false}
         title="Edit Profile"
+        navigation={navigation}
       />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {/* Top margin helper*/}
@@ -83,57 +83,57 @@ const AIME_EditProfile = ({ navigation }) => {
           <Text style={styles.textSection}>Passport Info</Text>
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Surename</Text>
-            <TextInput style={styles.ProfileItemInput}>Kato</TextInput>
+            <Text style={styles.ProfileItemInput}>Kato</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Given Name</Text>
-            <TextInput>Yaki</TextInput>
+            <Text>Yaki</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Date of Birth</Text>
-            <TextInput>12-12-2012</TextInput>
+            <Text>12-12-2012</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Sex</Text>
-            <TextInput>Male</TextInput>
+            <Text>Male</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Nationality</Text>
-            <TextInput>Japan</TextInput>
+            <Text>Japan</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Place</Text>
-            <TextInput>Kyoto, Japan</TextInput>
+            <Text>Kyoto, Japan</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Id Passport</Text>
-            <TextInput>12-12-2012</TextInput>
+            <Text>12-12-2012</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>DOI</Text>
-            <TextInput>15/10/23</TextInput>
+            <Text>15/10/23</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>DOE</Text>
-            <TextInput>15/10/23</TextInput>
+            <Text>15/10/23</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Stay Permit</Text>
-            <TextInput>ITAS</TextInput>
+            <Text>ITAS</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>DOSP</Text>
-            <TextInput>15/10/23</TextInput>
+            <Text>15/10/23</Text>
           </View>
         </View>
         {/* Passport INfo */}
@@ -189,10 +189,15 @@ const styles = StyleSheet.create({
     marginTop: 17,
 
     flexDirection: "row",
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "space-between",
   },
   ProfileItemInput: {
+    fontSize: 16,
+  },
+
+  textAdd: {
+    color: "#007DE4",
     fontSize: 16,
   },
 
