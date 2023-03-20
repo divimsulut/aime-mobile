@@ -10,41 +10,26 @@ import {
 import React, { Component } from "react";
 import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
 
-import { ImagePeople } from "../../../assets";
-import { Header } from "../../../components";
+import { ImageLandscape3, ImagePeople } from "../../../assets";
+import { EditProfileHeader, Header } from "../../../components";
 
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.3)";
 
 const AIME_EditProfile = ({ navigation }) => {
   return (
-    <View>
-      <Header
-        navigation={navigation}
-        color="black"
-        backgroundColor="transparent"
-      ></Header>
-      <View style={styles.container}>
-        {/* <View>
-          BackArrow
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <Path
-                fill="#000"
-                d="M20 8.75H4.787l6.988-6.987L10 0 0 10l10 10 1.762-1.762-6.975-6.988H20v-2.5z"
-              ></Path>
-            </Svg>
-          </TouchableOpacity>
-        </View> */}
-        <Text style={styles.Title_Profile}>Edit Profile</Text>
+    <View style={{ flex: 1, backgroundColor: "#E6E6E6" }}>
+      <EditProfileHeader
+        titleSize={30}
+        borderBottomWidth={false}
+        title="Edit Profile"
+      />
+      <ScrollView style={styles.container}>
+        {/* Top margin helper*/}
+        <View style={{ height: 127 }} />
+        {/* Profile Picture */}
         <View style={styles.ProfilePictureContainer}>
-          <View style={styles.ProfilePictureContainerChild1}>
+          <View>
             <View style={styles.ProfilePicture}>
               <Image
                 source={ImagePeople}
@@ -79,50 +64,129 @@ const AIME_EditProfile = ({ navigation }) => {
           </View>
         </View>
 
+        {/* Profile Info */}
         <View style={styles.content}>
+          <Text
+            style={{
+              fontFamily: "Poppins-SemiBold",
+              fontSize: 23,
+              color: "black",
+            }}
+          >
+            Profile Info
+          </Text>
           <View style={styles.ProfileItem}>
-            <Text style={styles.ProfileItemName}>Username</Text>
+            <Text style={styles.ProfileItemName}>Name</Text>
             <TextInput style={styles.ProfileItemInput}>Yaki Kato</TextInput>
           </View>
-
-          <View style={styles.Line1} />
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Email</Text>
             <TextInput>yakikato232@gmail.com</TextInput>
           </View>
 
-          <View style={styles.Line1} />
-
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Phone</Text>
             <TextInput>081233334444</TextInput>
           </View>
+        </View>
+        {/* Profile INfo */}
 
-          <View style={styles.Line1} />
+        {/* Passport Info */}
+        <View style={styles.content}>
+          <Text
+            style={{
+              fontFamily: "Poppins-SemiBold",
+              fontSize: 23,
+              color: "black",
+            }}
+          >
+            Passport Info
+          </Text>
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Surename</Text>
+            <TextInput style={styles.ProfileItemInput}>Kato</TextInput>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Given Name</Text>
+            <TextInput>Yaki</TextInput>
+          </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Date of Birth</Text>
             <TextInput>12-12-2012</TextInput>
           </View>
 
-          <View style={styles.Line1} />
-
           <View style={styles.ProfileItem}>
-            <Text style={styles.ProfileItemName}>Country</Text>
-            <TextInput>United States</TextInput>
+            <Text style={styles.ProfileItemName}>Sex</Text>
+            <TextInput>Male</TextInput>
           </View>
 
-          <View style={styles.Line1} />
-
           <View style={styles.ProfileItem}>
-            <Text style={styles.ProfileItemName}>Passport ID</Text>
-            <TextInput>97327976</TextInput>
+            <Text style={styles.ProfileItemName}>Nationality</Text>
+            <TextInput>Japan</TextInput>
           </View>
 
-          <View style={styles.Line1} />
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Place</Text>
+            <TextInput>Kyoto, Japan</TextInput>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Id Passport</Text>
+            <TextInput>12-12-2012</TextInput>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>DOI</Text>
+            <TextInput>15/10/23</TextInput>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>DOE</Text>
+            <TextInput>15/10/23</TextInput>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Stay Permit</Text>
+            <TextInput>ITAS</TextInput>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>DOSP</Text>
+            <TextInput>15/10/23</TextInput>
+          </View>
         </View>
-      </View>
+        {/* Passport INfo */}
+
+        {/* Passport Photos */}
+        <View style={styles.content}>
+          <Text
+            style={{
+              fontFamily: "Poppins-SemiBold",
+              fontSize: 23,
+              color: "black",
+            }}
+          >
+            Passport Photos
+          </Text>
+          <View
+            style={{
+              width: "100%",
+              height: 246,
+              overflow: "hidden",
+              borderWidth: 20,
+              borderColor: "#213545",
+              borderRadius: 15,
+            }}
+          >
+            <Image source={ImageLandscape3} style={{ flex: 1 }} />
+          </View>
+        </View>
+        {/* Bottom margin helper */}
+        <View style={{ height: 96 }} />
+      </ScrollView>
     </View>
   );
 };
@@ -132,9 +196,6 @@ export default AIME_EditProfile;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    // fontFamily: 'Poppins',
-    // fontWeight: 100,
-    paddingTop: 50,
   },
   content: {
     padding: 15,
@@ -155,29 +216,26 @@ const styles = StyleSheet.create({
   },
 
   ProfileItem: {
-    // backgroundColor: 'red',
+    borderBottomColor: seperator_color,
+    borderBottomWidth: seperator,
+    paddingBottom: 30,
+    marginTop: 17,
 
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-
-    paddingTop: 10,
   },
   ProfileItemInput: {
-    // padding: 0,
     fontSize: 16,
   },
 
   ProfileItemName: {
     color: "#34495E",
+    fontFamily: "Poppins-Medium",
     fontSize: 16,
   },
   ProfilePictureContainer: {
-    // backgroundColor: 'red',
     alignItems: "center",
-  },
-  ProfilePictureContainerChild1: {
-    // backgroundColor: 'green',
   },
   ProfilePictureEditButton: {
     backgroundColor: "#00284D",
@@ -193,8 +251,6 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     borderRadius: 100,
-
-    backgroundColor: "red",
 
     overflow: "hidden",
 

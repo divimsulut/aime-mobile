@@ -33,6 +33,7 @@ import IconWhiteChecklist2 from "./whiteChecklistIcon2.svg";
 import IconPencil from "./homeheader/Pencil.svg";
 import IconDelete from "./deleteIcon.svg";
 import IconCross from "./crossIcon.svg";
+import IconArrowLeftBlack from "./arrowLeftBlack.svg";
 
 export {
   IconWhiteChecklist2,
@@ -70,4 +71,5 @@ export {
   IconChecklistWhite,
   IconDelete,
   IconCross,
+  IconArrowLeftBlack,
 };

@@ -6,6 +6,7 @@ import ButtonBack from "./ButtonBack";
 import HomeHeader from "../pages/Home/component/HomeHeader";
 import Header from "./Header";
 import LoadingModal from "./LoadingModal";
+import EditProfileHeader from "./EditProfileHeader";
 
 // Activity Log section
 import ActivityLog_Day from "./ActivityLogSection/ActivityLog_Day";
@@ -24,6 +25,7 @@ export {
   ButtonFacebook,
   ButtonLogin,
   LoadingModal,
+  EditProfileHeader,
 
   // Activity log section
   ActivityLog_Day,
