@@ -5,13 +5,12 @@ import {
   Image,
   ScrollView,
   TextInput,
-  TouchableOpacity,
 } from "react-native";
-import React, { Component } from "react";
-import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
+import React from "react";
+import { Svg, Path, G, Defs, ClipPath } from "react-native-svg";
 
 import { ImageLandscape3, ImagePeople } from "../../../assets";
-import { EditProfileHeader, Header } from "../../../components";
+import { EditProfileHeader } from "../../../components";
 
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.3)";
@@ -24,7 +23,7 @@ const AIME_EditProfile = ({ navigation }) => {
         borderBottomWidth={false}
         title="Edit Profile"
       />
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {/* Top margin helper*/}
         <View style={{ height: 127 }} />
         {/* Profile Picture */}
@@ -34,12 +33,7 @@ const AIME_EditProfile = ({ navigation }) => {
               <Image
                 source={ImagePeople}
                 // style={{height: 120, width: 120, borderRadius: 100}}
-                style={{
-                  // flex: 1,
-                  borderRadius: 100,
-                  width: "100%",
-                  height: "100%",
-                }}
+                style={styles.ProfileImage}
               />
             </View>
             <View style={styles.ProfilePictureEditButton}>
@@ -66,15 +60,7 @@ const AIME_EditProfile = ({ navigation }) => {
 
         {/* Profile Info */}
         <View style={styles.content}>
-          <Text
-            style={{
-              fontFamily: "Poppins-SemiBold",
-              fontSize: 23,
-              color: "black",
-            }}
-          >
-            Profile Info
-          </Text>
+          <Text style={styles.textSection}>Profile Info</Text>
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Name</Text>
             <TextInput style={styles.ProfileItemInput}>Yaki Kato</TextInput>
@@ -94,15 +80,7 @@ const AIME_EditProfile = ({ navigation }) => {
 
         {/* Passport Info */}
         <View style={styles.content}>
-          <Text
-            style={{
-              fontFamily: "Poppins-SemiBold",
-              fontSize: 23,
-              color: "black",
-            }}
-          >
-            Passport Info
-          </Text>
+          <Text style={styles.textSection}>Passport Info</Text>
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Surename</Text>
             <TextInput style={styles.ProfileItemInput}>Kato</TextInput>
@@ -162,25 +140,8 @@ const AIME_EditProfile = ({ navigation }) => {
 
         {/* Passport Photos */}
         <View style={styles.content}>
-          <Text
-            style={{
-              fontFamily: "Poppins-SemiBold",
-              fontSize: 23,
-              color: "black",
-            }}
-          >
-            Passport Photos
-          </Text>
-          <View
-            style={{
-              width: "100%",
-              height: 246,
-              overflow: "hidden",
-              borderWidth: 20,
-              borderColor: "#213545",
-              borderRadius: 15,
-            }}
-          >
+          <Text style={styles.textSection}>Passport Photos</Text>
+          <View style={styles.PassportImage}>
             <Image source={ImageLandscape3} style={{ flex: 1 }} />
           </View>
         </View>
@@ -213,6 +174,12 @@ const styles = StyleSheet.create({
     borderBottomColor: seperator_color,
     borderBottomWidth: seperator,
     paddingTop: 20,
+  },
+  ProfileImage: {
+    // flex: 1,
+    borderRadius: 100,
+    width: "100%",
+    height: "100%",
   },
 
   ProfileItem: {
@@ -263,5 +230,20 @@ const styles = StyleSheet.create({
     shadowRadius: 16.0,
 
     elevation: 24,
+  },
+
+  textSection: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 23,
+    color: "black",
+  },
+
+  PassportImage: {
+    width: "100%",
+    height: 246,
+    overflow: "hidden",
+    borderWidth: 20,
+    borderColor: "#213545",
+    borderRadius: 15,
   },
 });
