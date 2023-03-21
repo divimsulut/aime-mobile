@@ -8,14 +8,41 @@ import {
   Modal,
   TextInput,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { ImageLandscape3 } from "../../../assets";
 import { EditProfileHeader } from "../../../components";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
+import { SelectList } from "react-native-dropdown-select-list";
+import axios from "axios";
 
 const EditPassport = ({ navigation }) => {
   const [showDatePicker, setShowDatePicker] = React.useState(false);
+  const [dataNationality, setDataNationality] = React.useState([
+    { key: "", value: "" },
+  ]);
+
+  // Get nationality
+  useEffect(() => {
+    let counter = 1;
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((res) => {
+        const data = res.data
+          .sort((a, b) => a.name.common.localeCompare(b.name.common))
+          .map((country) => ({
+            key: counter++,
+            value: country.name.common,
+          }));
+        setDataNationality(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const sex = [
+    { key: 1, value: "Male" },
+    { key: 2, value: "Female" },
+  ];
 
   //  Data passport
   const [data, setData] = React.useState({
@@ -83,6 +110,33 @@ const EditPassport = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
           </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Sex</Text>
+            <TouchableOpacity onPress={() => setModalSex(true)}>
+              <Text style={styles.textValue}>
+                {data.sex ? data.sex : "Chose"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Nationality</Text>
+            <TouchableOpacity onPress={() => setModalNationality(true)}>
+              <Text style={styles.textValue}>
+                {data.nationality ? data.nationality : "Add"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Place</Text>
+            <TouchableOpacity onPress={() => setModalPlace(true)}>
+              <Text style={styles.textValue}>
+                {data.place ? data.place : "Add"}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
         {/* Passport INfo */}
 
@@ -93,6 +147,7 @@ const EditPassport = ({ navigation }) => {
             <Image source={ImageLandscape3} style={{ flex: 1 }} />
           </View>
         </View>
+
         {/* Bottom margin helper */}
         <View style={{ height: 96 }} />
       </ScrollView>
@@ -179,6 +234,65 @@ const EditPassport = ({ navigation }) => {
                 }}
               />
             )}
+          </View>
+        </View>
+      </Modal>
+
+      {/* Sex modal */}
+      <Modal visible={modalSex} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"Sex"}
+            navigation={navigation}
+            onDonePress={() => setModalSex(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>Chose your gender</Text>
+            <SelectList
+              data={sex}
+              save={"value"}
+              setSelected={(val) => setData({ ...data, sex: val })}
+              search={false}
+            />
+          </View>
+        </View>
+      </Modal>
+
+      {/* Nationality modal */}
+      <Modal visible={modalNationality} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"Nationality"}
+            navigation={navigation}
+            onDonePress={() => setModalNationality(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>Chose your Nationality</Text>
+            <SelectList
+              data={dataNationality}
+              save={"value"}
+              maxHeight={300}
+              setSelected={(val) => setData({ ...data, nationality: val })}
+            />
+          </View>
+        </View>
+      </Modal>
+
+      {/* place modal */}
+      <Modal visible={modalPlace} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"Place"}
+            navigation={navigation}
+            onDonePress={() => setModalPlace(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>Write your place bellow</Text>
+            <TextInput
+              style={styles.textInput}
+              onChangeText={(text) => setData({ ...data, place: text })}
+              value={data.place}
+            />
           </View>
         </View>
       </Modal>
