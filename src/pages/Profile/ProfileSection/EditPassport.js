@@ -9,12 +9,15 @@ import {
   TextInput,
 } from "react-native";
 import React, { useEffect } from "react";
-import { ImageLandscape3 } from "../../../assets";
+import { IconCamera, ImageLandscape3 } from "../../../assets";
 import { EditProfileHeader } from "../../../components";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { SelectList } from "react-native-dropdown-select-list";
 import axios from "axios";
+import * as ImagePicker from "expo-image-picker";
+import { Upload } from "../../../assets";
+import AnimatedLottieView from "lottie-react-native";
 
 const EditPassport = ({ navigation }) => {
   const [showDatePicker, setShowDatePicker] = React.useState(false);
@@ -44,6 +47,12 @@ const EditPassport = ({ navigation }) => {
     { key: 2, value: "Female" },
   ];
 
+  const stayPermit = [
+    { key: 1, value: "ITK" },
+    { key: 2, value: "ITAS" },
+    { key: 3, value: "ITAP" },
+  ];
+
   //  Data passport
   const [data, setData] = React.useState({
     sureName: "",
@@ -53,12 +62,12 @@ const EditPassport = ({ navigation }) => {
     nationality: "",
     place: "",
     idPassport: "",
-    doi: "",
-    doe: "",
+    doi: new Date(),
+    doe: new Date(),
     stayPermit: "",
-    dosp: "",
+    dosp: new Date(),
+    passportImage: null,
   });
-  console.log(data.dateOfBirth);
 
   //   Modal for edit data
   const [modalSurename, setModalSurename] = React.useState(false);
@@ -72,6 +81,19 @@ const EditPassport = ({ navigation }) => {
   const [modalDoe, setModalDoe] = React.useState(false);
   const [modalStayPermit, setModalStayPermit] = React.useState(false);
   const [modalDosp, setModalDosp] = React.useState(false);
+
+  // Pick an image function for passport photo
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setData({ ...data, passportImage: result.assets[0].uri });
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -137,14 +159,77 @@ const EditPassport = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
           </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Passport ID</Text>
+            <TouchableOpacity onPress={() => setModalIdPassport(true)}>
+              <Text style={styles.textValue}>
+                {data.idPassport ? data.idPassport : "Add"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>DOI</Text>
+            <TouchableOpacity onPress={() => setModalDoi(true)}>
+              <Text style={styles.textValue}>
+                {moment(data.doi).format("DD MMMM YYYY")}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>DOE</Text>
+            <TouchableOpacity onPress={() => setModalDoe(true)}>
+              <Text style={styles.textValue}>
+                {moment(data.doe).format("DD MMMM YYYY")}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>Stay Permit</Text>
+            <TouchableOpacity onPress={() => setModalStayPermit(true)}>
+              <Text style={styles.textValue}>
+                {data.stayPermit ? data.stayPermit : "Add"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.ProfileItem}>
+            <Text style={styles.ProfileItemName}>DOSP</Text>
+            <TouchableOpacity onPress={() => setModalDosp(true)}>
+              <Text style={styles.textValue}>
+                {moment(data.dosp).format("DD MMMM YYYY")}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
         {/* Passport INfo */}
 
         {/* Passport Photos */}
         <View style={styles.content}>
           <Text style={styles.textSection}>Passport Photos</Text>
+
           <View style={styles.PassportImage}>
-            <Image source={ImageLandscape3} style={{ flex: 1 }} />
+            <TouchableOpacity
+              style={{
+                position: "absolute",
+                zIndex: 1,
+                width: "100%",
+                height: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={pickImage}
+            >
+              <IconCamera />
+            </TouchableOpacity>
+            {data.passportImage ? (
+              <Image source={{ uri: data.passportImage }} style={{ flex: 1 }} />
+            ) : (
+              <AnimatedLottieView source={Upload} autoPlay={true} />
+            )}
           </View>
         </View>
 
@@ -293,6 +378,192 @@ const EditPassport = ({ navigation }) => {
               onChangeText={(text) => setData({ ...data, place: text })}
               value={data.place}
             />
+          </View>
+        </View>
+      </Modal>
+
+      {/* Passport id modal */}
+      <Modal visible={modalIdPassport} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"Passport ID"}
+            navigation={navigation}
+            onDonePress={() => setModalIdPassport(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>Write your passport ID bellow</Text>
+            <TextInput
+              style={styles.textInput}
+              onChangeText={(text) => setData({ ...data, idPassport: text })}
+              value={data.idPassport}
+            />
+          </View>
+        </View>
+      </Modal>
+
+      {/* date of issue modal */}
+      <Modal visible={modalDoi} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"Date of Issue"}
+            navigation={navigation}
+            onDonePress={() => setModalDoi(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>
+              Please provide Date of Issue of your passport
+            </Text>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text style={[styles.textInput, { width: "75%" }]}>
+                {moment(data.doi).format("DD MMMM YYYY")}
+              </Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#C7C7C7",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: 10,
+                  paddingHorizontal: 5,
+                }}
+                onPress={() => setShowDatePicker(true)}
+              >
+                <Text>{"Select Date"}</Text>
+              </TouchableOpacity>
+            </View>
+            {showDatePicker && (
+              <DateTimePicker
+                value={data.doi}
+                mode="datetime"
+                is24Hour={true}
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setShowDatePicker(false);
+                  setData({
+                    ...data,
+                    doi: selectedDate,
+                  });
+                }}
+              />
+            )}
+          </View>
+        </View>
+      </Modal>
+
+      {/* date of expire modal */}
+      <Modal visible={modalDoe} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"Date of Expire"}
+            navigation={navigation}
+            onDonePress={() => setModalDoe(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>
+              Please provide Date of Expire of your passport
+            </Text>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text style={[styles.textInput, { width: "75%" }]}>
+                {moment(data.doe).format("DD MMMM YYYY")}
+              </Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#C7C7C7",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: 10,
+                  paddingHorizontal: 5,
+                }}
+                onPress={() => setShowDatePicker(true)}
+              >
+                <Text>{"Select Date"}</Text>
+              </TouchableOpacity>
+            </View>
+            {showDatePicker && (
+              <DateTimePicker
+                value={data.doe}
+                mode="datetime"
+                is24Hour={true}
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setShowDatePicker(false);
+                  setData({
+                    ...data,
+                    doe: selectedDate,
+                  });
+                }}
+              />
+            )}
+          </View>
+        </View>
+      </Modal>
+
+      {/* stay permit modal */}
+      <Modal visible={modalStayPermit} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"Stay Permit"}
+            navigation={navigation}
+            onDonePress={() => setModalStayPermit(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>Select your stay permit type</Text>
+            <SelectList
+              data={stayPermit}
+              save={"value"}
+              setSelected={(val) => setData({ ...data, stayPermit: val })}
+            />
+          </View>
+        </View>
+      </Modal>
+
+      {/* DOSP modal */}
+      <Modal visible={modalDosp} animationType={"slide"}>
+        <View style={styles.modal}>
+          <EditProfileHeader
+            title={"DOSP"}
+            navigation={navigation}
+            onDonePress={() => setModalDosp(false)}
+          />
+          <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
+            <Text style={styles.label}>Provide DOSP date bellow</Text>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text style={[styles.textInput, { width: "75%" }]}>
+                {moment(data.dosp).format("DD MMMM YYYY")}
+              </Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#C7C7C7",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: 10,
+                  paddingHorizontal: 5,
+                }}
+                onPress={() => setShowDatePicker(true)}
+              >
+                <Text>{"Select Date"}</Text>
+              </TouchableOpacity>
+            </View>
+            {showDatePicker && (
+              <DateTimePicker
+                value={data.dosp}
+                mode="datetime"
+                is24Hour={true}
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setShowDatePicker(false);
+                  setData({
+                    ...data,
+                    dosp: selectedDate,
+                  });
+                }}
+              />
+            )}
           </View>
         </View>
       </Modal>
