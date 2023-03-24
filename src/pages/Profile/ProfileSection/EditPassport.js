@@ -100,6 +100,7 @@ const EditPassport = ({ navigation }) => {
       <EditProfileHeader
         title={"Passport Information"}
         navigation={navigation}
+        backButton={false}
       />
       <ScrollView>
         {/* Passport Info */}

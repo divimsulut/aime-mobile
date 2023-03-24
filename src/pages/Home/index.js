@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   RefreshControl,
+  Modal,
 } from "react-native";
 import React, { useEffect, useRef } from "react";
 import { LinearGradient } from "expo-linear-gradient";
@@ -17,10 +18,13 @@ import {
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { Svg, Defs, Mask, G, Path, ClipPath } from "react-native-svg";
 import axios from "axios";
+import { IconRedWarning } from "../../assets";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
+  const [modal, setModal] = React.useState(true);
+  console.log(modal);
 
   useEffect(() => {
     axios
@@ -137,6 +141,27 @@ const HomeNextGen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      <Modal transparent={true}>
+        <View style={styles.pageModal}>
+          <View style={styles.container}>
+            <IconRedWarning />
+            <Text style={styles.textMain}>complete your personal data!</Text>
+            <Text style={styles.textDescription}>
+              To make it easier for us to recognize you, please do data
+              equipment before using this application.
+            </Text>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                navigation.replace("EditPassport");
+              }}
+              style={styles.bottonContainer}
+            >
+              <Text style={styles.textButton}>Add Passport Information</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </LinearGradient>
   );
 };
@@ -171,5 +196,45 @@ const styles = StyleSheet.create({
     color: "#1E1E1E",
     marginLeft: horizontalScale(15),
     marginBottom: verticalScale(24),
+  },
+  pageModal: {
+    backgroundColor: "rgba(30,30,30,0.62)",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 30,
+  },
+  container: {
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 30,
+    borderRadius: 20,
+  },
+  textMain: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 18,
+    color: "rgba(143, 30, 47, 1)",
+    textAlign: "center",
+    marginTop: 18,
+  },
+  textDescription: {
+    fontFamily: "Poppins-Medium",
+    fontSize: 12,
+    color: "rgba(59, 61, 59, 1)",
+    textAlign: "center",
+  },
+  bottonContainer: {
+    backgroundColor: "rgba(143, 30, 47, 1)",
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    width: "100%",
+    borderRadius: 10,
+    marginTop: 25,
+  },
+  textButton: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 13,
+    color: "white",
   },
 });

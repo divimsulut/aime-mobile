@@ -35,6 +35,7 @@ import IconDelete from "./deleteIcon.svg";
 import IconCross from "./crossIcon.svg";
 import IconArrowLeftBlack from "./arrowLeftBlack.svg";
 import IconCamera from "./cameraIcon.svg";
+import IconRedWarning from "./redwarningIcon";
 
 export {
   IconWhiteChecklist2,
@@ -74,4 +75,5 @@ export {
   IconCross,
   IconArrowLeftBlack,
   IconCamera,
+  IconRedWarning,
 };
