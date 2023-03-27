@@ -19,13 +19,47 @@ import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { Svg, Defs, Mask, G, Path, ClipPath } from "react-native-svg";
 import axios from "axios";
 import { IconRedWarning } from "../../assets";
+import { getCurrentUser } from "../../config";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
-  const [modal, setModal] = React.useState(true);
-  console.log(modal);
+  const [modal, setModal] = React.useState(false);
 
+  // check if the user already provide passport data
+  useEffect(() => {
+    getCurrentUser().then((user) => {
+      axios
+        .get(`https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`)
+        .then((res) => {
+          if (res.data === "User does not exist") {
+            setModal(true);
+          } else {
+            setModal(false);
+          }
+        })
+        .catch((err) => {
+          console.log("njir error: ", err);
+        });
+    });
+  }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://sharp-faceted-taleggio.glitch.me/user/${userId}`)
+  //     .then((res) => {
+  //       if (res.data === "User does not exist") {
+  //         setModal(true);
+  //       } else {
+  //         setModal(false);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log("njir error: ", err);
+  //     });
+  // }, [userId]);
+
+  // get the news data
   useEffect(() => {
     axios
       .get("https://sharp-faceted-taleggio.glitch.me/news")
@@ -141,7 +175,8 @@ const HomeNextGen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-      <Modal transparent={true}>
+
+      <Modal visible={modal} transparent={true}>
         <View style={styles.pageModal}>
           <View style={styles.container}>
             <IconRedWarning />

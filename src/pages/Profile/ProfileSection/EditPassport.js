@@ -8,7 +8,7 @@ import {
   Modal,
   TextInput,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IconCamera, ImageLandscape3 } from "../../../assets";
 import { EditProfileHeader } from "../../../components";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -18,14 +18,50 @@ import axios from "axios";
 import * as ImagePicker from "expo-image-picker";
 import { Upload } from "../../../assets";
 import AnimatedLottieView from "lottie-react-native";
+import { getCurrentUser } from "../../../config";
 
 const EditPassport = ({ navigation }) => {
+  //  Data passport
+  const [data, setData] = React.useState({
+    uuid: "",
+    surename: "",
+    givenName: "",
+    birthDate: new Date(),
+    sex: "",
+    nationality: "",
+    address: "",
+    passportId: "",
+    doi: new Date(),
+    doe: new Date(),
+    stayPermit: "",
+    dosp: new Date(),
+    passportImage: null,
+  });
   const [showDatePicker, setShowDatePicker] = React.useState(false);
   const [dataNationality, setDataNationality] = React.useState([
     { key: "", value: "" },
   ]);
+  const sex = [
+    { key: 1, value: "Male" },
+    { key: 2, value: "Female" },
+  ];
+  const stayPermit = [
+    { key: 1, value: "ITK" },
+    { key: 2, value: "ITAS" },
+    { key: 3, value: "ITAP" },
+  ];
 
-  // Get nationality
+  // get user id
+  useEffect(() => {
+    getCurrentUser()
+      .then((user) => {
+        const userId = user.uid;
+        setData({ ...data, uuid: userId });
+      })
+      .catch((error) => console.log("njir error: ", error));
+  }, []);
+
+  // Get nationality from api
   useEffect(() => {
     let counter = 1;
     axios
@@ -41,33 +77,6 @@ const EditPassport = ({ navigation }) => {
       })
       .catch((error) => console.log(error));
   }, []);
-
-  const sex = [
-    { key: 1, value: "Male" },
-    { key: 2, value: "Female" },
-  ];
-
-  const stayPermit = [
-    { key: 1, value: "ITK" },
-    { key: 2, value: "ITAS" },
-    { key: 3, value: "ITAP" },
-  ];
-
-  //  Data passport
-  const [data, setData] = React.useState({
-    sureName: "",
-    givenName: "",
-    dateOfBirth: new Date(),
-    sex: "",
-    nationality: "",
-    place: "",
-    idPassport: "",
-    doi: new Date(),
-    doe: new Date(),
-    stayPermit: "",
-    dosp: new Date(),
-    passportImage: null,
-  });
 
   //   Modal for edit data
   const [modalSurename, setModalSurename] = React.useState(false);
@@ -95,12 +104,24 @@ const EditPassport = ({ navigation }) => {
     }
   };
 
+  // post the data to api
+  const handleDone = () => {
+    axios
+      .post("https://sharp-faceted-taleggio.glitch.me/user", data)
+      .then((res) => {
+        console.log(res.data);
+        navigation.replace("Tabs");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <EditProfileHeader
         title={"Passport Information"}
         navigation={navigation}
         backButton={false}
+        onDonePress={() => handleDone()}
       />
       <ScrollView>
         {/* Passport Info */}
@@ -111,7 +132,7 @@ const EditPassport = ({ navigation }) => {
             <Text style={styles.ProfileItemName}>Surename</Text>
             <TouchableOpacity onPress={() => setModalSurename(true)}>
               <Text style={styles.textValue}>
-                {data.sureName ? data.sureName : "Add"}
+                {data.surename ? data.surename : "Add"}
               </Text>
             </TouchableOpacity>
           </View>
@@ -129,7 +150,7 @@ const EditPassport = ({ navigation }) => {
             <Text style={styles.ProfileItemName}>Date Of Birth</Text>
             <TouchableOpacity onPress={() => setModalDateOfBirth(true)}>
               <Text style={styles.textValue}>
-                {moment(data.dateOfBirth).format("DD MMMM YYYY")}
+                {moment(data.birthDate).format("DD MMMM YYYY")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -156,7 +177,7 @@ const EditPassport = ({ navigation }) => {
             <Text style={styles.ProfileItemName}>Place</Text>
             <TouchableOpacity onPress={() => setModalPlace(true)}>
               <Text style={styles.textValue}>
-                {data.place ? data.place : "Add"}
+                {data.address ? data.address : "Add"}
               </Text>
             </TouchableOpacity>
           </View>
@@ -165,7 +186,7 @@ const EditPassport = ({ navigation }) => {
             <Text style={styles.ProfileItemName}>Passport ID</Text>
             <TouchableOpacity onPress={() => setModalIdPassport(true)}>
               <Text style={styles.textValue}>
-                {data.idPassport ? data.idPassport : "Add"}
+                {data.passportId ? data.passportId : "Add"}
               </Text>
             </TouchableOpacity>
           </View>
@@ -250,8 +271,8 @@ const EditPassport = ({ navigation }) => {
             <Text style={styles.label}>Surename</Text>
             <TextInput
               style={styles.textInput}
-              onChangeText={(text) => setData({ ...data, sureName: text })}
-              value={data.sureName}
+              onChangeText={(text) => setData({ ...data, surename: text })}
+              value={data.surename}
             />
           </View>
         </View>
@@ -290,7 +311,7 @@ const EditPassport = ({ navigation }) => {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Text style={[styles.textInput, { width: "75%" }]}>
-                {moment(data.dateOfBirth).format("DD MMMM YYYY")}
+                {moment(data.birthDate).format("DD MMMM YYYY")}
               </Text>
               <TouchableOpacity
                 style={{
@@ -307,7 +328,7 @@ const EditPassport = ({ navigation }) => {
             </View>
             {showDatePicker && (
               <DateTimePicker
-                value={data.dateOfBirth}
+                value={data.birthDate}
                 mode="datetime"
                 is24Hour={true}
                 display="default"
@@ -315,7 +336,7 @@ const EditPassport = ({ navigation }) => {
                   setShowDatePicker(false);
                   setData({
                     ...data,
-                    dateOfBirth: selectedDate,
+                    birthDate: selectedDate,
                   });
                 }}
               />
@@ -364,7 +385,7 @@ const EditPassport = ({ navigation }) => {
         </View>
       </Modal>
 
-      {/* place modal */}
+      {/* address modal */}
       <Modal visible={modalPlace} animationType={"slide"}>
         <View style={styles.modal}>
           <EditProfileHeader
@@ -373,11 +394,11 @@ const EditPassport = ({ navigation }) => {
             onDonePress={() => setModalPlace(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
-            <Text style={styles.label}>Write your place bellow</Text>
+            <Text style={styles.label}>Write your address bellow</Text>
             <TextInput
               style={styles.textInput}
-              onChangeText={(text) => setData({ ...data, place: text })}
-              value={data.place}
+              onChangeText={(text) => setData({ ...data, address: text })}
+              value={data.address}
             />
           </View>
         </View>
@@ -395,8 +416,8 @@ const EditPassport = ({ navigation }) => {
             <Text style={styles.label}>Write your passport ID bellow</Text>
             <TextInput
               style={styles.textInput}
-              onChangeText={(text) => setData({ ...data, idPassport: text })}
-              value={data.idPassport}
+              onChangeText={(text) => setData({ ...data, passportId: text })}
+              value={data.passportId}
             />
           </View>
         </View>
