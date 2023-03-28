@@ -8,7 +8,9 @@ const EditProfileHeader = ({
   title,
   navigation,
   onDonePress,
+  doneButton = true,
   backButton = true,
+  onBackPress,
 }) => {
   return (
     <View
@@ -23,14 +25,16 @@ const EditProfileHeader = ({
       ]}
     >
       {backButton && (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => onBackPress()}>
           <IconArrowLeftBlack />
         </TouchableOpacity>
       )}
       <Text style={[styles.textTitle, { fontSize: titleSize }]}>{title}</Text>
-      <TouchableOpacity onPress={onDonePress}>
-        <Text style={styles.textDone}>Done</Text>
-      </TouchableOpacity>
+      {doneButton && (
+        <TouchableOpacity onPress={onDonePress}>
+          <Text style={styles.textDone}>Done</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

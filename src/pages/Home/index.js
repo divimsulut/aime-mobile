@@ -189,6 +189,7 @@ const HomeNextGen = ({ navigation }) => {
               activeOpacity={0.8}
               onPress={() => {
                 navigation.replace("EditPassport");
+                setModal(false);
               }}
               style={styles.bottonContainer}
             >

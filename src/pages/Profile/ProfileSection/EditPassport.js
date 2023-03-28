@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { IconCamera, ImageLandscape3 } from "../../../assets";
-import { EditProfileHeader } from "../../../components";
+import { EditProfileHeader, LoadingModal } from "../../../components";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { SelectList } from "react-native-dropdown-select-list";
@@ -37,6 +37,7 @@ const EditPassport = ({ navigation }) => {
     dosp: new Date(),
     passportImage: null,
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [showDatePicker, setShowDatePicker] = React.useState(false);
   const [dataNationality, setDataNationality] = React.useState([
     { key: "", value: "" },
@@ -104,15 +105,55 @@ const EditPassport = ({ navigation }) => {
     }
   };
 
+  // error checking
+  const handleError = async () => {
+    await new Promise((resolve, reject) => {
+      if (data.surename === "") {
+        alert("Surename is required");
+        reject(false);
+      } else if (data.givenName === "") {
+        alert("Given Name is required");
+        reject(false);
+      } else if (data.sex === "") {
+        alert("Sex is required");
+        reject(false);
+      } else if (data.nationality === "") {
+        alert("Nationality is required");
+        reject(false);
+      } else if (data.address === "") {
+        alert("Address is required");
+        reject(false);
+      } else if (data.passportId === "") {
+        alert("Passport ID is required");
+        reject(false);
+      } else if (data.stayPermit === "") {
+        alert("Stay Permit is required");
+        reject(false);
+      } else if (data.passportImage === null) {
+        alert("Passport Photo is required");
+        reject(false);
+      }
+      resolve(true);
+    });
+  };
+
   // post the data to api
   const handleDone = () => {
-    axios
-      .post("https://sharp-faceted-taleggio.glitch.me/user", data)
-      .then((res) => {
-        console.log(res.data);
-        navigation.replace("Tabs");
+    handleError()
+      .then(() => {
+        axios
+          .post("https://sharp-faceted-taleggio.glitch.me/user", data)
+          .then((res) => {
+            console.log(res.data);
+            navigation.replace("Tabs");
+          })
+          .catch((error) => console.log(error))
+          .finally(() => setIsLoading(false));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log("njir error: ", error);
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -121,7 +162,10 @@ const EditPassport = ({ navigation }) => {
         title={"Passport Information"}
         navigation={navigation}
         backButton={false}
-        onDonePress={() => handleDone()}
+        onDonePress={() => {
+          setIsLoading(true);
+          handleDone();
+        }}
       />
       <ScrollView>
         {/* Passport Info */}
@@ -231,7 +275,7 @@ const EditPassport = ({ navigation }) => {
 
         {/* Passport Photos */}
         <View style={styles.content}>
-          <Text style={styles.textSection}>Passport Photos</Text>
+          <Text style={styles.textSection}>Passport Photo</Text>
 
           <View style={styles.PassportImage}>
             <TouchableOpacity
@@ -266,6 +310,7 @@ const EditPassport = ({ navigation }) => {
             title={"Surename"}
             navigation={navigation}
             onDonePress={() => setModalSurename(false)}
+            onBackPress={() => setModalSurename(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Surename</Text>
@@ -285,6 +330,7 @@ const EditPassport = ({ navigation }) => {
             title={"Given Name"}
             navigation={navigation}
             onDonePress={() => setModalGivenName(false)}
+            onBackPress={() => setModalGivenName(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Given Name</Text>
@@ -301,9 +347,10 @@ const EditPassport = ({ navigation }) => {
       <Modal visible={modalDateOfBirth} animationType={"slide"}>
         <View style={styles.modal}>
           <EditProfileHeader
-            title={"Given Name"}
+            title={"Date of Birth"}
             navigation={navigation}
             onDonePress={() => setModalDateOfBirth(false)}
+            onBackPress={() => setModalDateOfBirth(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Date Of Birth</Text>
@@ -352,10 +399,13 @@ const EditPassport = ({ navigation }) => {
             title={"Sex"}
             navigation={navigation}
             onDonePress={() => setModalSex(false)}
+            onBackPress={() => setModalSex(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Chose your gender</Text>
             <SelectList
+              boxStyles={{ backgroundColor: "#C7C7C7" }}
+              dropdownStyles={{ backgroundColor: "#C7C7C7" }}
               data={sex}
               save={"value"}
               setSelected={(val) => setData({ ...data, sex: val })}
@@ -372,10 +422,13 @@ const EditPassport = ({ navigation }) => {
             title={"Nationality"}
             navigation={navigation}
             onDonePress={() => setModalNationality(false)}
+            onBackPress={() => setModalNationality(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Chose your Nationality</Text>
             <SelectList
+              boxStyles={{ backgroundColor: "#C7C7C7" }}
+              dropdownStyles={{ backgroundColor: "#C7C7C7" }}
               data={dataNationality}
               save={"value"}
               maxHeight={300}
@@ -392,6 +445,7 @@ const EditPassport = ({ navigation }) => {
             title={"Place"}
             navigation={navigation}
             onDonePress={() => setModalPlace(false)}
+            onBackPress={() => setModalPlace(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Write your address bellow</Text>
@@ -411,6 +465,7 @@ const EditPassport = ({ navigation }) => {
             title={"Passport ID"}
             navigation={navigation}
             onDonePress={() => setModalIdPassport(false)}
+            onBackPress={() => setModalIdPassport(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Write your passport ID bellow</Text>
@@ -430,6 +485,7 @@ const EditPassport = ({ navigation }) => {
             title={"Date of Issue"}
             navigation={navigation}
             onDonePress={() => setModalDoi(false)}
+            onBackPress={() => setModalDoi(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>
@@ -480,6 +536,7 @@ const EditPassport = ({ navigation }) => {
             title={"Date of Expire"}
             navigation={navigation}
             onDonePress={() => setModalDoe(false)}
+            onBackPress={() => setModalDoe(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>
@@ -530,12 +587,14 @@ const EditPassport = ({ navigation }) => {
             title={"Stay Permit"}
             navigation={navigation}
             onDonePress={() => setModalStayPermit(false)}
+            onBackPress={() => setModalStayPermit(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Select your stay permit type</Text>
             <SelectList
               data={stayPermit}
               save={"value"}
+              search={false}
               setSelected={(val) => setData({ ...data, stayPermit: val })}
             />
           </View>
@@ -549,6 +608,7 @@ const EditPassport = ({ navigation }) => {
             title={"DOSP"}
             navigation={navigation}
             onDonePress={() => setModalDosp(false)}
+            onBackPress={() => setModalDosp(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Provide DOSP date bellow</Text>
@@ -589,6 +649,9 @@ const EditPassport = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+
+      {/* loading Modal */}
+      {isLoading && <LoadingModal />}
     </View>
   );
 };

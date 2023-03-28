@@ -129,3 +129,12 @@ export const signOut = async (navigation) => {
     .then(() => navigation.replace("SignIn"))
     .catch((error) => console.log("sign out function: ", error));
 };
+
+// edit name
+export const handleEditName = async (name) => {
+  await updateProfile(auth.currentUser, {
+    displayName: name,
+  })
+    .then(() => console.log("name updated"))
+    .catch((error) => console.log(error));
+};

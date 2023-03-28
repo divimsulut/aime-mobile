@@ -5,16 +5,65 @@ import {
   Image,
   ScrollView,
   TextInput,
+  TouchableOpacity,
+  Modal,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Svg, Path, G, Defs, ClipPath } from "react-native-svg";
 
-import { ImageLandscape3, ImagePeople } from "../../../assets";
+import { IconPencilBlue, ImageLandscape3, ImagePeople } from "../../../assets";
 import { EditProfileHeader } from "../../../components";
+import { getCurrentUser, handleEditName } from "../../../config";
+import axios from "axios";
+import moment from "moment";
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.3)";
 
 const AIME_EditProfile = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [image, setImage] = useState("");
+  const [data, setData] = useState({});
+
+  // modals
+  const [modalName, setModalName] = useState(false);
+
+  // get profile data
+  useEffect(() => {
+    getCurrentUser()
+      .then((user) => {
+        setName(user.displayName);
+        setEmail(user.email);
+        setPhone(user.phoneNumber);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  // get passport data
+  useEffect(() => {
+    getCurrentUser()
+      .then((user) => {
+        axios
+          .get(`https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`)
+          .then((res) => {
+            if (res.data === "User does not exist") {
+              console.log("User does not exist");
+              return;
+            }
+            setData(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <View style={{ flex: 1, backgroundColor: "#E6E6E6" }}>
       <EditProfileHeader
@@ -22,16 +71,20 @@ const AIME_EditProfile = ({ navigation }) => {
         borderBottomWidth={false}
         title="Edit Profile"
         navigation={navigation}
+        onDonePress={() => navigation.goBack()}
+        backButton={false}
       />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        {/* Top margin helper*/}
-        <View style={{ height: 127 }} />
         {/* Profile Picture */}
         <View style={styles.ProfilePictureContainer}>
-          <View>
+          <TouchableOpacity activeOpacity={0.6}>
             <View style={styles.ProfilePicture}>
               <Image
-                source={ImagePeople}
+                source={{
+                  uri: image
+                    ? image
+                    : "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                }}
                 // style={{height: 120, width: 120, borderRadius: 100}}
                 style={styles.ProfileImage}
               />
@@ -55,7 +108,7 @@ const AIME_EditProfile = ({ navigation }) => {
                 </Defs>
               </Svg>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
 
         {/* Profile Info */}
@@ -63,17 +116,29 @@ const AIME_EditProfile = ({ navigation }) => {
           <Text style={styles.textSection}>Profile Info</Text>
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Name</Text>
-            <TextInput style={styles.ProfileItemInput}>Yaki Kato</TextInput>
+            <TouchableOpacity
+              style={{ flexDirection: "row" }}
+              onPress={() => setModalName(true)}
+            >
+              <Text style={{ marginRight: 4 }}>{name}</Text>
+              <IconPencilBlue width={10} height={10} />
+            </TouchableOpacity>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Email</Text>
-            <TextInput>yakikato232@gmail.com</TextInput>
+            <TouchableOpacity style={{ flexDirection: "row" }}>
+              <Text style={{ marginRight: 4 }}>{email}</Text>
+              <IconPencilBlue width={10} height={10} />
+            </TouchableOpacity>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Phone</Text>
-            <TextInput>081233334444</TextInput>
+            <TouchableOpacity style={{ flexDirection: "row" }}>
+              <Text style={{ marginRight: 4 }}>{phone}</Text>
+              <IconPencilBlue width={10} height={10} />
+            </TouchableOpacity>
           </View>
         </View>
         {/* Profile INfo */}
@@ -83,57 +148,57 @@ const AIME_EditProfile = ({ navigation }) => {
           <Text style={styles.textSection}>Passport Info</Text>
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Surename</Text>
-            <Text style={styles.ProfileItemInput}>Kato</Text>
+            <Text>{data.surename}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Given Name</Text>
-            <Text>Yaki</Text>
+            <Text>{data.givenName}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Date of Birth</Text>
-            <Text>12-12-2012</Text>
+            <Text>{moment(data.birthDate).format("DD MMMM YYYY")}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Sex</Text>
-            <Text>Male</Text>
+            <Text>{data.sex}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Nationality</Text>
-            <Text>Japan</Text>
+            <Text>{data.nationality}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Place</Text>
-            <Text>Kyoto, Japan</Text>
+            <Text>{data.address}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Id Passport</Text>
-            <Text>12-12-2012</Text>
+            <Text>{data.passportId}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>DOI</Text>
-            <Text>15/10/23</Text>
+            <Text>{moment(data.doi).format("DD MMMM YYYY")}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>DOE</Text>
-            <Text>15/10/23</Text>
+            <Text>{moment(data.doe).format("DD MMMM YYYY")}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Stay Permit</Text>
-            <Text>ITAS</Text>
+            <Text>{data.stayPermit}</Text>
           </View>
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>DOSP</Text>
-            <Text>15/10/23</Text>
+            <Text>{moment(data.dosp).format("DD MMMM YYYY")}</Text>
           </View>
         </View>
         {/* Passport INfo */}
@@ -142,12 +207,32 @@ const AIME_EditProfile = ({ navigation }) => {
         <View style={styles.content}>
           <Text style={styles.textSection}>Passport Photos</Text>
           <View style={styles.PassportImage}>
-            <Image source={ImageLandscape3} style={{ flex: 1 }} />
+            <Image source={{ uri: data.passportImage }} style={{ flex: 1 }} />
           </View>
         </View>
         {/* Bottom margin helper */}
         <View style={{ height: 96 }} />
       </ScrollView>
+
+      <Modal visible={modalName} animationType={"slide"}>
+        <View style={{ backgroundColor: "#E6E6E6", flex: 1 }}>
+          <EditProfileHeader
+            title={"Edit Name"}
+            onDonePress={() =>
+              handleEditName(name).then(() => setModalName(false))
+            }
+            onBackPress={() => setModalName(false)}
+          />
+          <View style={{ marginVertical: 19, marginHorizontal: 29 }}>
+            <Text style={styles.label}>Name</Text>
+            <TextInput
+              value={name}
+              onChangeText={(text) => setName(text)}
+              style={styles.textInput}
+            />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -250,5 +335,23 @@ const styles = StyleSheet.create({
     borderWidth: 20,
     borderColor: "#213545",
     borderRadius: 15,
+  },
+  label: {
+    fontFamily: "Poppins-Medium",
+    fontSize: 15,
+    color: "#656565",
+    marginLeft: 10,
+  },
+  textInput: {
+    width: "100%",
+    backgroundColor: "#C7C7C7",
+    paddingVertical: 13,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    marginTop: 4,
+
+    fontFamily: "Poppins-Medium",
+    fontSize: 18,
+    color: "black",
   },
 });
