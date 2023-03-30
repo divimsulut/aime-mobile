@@ -7,6 +7,8 @@ import {
   Animated,
 } from "react-native";
 import React, { useState } from "react";
+import { WebView } from "react-native-webview";
+
 import { Header } from "../../components";
 import { ImageLandscape3 } from "../../assets";
 import { verticalScale, horizontalScale, moderateScale } from "../../constant";
@@ -134,10 +136,31 @@ const OfficeDetail = ({ navigation }) => {
     Linking.openURL(url);
   };
 
+  const embedMap = `
+  <html>
+    <body>
+    <div style="width: 100%; overflow: hidden; height: 100%">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3988.5100604395425!2d124.8451438!3d1.4673035!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x328774df992c4dbb%3A0xd61d1ae2f60cf4c!2sKantor%20Imigrasi%20Kelas%20I%20-%20Manado!5e0!3m2!1sen!2sid!4v1680161867488!5m2!1sen!2sid&amp;z=20&amp;iwloc=near&amp;output=embed"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        style="border: 0; margin-top: -150px"
+      >
+      </iframe>
+    </div>
+    </body>
+  </html>
+  `;
+
   return (
     <View style={{ flex: 1 }}>
       <Header navigation={navigation} />
-      <Text>NearbyOffice</Text>
+
+      <View style={{ flex: 1 }}>
+        <WebView source={{ html: embedMap }} />
+      </View>
+
       <BottomSheet
         index={0}
         snapPoints={snapPoints}
