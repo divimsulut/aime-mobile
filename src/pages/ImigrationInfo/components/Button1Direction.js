@@ -31,7 +31,7 @@ const Button1Direction = (props) => {
           color: "black",
         }}
       >
-        45 min
+        Get Directions
       </Text>
     </View>
   );

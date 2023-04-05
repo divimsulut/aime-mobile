@@ -31,7 +31,7 @@ const Button2Call = () => {
           color: "white",
         }}
       >
-        Call
+        Call Center
       </Text>
     </View>
   );

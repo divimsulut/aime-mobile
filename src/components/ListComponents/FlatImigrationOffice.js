@@ -8,7 +8,7 @@ const FlatImigrationOffice = ({ item, navigation }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => navigation.navigate("OfficeDetail")}
+      onPress={() => navigation.navigate("OfficeDetail", { item: item })}
     >
       <View style={styles.container}>
         <Image source={{ uri: item.image }} style={styles.image} />

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "AIME-dev",
+    "name": "AIME01n-dev",
     "slug": "AIME-dev",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,8 +8,8 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#000000"
     },
     "plugins": [
       [
@@ -33,14 +33,22 @@
     ],
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ktp.AIME"
+      "package": "com.ktp.AIME",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -49,6 +57,7 @@
       "eas": {
         "projectId": "ad1ab76f-69d2-41d0-b26f-551f8d6704f1"
       }
-    }
+    },
+    "owner": "darellyuhu"
   }
 }

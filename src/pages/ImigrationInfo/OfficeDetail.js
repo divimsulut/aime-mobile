@@ -17,7 +17,7 @@ import Button2Call from "./components/Button2Call";
 import Button3Website from "./components/Button3Website";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 
-const OfficeDetail = ({ navigation }) => {
+const OfficeDetail = ({ navigation, route }) => {
   // opacity
   const opacity = React.useRef(new Animated.Value(1)).current;
 
@@ -123,11 +123,11 @@ const OfficeDetail = ({ navigation }) => {
   };
 
   // Action buttons
-  const [VarPhoneNumber, setVarPhoneNumber] = useState("(+62)811-43260010");
-  const [VarWebsite, setVarWebsite] = useState("https://manado.imigrasi.go.id");
-  const [VarAddress, setVarAdrress] = useState(
-    "Jl. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado, Sulawesi Utara"
-  );
+  // const [VarPhoneNumber, setVarPhoneNumber] = useState("(+62)811-43260010");
+  // const [VarWebsite, setVarWebsite] = useState("https://manado.imigrasi.go.id");
+  // const [VarAddress, setVarAdrress] = useState(
+  //   "Jl. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado, Sulawesi Utara"
+  // );
 
   const openMapsApp = (address) => {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
@@ -136,29 +136,42 @@ const OfficeDetail = ({ navigation }) => {
     Linking.openURL(url);
   };
 
-  const embedMap = `
-  <html>
-    <body>
-    <div style="width: 100%; overflow: hidden; height: 100%">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3988.5100604395425!2d124.8451438!3d1.4673035!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x328774df992c4dbb%3A0xd61d1ae2f60cf4c!2sKantor%20Imigrasi%20Kelas%20I%20-%20Manado!5e0!3m2!1sen!2sid!4v1680161867488!5m2!1sen!2sid&amp;z=20&amp;iwloc=near&amp;output=embed"
-        width="100%"
-        height="100%"
-        frameborder="0"
-        style="border: 0; margin-top: -150px"
-      >
-      </iframe>
-    </div>
-    </body>
-  </html>
-  `;
+  const { item } = route.params;
 
+  console.log(item.embedMap);
   return (
     <View style={{ flex: 1 }}>
       <Header navigation={navigation} />
 
-      <View style={{ flex: 1 }}>
-        <WebView source={{ html: embedMap }} />
+      <View style={{ flex: 1, backgroundColor: "red" }}>
+        <WebView
+          style={{ margin: -10, backgroundColor: "green", height: "10%" }}
+          source={{
+            //HTML catatan sementara -roger
+            // style="width: 100%; overflow: hidden; height: 100%"
+
+            // style="border: 0; padding-top: -450px; padding-left: -200px;"
+            html: `
+              <html>
+                <body>
+                <div>
+                  <iframe
+                    src="${item.embedMap}&amp;z=20&amp;iwloc=near&amp;output=embed",
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    
+                    style="padding-top: -100px;"
+                  >
+                  </iframe>
+                </div>
+                </body>
+              </html>
+              `,
+          }}
+          // injectedJavaScript={`const meta = document.createElement('meta'); meta.setAttribute('content', 'width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); `}
+          scalesPageToFit={false}
+        />
       </View>
 
       <BottomSheet
@@ -169,7 +182,7 @@ const OfficeDetail = ({ navigation }) => {
         handleIndicatorStyle={{ backgroundColor: "white" }}
       >
         <Animated.Image
-          source={ImageLandscape3}
+          source={{ uri: item.image }}
           style={[styles.imageContainer, { opacity }]}
         />
         <Animated.View
@@ -179,9 +192,7 @@ const OfficeDetail = ({ navigation }) => {
             transform: [{ translateY: yPosition }],
           }}
         >
-          <Text style={styles.textKantor}>
-            Kantor Imigrasi Kelas 1 - Manado
-          </Text>
+          <Text style={styles.textKantor}>{item.name}</Text>
           <Text style={styles.textKantorTipe}>Government Complex</Text>
 
           {/* Action Buttons */}
@@ -192,17 +203,19 @@ const OfficeDetail = ({ navigation }) => {
               justifyContent: "space-between",
             }}
           >
-            <TouchableOpacity onPress={() => openMapsApp(VarAddress)}>
+            <TouchableOpacity onPress={() => openMapsApp(item.nameGoogleMaps)}>
               <Button1Direction />
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => Linking.openURL(`tel:${VarPhoneNumber}`)}
+              onPress={() => Linking.openURL(`tel:${item.callCenter}`)}
             >
               <Button2Call />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => Linking.openURL(`${VarWebsite}`)}>
+            <TouchableOpacity
+              onPress={() => Linking.openURL(`https://${item.website}`)}
+            >
               <Button3Website />
             </TouchableOpacity>
           </View>
@@ -220,33 +233,31 @@ const OfficeDetail = ({ navigation }) => {
               <Text style={styles.textDetail}>Details</Text>
               {/* Hours information  */}
               <View style={styles.hoursContainer}>
-                <Text style={styles.textLabel}>Hours</Text>
-                <Text style={styles.textItem}>9 AM - 10 PM</Text>
+                <Text style={styles.textLabel}>Open Hours</Text>
+                <Text style={styles.textItem}>{item.openHours}</Text>
               </View>
               {/* Hours information  */}
 
               <View style={styles.secondContainer}>
                 {/* Pohone Container  */}
+                {/* DIGANTI jadi call center - rogerwagiu */}
                 <View style={styles.phoneContainer}>
-                  <Text style={styles.textLabel}>Phone</Text>
-                  <Text style={styles.textItem}>+62 811 43260010</Text>
+                  <Text style={styles.textLabel}>Call Center</Text>
+                  <Text style={styles.textItem}>{item.callCenter}</Text>
                 </View>
                 {/* Pohone Container  */}
 
                 {/* Website Container  */}
                 <View style={styles.webContainer}>
                   <Text style={styles.textLabel}>Website</Text>
-                  <Text style={styles.textItem}>manado.imigrasi.go.id</Text>
+                  <Text style={styles.textItem}>{item.website}</Text>
                 </View>
                 {/* Website Container  */}
 
                 {/* Address Container */}
                 <View style={{ marginTop: verticalScale(20) }}>
                   <Text style={styles.textLabel}>Address</Text>
-                  <Text style={styles.textItemAddress}>
-                    l. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado,
-                    Sulawesi Utara
-                  </Text>
+                  <Text style={styles.textItemAddress}>{item.address}</Text>
                 </View>
                 {/* Address Container  */}
               </View>
@@ -299,7 +310,9 @@ const styles = StyleSheet.create({
   },
   hoursContainer: {
     backgroundColor: "#213545",
-    height: verticalScale(72),
+    // height: verticalScale(72),
+    paddingTop: verticalScale(15),
+    paddingBottom: verticalScale(15),
     width: "100%",
     paddingLeft: horizontalScale(20),
     marginTop: verticalScale(25),

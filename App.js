@@ -21,7 +21,7 @@ const App = () => {
   if (!fonstLoaded) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Fetching Fonts</Text>
+        {/* <Text>Fetching Fonts</Text> */}
       </View>
     );
   }

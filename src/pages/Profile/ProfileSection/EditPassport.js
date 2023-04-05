@@ -109,28 +109,28 @@ const EditPassport = ({ navigation }) => {
   const handleError = async () => {
     await new Promise((resolve, reject) => {
       if (data.surename === "") {
-        alert("Surename is required");
+        alert("'Surename' information field is required!");
         reject(false);
       } else if (data.givenName === "") {
-        alert("Given Name is required");
+        alert("'Given Name' information field is required!");
         reject(false);
       } else if (data.sex === "") {
-        alert("Sex is required");
+        alert("'Sex' information field is required!!");
         reject(false);
       } else if (data.nationality === "") {
-        alert("Nationality is required");
+        alert("'Nationality' information field is required!");
         reject(false);
       } else if (data.address === "") {
-        alert("Address is required");
+        alert("'Address' information field is required!");
         reject(false);
       } else if (data.passportId === "") {
-        alert("Passport ID is required");
+        alert("'Passport ID' information field is required!");
         reject(false);
       } else if (data.stayPermit === "") {
-        alert("Stay Permit is required");
+        alert("'Stay Permit' information field is required!");
         reject(false);
       } else if (data.passportImage === null) {
-        alert("Passport Photo is required");
+        alert("'Passport Photo' information field is required!");
         reject(false);
       }
       resolve(true);
@@ -203,7 +203,7 @@ const EditPassport = ({ navigation }) => {
             <Text style={styles.ProfileItemName}>Sex</Text>
             <TouchableOpacity onPress={() => setModalSex(true)}>
               <Text style={styles.textValue}>
-                {data.sex ? data.sex : "Chose"}
+                {data.sex ? data.sex : "Choose"}
               </Text>
             </TouchableOpacity>
           </View>
@@ -402,7 +402,7 @@ const EditPassport = ({ navigation }) => {
             onBackPress={() => setModalSex(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
-            <Text style={styles.label}>Chose your gender</Text>
+            <Text style={styles.label}>Choose your gender</Text>
             <SelectList
               boxStyles={{ backgroundColor: "#C7C7C7" }}
               dropdownStyles={{ backgroundColor: "#C7C7C7" }}
@@ -425,7 +425,7 @@ const EditPassport = ({ navigation }) => {
             onBackPress={() => setModalNationality(false)}
           />
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
-            <Text style={styles.label}>Chose your Nationality</Text>
+            <Text style={styles.label}>Choose your Nationality</Text>
             <SelectList
               boxStyles={{ backgroundColor: "#C7C7C7" }}
               dropdownStyles={{ backgroundColor: "#C7C7C7" }}
