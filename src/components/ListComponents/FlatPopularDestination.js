@@ -20,12 +20,18 @@ const FlatPopularDestination = ({ navigation }) => {
         />
         <View style={styles.bottomContainer}>
           <View style={styles.textContainer}>
-            <Text style={styles.textDestination}>{item.destination}</Text>
-            <Text style={styles.textLocation}>{item.location}</Text>
+            <Text numberOfLines={1} style={styles.textDestination}>
+              {item.destination}
+            </Text>
+            <Text numberOfLines={1} style={styles.textLocation}>
+              {item.location}
+            </Text>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("DestionationDetail")}
+              onPress={() =>
+                navigation.navigate("DestionationDetail", { item: item })
+              }
               style={styles.buttonStyle}
               activeOpacity={0.8}
             >

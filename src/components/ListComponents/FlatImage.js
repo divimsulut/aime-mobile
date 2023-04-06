@@ -1,16 +1,17 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
-import React, {version} from 'react';
-import {horizontalScale, moderateScale, verticalScale} from '../../constant';
-import {ImageLandscape3} from '../../assets/images';
+import { StyleSheet, Text, View, Image } from "react-native";
+import React, { version } from "react";
+import { horizontalScale, moderateScale, verticalScale } from "../../constant";
+import { ImageLandscape3 } from "../../assets/images";
 
-const FlatImage = ({item}) => {
+const FlatImage = ({ item }) => {
   return (
     <View
       style={{
         marginHorizontal: horizontalScale(12),
-      }}>
+      }}
+    >
       <Image
-        source={{uri: item.image}}
+        source={{ uri: item }}
         style={{
           width: horizontalScale(90),
           height: verticalScale(90),

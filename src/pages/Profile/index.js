@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   Alert,
   Modal,
+  RefreshControl,
 } from "react-native";
 import React, { Component, useState } from "react";
 import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
 import { getCurrentUser } from "../../config";
+import { verticalScale } from "../../constant";
 
 import { ColorB_White, ColorC, ColorAA } from "../../constant";
 
@@ -28,6 +30,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   console.log(user);
 
   React.useEffect(() => {
@@ -61,7 +64,25 @@ const AIME_SettingsScreen = ({ navigation }) => {
         backgroundColor="transparent"
         backBtn={false}
       />
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        refreshControl={
+          <RefreshControl
+            colors={["#12365D", "#021726"]}
+            progressViewOffset={verticalScale(80)}
+            refreshing={isRefreshing}
+            onRefresh={() => {
+              setIsRefreshing(true);
+              getCurrentUser()
+                .then((user) => {
+                  setUser(user);
+                })
+                .catch((err) => console.log(err))
+                .finally(() => setIsRefreshing(false));
+            }}
+          />
+        }
+      >
         {/* PROFILE CARD */}
         <View style={styles.ProfileCardParent}>
           <View
@@ -148,25 +169,33 @@ const AIME_SettingsScreen = ({ navigation }) => {
           <Text style={styles.H1}>Settings</Text>
           <View style={styles.SettingsItem}>
             <TouchableOpacity
+              activeOpacity={0.8}
               onPress={() => navigation.navigate("Profile_Notification")}
             >
               <Settings_Notification />
             </TouchableOpacity>
           </View>
           <View style={styles.SettingsItem}>
-            <TouchableOpacity onPress={() => navigation.navigate("Profile_PP")}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate("Profile_PP")}
+            >
               <Settings_PP />
             </TouchableOpacity>
           </View>
           <View style={styles.SettingsItem}>
             <TouchableOpacity
+              activeOpacity={0.8}
               onPress={() => navigation.navigate("Profile_AboutApp")}
             >
               <Settings_About />
             </TouchableOpacity>
           </View>
           <View style={styles.SettingsItem}>
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => setModalVisible(true)}
+            >
               <Settings_LogOut />
             </TouchableOpacity>
 

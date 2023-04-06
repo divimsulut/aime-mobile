@@ -19,13 +19,21 @@ import FlatImage from "../../../components/ListComponents/FlatImage";
 import { DataImage } from "../../../data";
 import { Shadow } from "react-native-shadow-2";
 import { Header } from "../../../components";
+import { ScrollView } from "react-native";
 
-const DestionationDetail = ({ navigation }) => {
+const DestionationDetail = ({ navigation, route }) => {
+  const { item } = route.params;
+  console.log(item.image);
   return (
     <View style={styles.container}>
-      <Image source={ImageLandscape3} />
       <Header navigation={navigation} />
-      <View style={styles.detailContainer}>
+      <View style={{ height: "47%", width: "100%" }}>
+        <Image
+          source={{ uri: item.image }}
+          style={{ resizeMode: "cover", flex: 1 }}
+        />
+      </View>
+      <ScrollView style={styles.detailContainer}>
         <Text
           style={{
             fontFamily: "Poppins-ExtraBold",
@@ -33,7 +41,7 @@ const DestionationDetail = ({ navigation }) => {
             color: "white",
           }}
         >
-          Bunaken Island
+          {item.destination}
         </Text>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Svg width="21" height="21" viewBox="0 0 21 21">
@@ -47,10 +55,11 @@ const DestionationDetail = ({ navigation }) => {
               marginLeft: horizontalScale(3),
             }}
           >
-            Manado, North Minahasa
+            {item.location}
           </Text>
         </View>
         <Text
+          numberOfLines={3}
           style={{
             fontFamily: "Poppins-Medium",
             fontSize: moderateScale(15),
@@ -58,9 +67,7 @@ const DestionationDetail = ({ navigation }) => {
             marginTop: verticalScale(28),
           }}
         >
-          Bunaken is an island of 8 km2, part of the Bunaken National Marine
-          Park. Bunaken is located at the northern tip of the island of
-          Sulawesi, Indonesia ...
+          {item.description}
         </Text>
         <Text
           style={{
@@ -74,7 +81,7 @@ const DestionationDetail = ({ navigation }) => {
         </Text>
         <View>
           <FlatList
-            data={DataImage}
+            data={item.previewImage}
             keyExtractor={(item) => item.key}
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -105,7 +112,8 @@ const DestionationDetail = ({ navigation }) => {
             </TouchableOpacity>
           </Shadow>
         </View>
-      </View>
+        <View style={{ height: 100 }} />
+      </ScrollView>
     </View>
   );
 };
@@ -119,7 +127,7 @@ const styles = StyleSheet.create({
   detailContainer: {
     backgroundColor: "#021726",
     // flex: 1,
-    height: verticalScale(548),
+    height: "56%",
     width: "100%",
     position: "absolute",
     bottom: 0,

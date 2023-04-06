@@ -9,18 +9,22 @@ const FlatCard = ({ item, navigation }) => {
     <TouchableOpacity
       style={styles.flatCardContainer}
       activeOpacity={0.8}
-      onPress={() => navigation.navigate("DestionationDetail")}
+      onPress={() => navigation.navigate("DestionationDetail", { item: item })}
     >
       <Image source={{ uri: item.image }} style={styles.image} />
       <View style={styles.detailContainer}>
         <View style={{ marginTop: verticalScale(5) }}>
-          <Text style={styles.textDestination}>{item.destination}</Text>
-          <Text style={styles.textAddress}>{item.location}</Text>
+          <Text numberOfLines={1} style={styles.textDestination}>
+            {item.destination}
+          </Text>
+          <Text numberOfLines={2} style={styles.textAddress}>
+            {item.location}
+          </Text>
         </View>
-        <View style={styles.distanceContainer}>
+        {/* <View style={styles.distanceContainer}>
           <IconPin />
           <Text style={styles.textDistance}>(25.3 km)</Text>
-        </View>
+        </View> */}
       </View>
       <View style={styles.viewAllContainer}>
         <Text style={styles.textViewAll}>View All</Text>

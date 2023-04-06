@@ -279,7 +279,7 @@ const Tabs = () => {
 const Router = () => {
   return (
     <Stack.Navigator
-      initialRouteName="SignIn"
+      initialRouteName="Splash"
       // initialRouteName="EditPassport" //Bypass langsung ke Profile SEMENTARA
     >
       <Stack.Screen
