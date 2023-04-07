@@ -37,6 +37,12 @@ const SignIn = ({ navigation }) => {
     setIsLoading(true);
     signIn({ email, password })
       .then((user) => {
+        if (user === "email not verified") {
+          alert(
+            "Please verify your email. Verification link has sent to your email address"
+          );
+          return;
+        }
         console.log("after success login: ", user);
         navigation.dispatch(
           CommonActions.reset({
@@ -47,7 +53,7 @@ const SignIn = ({ navigation }) => {
       })
       .catch((error) => {
         // clear input when error
-        // console.log("error in sign in: ", error.message);
+        console.log("error in sign in: ", error);
         setEmail("");
         setPassword("");
         setErrorColor("#AC253A");

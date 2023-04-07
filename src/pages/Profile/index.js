@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import React, { Component, useState } from "react";
 import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
-import { getCurrentUser } from "../../config";
+import { getCurrentUser, signOutUser } from "../../config";
 import { verticalScale } from "../../constant";
 
 import { ColorB_White, ColorC, ColorAA } from "../../constant";
@@ -23,7 +23,6 @@ import {
   Settings_Notification,
   Settings_PP,
 } from "../../components";
-import { signOut } from "../../config";
 import { IconCross } from "../../assets";
 
 const AIME_SettingsScreen = ({ navigation }) => {
@@ -216,7 +215,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
                   <TouchableOpacity
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => {
-                      signOut(navigation);
+                      signOutUser(navigation);
                       setModalVisible(!modalVisible);
                     }}
                   >

@@ -13,7 +13,11 @@ import { Svg, Path, G, Defs, ClipPath } from "react-native-svg";
 
 import { IconPencilBlue, ImageLandscape3, ImagePeople } from "../../../assets";
 import { EditProfileHeader } from "../../../components";
-import { getCurrentUser, handleEditName } from "../../../config";
+import {
+  getCurrentUser,
+  handleEditEmail,
+  handleEditName,
+} from "../../../config";
 import axios from "axios";
 import moment from "moment";
 const seperator = 2;
@@ -28,6 +32,8 @@ const AIME_EditProfile = ({ navigation }) => {
 
   // modals
   const [modalName, setModalName] = useState(false);
+  const [modalEmail, setModalEmail] = useState(false);
+  const [modalPhoneNum, setModalPhoneNum] = useState(false);
 
   // get profile data
   useEffect(() => {
@@ -127,7 +133,10 @@ const AIME_EditProfile = ({ navigation }) => {
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Email</Text>
-            <TouchableOpacity style={{ flexDirection: "row" }}>
+            <TouchableOpacity
+              onPress={() => setModalEmail(true)}
+              style={{ flexDirection: "row" }}
+            >
               <Text style={{ marginRight: 4 }}>{email}</Text>
               <IconPencilBlue width={10} height={10} />
             </TouchableOpacity>
@@ -228,6 +237,25 @@ const AIME_EditProfile = ({ navigation }) => {
             <TextInput
               value={name}
               onChangeText={(text) => setName(text)}
+              style={styles.textInput}
+            />
+          </View>
+        </View>
+      </Modal>
+      <Modal visible={modalEmail} animationType={"slide"}>
+        <View style={{ backgroundColor: "#E6E6E6", flex: 1 }}>
+          <EditProfileHeader
+            title={"Edit Email Address"}
+            onDonePress={() =>
+              handleEditEmail(email).then(() => setModalEmail(false))
+            }
+            onBackPress={() => setModalEmail(false)}
+          />
+          <View style={{ marginVertical: 19, marginHorizontal: 29 }}>
+            <Text style={styles.label}>Email Address</Text>
+            <TextInput
+              value={email}
+              onChangeText={(text) => setEmail(text)}
               style={styles.textInput}
             />
           </View>

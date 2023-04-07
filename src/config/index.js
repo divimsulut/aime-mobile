@@ -10,6 +10,8 @@ import {
   setPersistence,
   GoogleAuthProvider,
   signInWithPopup,
+  updateEmail,
+  signOut,
 } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -90,8 +92,11 @@ export const signIn = ({ email, password }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         if (!userCredential.user.emailVerified) {
-          alert("Please verify your email first");
-          signOut()
+          resolve("email not verified");
+          sendEmailVerification(userCredential.user)
+            .then(() => console.log("email sent"))
+            .catch((err) => console.log(err));
+          signOut(auth)
             .then(() => console.log("sign out"))
             .catch((error) => console.log(error));
           return;
@@ -123,7 +128,7 @@ export const getCurrentUser = () =>
   });
 
 // sign out function
-export const signOut = async (navigation) => {
+export const signOutUser = async (navigation) => {
   await auth
     .signOut()
     .then(() => navigation.replace("SignIn"))
@@ -136,5 +141,21 @@ export const handleEditName = async (name) => {
     displayName: name,
   })
     .then(() => console.log("name updated"))
+    .catch((error) => console.log(error));
+};
+
+// edit email
+export const handleEditEmail = async (email) => {
+  await updateEmail(auth.currentUser, email)
+    .then(() => console.log("email updated"))
+    .catch((error) => console.log(error));
+};
+
+// edit phoneNumber
+export const handleEditPhoneNum = async (num) => {
+  await updateProfile(auth.currentUser, {
+    phoneNumber: num,
+  })
+    .then(() => console.log("phone number updated"))
     .catch((error) => console.log(error));
 };
