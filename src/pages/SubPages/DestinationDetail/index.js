@@ -5,6 +5,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import React from "react";
 import { ImageLandscape3 } from "../../../assets/images";
@@ -24,6 +25,14 @@ import { ScrollView } from "react-native";
 const DestionationDetail = ({ navigation, route }) => {
   const { item } = route.params;
   console.log(item.image);
+
+  const openMapsApp = (address) => {
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+      address
+    )}`;
+    Linking.openURL(url);
+  };
+
   return (
     <View style={styles.container}>
       <Header navigation={navigation} />
@@ -97,6 +106,7 @@ const DestionationDetail = ({ navigation, route }) => {
             offset={[0, 10]}
           >
             <TouchableOpacity
+              onPress={() => openMapsApp(item.destination)}
               style={styles.buttonContainer}
               activeOpacity={0.8}
             >

@@ -18,6 +18,7 @@ import {
   ButtonGoogle,
   ButtonLogin,
   Input,
+  LoadingModal,
 } from "../../../components";
 import { IconBack } from "../../../assets";
 import { signIn } from "../../../config";
@@ -29,9 +30,11 @@ const SignIn = ({ navigation }) => {
   const [errorMess, setErrorMess] = useState("");
   const [errorColor, setErrorColor] = useState("transparent");
   const shakeAnimation = useRef(new Animated.Value(0)).current;
+  const [isLoading, setIsLoading] = useState(false);
   console.log(email, password);
 
   const handleSignIn = () => {
+    setIsLoading(true);
     signIn({ email, password })
       .then((user) => {
         console.log("after success login: ", user);
@@ -44,11 +47,26 @@ const SignIn = ({ navigation }) => {
       })
       .catch((error) => {
         // clear input when error
-        console.log("error in sign in: ", error);
+        // console.log("error in sign in: ", error.message);
         setEmail("");
         setPassword("");
         setErrorColor("#AC253A");
-        setErrorMess("Email or password is incorrect");
+        switch (error.code) {
+          case "auth/network-request-failed":
+            setErrorMess("Network error. Please check your connection!");
+            break;
+
+          case "auth/internal-error":
+            setErrorMess("Network error. Please check your connection!");
+            break;
+
+          default:
+            setErrorMess("Email or Password is incorrect");
+            break;
+        }
+        // error.code === "auth/network-request-failed"
+        //   ? setErrorMess("Network error. Check your connection!")
+        //   : setErrorMess("Email or password is incorrect");
         Animated.sequence([
           Animated.timing(shakeAnimation, {
             toValue: 10,
@@ -71,7 +89,8 @@ const SignIn = ({ navigation }) => {
             useNativeDriver: true,
           }),
         ]).start();
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const animatedStyle = {
@@ -177,6 +196,7 @@ const SignIn = ({ navigation }) => {
           </View>
           {/* Button google and facebook end*/}
         </View>
+        {isLoading && <LoadingModal />}
       </View>
     </TouchableWithoutFeedback>
   );
