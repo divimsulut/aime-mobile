@@ -14,14 +14,18 @@ import { Svg, Path, G, Defs, ClipPath } from "react-native-svg";
 import { IconPencilBlue, ImageLandscape3, ImagePeople } from "../../../assets";
 import { EditProfileHeader } from "../../../components";
 import {
+  auth,
   getCurrentUser,
   handleEditEmail,
   handleEditName,
+  sendVCode,
 } from "../../../config";
 import axios from "axios";
 import moment from "moment";
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.3)";
+import { SelectList } from "react-native-dropdown-select-list";
+import { PhoneAuthProvider } from "firebase/auth";
 
 const AIME_EditProfile = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -29,6 +33,9 @@ const AIME_EditProfile = ({ navigation }) => {
   const [phone, setPhone] = useState("");
   const [image, setImage] = useState("");
   const [data, setData] = useState({});
+  const [phoneCode, setPhoneCode] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  console.log(phone);
 
   // modals
   const [modalName, setModalName] = useState(false);
@@ -69,6 +76,13 @@ const AIME_EditProfile = ({ navigation }) => {
         console.log(err);
       });
   }, []);
+
+  // set phone number each update
+  useEffect(() => {
+    setPhone("+" + phoneCode + phoneNum);
+  }, [phoneCode, phoneNum]);
+
+  // const [vCode, setVCode] = useState("");
 
   return (
     <View style={{ flex: 1, backgroundColor: "#E6E6E6" }}>
@@ -144,8 +158,13 @@ const AIME_EditProfile = ({ navigation }) => {
 
           <View style={styles.ProfileItem}>
             <Text style={styles.ProfileItemName}>Phone</Text>
-            <TouchableOpacity style={{ flexDirection: "row" }}>
-              <Text style={{ marginRight: 4 }}>{phone}</Text>
+            <TouchableOpacity
+              onPress={() => setModalPhoneNum(true)}
+              style={{ flexDirection: "row" }}
+            >
+              <Text style={{ marginRight: 4 }}>
+                {phone === "+" ? "" : phone}
+              </Text>
               <IconPencilBlue width={10} height={10} />
             </TouchableOpacity>
           </View>
@@ -258,6 +277,75 @@ const AIME_EditProfile = ({ navigation }) => {
               onChangeText={(text) => setEmail(text)}
               style={styles.textInput}
             />
+          </View>
+        </View>
+      </Modal>
+      <Modal visible={modalPhoneNum} animationType={"slide"}>
+        <View style={{ backgroundColor: "#E6E6E6", flex: 1 }}>
+          <EditProfileHeader
+            title={"Edit Phone Number"}
+            onDonePress={() => {
+              // handleEditEmail(email).then(() => setModalEmail(false))
+            }}
+            onBackPress={() => setModalPhoneNum(false)}
+          />
+          <View style={{ marginVertical: 19, marginHorizontal: 29 }}>
+            <Text style={styles.label}>Phone No.</Text>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                keyboardType={"numeric"}
+                value={phoneCode}
+                onChangeText={(text) => setPhoneCode(text)}
+                style={{
+                  width: "20%",
+                  backgroundColor: "#C7C7C7",
+                  paddingVertical: 13,
+                  paddingHorizontal: 10,
+                  borderRadius: 10,
+                  marginTop: 4,
+
+                  fontFamily: "Poppins-Medium",
+                  fontSize: 18,
+                  color: "black",
+                }}
+                placeholder={"62"}
+              />
+              <TextInput
+                keyboardType={"numeric"}
+                value={phoneNum}
+                onChangeText={(text) => setPhoneNum(text)}
+                style={{
+                  marginLeft: "2%",
+                  width: "78%",
+                  backgroundColor: "#C7C7C7",
+                  paddingVertical: 13,
+                  paddingHorizontal: 10,
+                  borderRadius: 10,
+                  marginTop: 4,
+
+                  fontFamily: "Poppins-Medium",
+                  fontSize: 18,
+                  color: "black",
+                }}
+                placeholder={"8123456789"}
+              />
+            </View>
+            {/* <TouchableOpacity
+              onPress={() => sendVCode(phone)}
+              style={{
+                width: "100%",
+                backgroundColor: "#42AA93",
+                paddingHorizontal: 5,
+                paddingVertical: 10,
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 10,
+                borderRadius: 15,
+              }}
+            >
+              <Text>Send Verification Code</Text>
+            </TouchableOpacity> */}
+            <Text>// This field still in progress</Text>
           </View>
         </View>
       </Modal>

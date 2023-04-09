@@ -5,6 +5,7 @@ import Router from "./src/router";
 import { useFonts } from "expo-font";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
 
 const App = () => {
   // Fonts import
@@ -20,9 +21,12 @@ const App = () => {
   // const [IsReady, SetIsReady] = useState(false);
   if (!fonstLoaded) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {/* <Text>Fetching Fonts</Text> */}
-      </View>
+      <LinearGradient
+        colors={["#12365D", "#021726"]}
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      >
+        <Text>Fetching Fonts</Text>
+      </LinearGradient>
     );
   }
 

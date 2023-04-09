@@ -193,7 +193,7 @@ const HomeNextGen = ({ navigation }) => {
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => {
-                navigation.navigate("EditPassport");
+                navigation.replace("EditPassport");
                 setModal(false);
               }}
               style={styles.bottonContainer}

@@ -22,7 +22,7 @@ import {
 } from "../../../components";
 import { IconBack } from "../../../assets";
 import { signIn } from "../../../config";
-import { CommonActions, useNavigation } from "@react-navigation/native";
+import { CommonActions } from "@react-navigation/native";
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");

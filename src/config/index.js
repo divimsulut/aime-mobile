@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+import { CommonActions } from "@react-navigation/native";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -12,6 +13,7 @@ import {
   signInWithPopup,
   updateEmail,
   signOut,
+  PhoneAuthProvider,
 } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -131,7 +133,14 @@ export const getCurrentUser = () =>
 export const signOutUser = async (navigation) => {
   await auth
     .signOut()
-    .then(() => navigation.replace("SignIn"))
+    .then(() =>
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: "SignIn" }],
+        })
+      )
+    )
     .catch((error) => console.log("sign out function: ", error));
 };
 
@@ -158,4 +167,12 @@ export const handleEditPhoneNum = async (num) => {
   })
     .then(() => console.log("phone number updated"))
     .catch((error) => console.log(error));
+};
+
+// send verification code
+export const sendVCode = async (phone) => {
+  console.log("sent: ", phone);
+  // const provider = new PhoneAuthProvider(auth);
+  const verificationId = await auth.verifyPhoneNumber(phone);
+  console.log("yuhu: ", verificationId);
 };
