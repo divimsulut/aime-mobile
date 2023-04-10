@@ -144,6 +144,15 @@ export const signOutUser = async (navigation) => {
     .catch((error) => console.log("sign out function: ", error));
 };
 
+// edit profile picture
+export const handleEditProfilePic = async (uri) => {
+  await updateProfile(auth.currentUser, {
+    photoURL: uri,
+  })
+    .then(() => console.log("profile pic updated"))
+    .catch((error) => console.log(error));
+};
+
 // edit name
 export const handleEditName = async (name) => {
   await updateProfile(auth.currentUser, {

@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   Modal,
+  RefreshControl,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Svg, Path, G, Defs, ClipPath } from "react-native-svg";
@@ -18,20 +19,29 @@ import {
   getCurrentUser,
   handleEditEmail,
   handleEditName,
+  handleEditProfilePic,
   sendVCode,
 } from "../../../config";
 import axios from "axios";
 import moment from "moment";
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.3)";
+import { Shadow } from "react-native-shadow-2";
 import { SelectList } from "react-native-dropdown-select-list";
 import { PhoneAuthProvider } from "firebase/auth";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "../../../constant";
+import * as ImagePicker from "expo-image-picker";
 
 const AIME_EditProfile = ({ navigation }) => {
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [data, setData] = useState({});
   const [phoneCode, setPhoneCode] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
@@ -41,6 +51,7 @@ const AIME_EditProfile = ({ navigation }) => {
   const [modalName, setModalName] = useState(false);
   const [modalEmail, setModalEmail] = useState(false);
   const [modalPhoneNum, setModalPhoneNum] = useState(false);
+  const [modalImage, setModalImage] = useState(false);
 
   // get profile data
   useEffect(() => {
@@ -49,6 +60,7 @@ const AIME_EditProfile = ({ navigation }) => {
         setName(user.displayName);
         setEmail(user.email);
         setPhone(user.phoneNumber);
+        setImage(user.photoURL);
       })
       .catch((err) => {
         console.log(err);
@@ -82,7 +94,30 @@ const AIME_EditProfile = ({ navigation }) => {
     setPhone("+" + phoneCode + phoneNum);
   }, [phoneCode, phoneNum]);
 
-  // const [vCode, setVCode] = useState("");
+  // Pick an image function for passport photo
+  const pickImage = async () => {
+    return new Promise(async (resolve, reject) => {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        quality: 1,
+      });
+
+      if (result.canceled) {
+        result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: true,
+          quality: 1,
+        });
+      }
+
+      if (!result.canceled) {
+        resolve(result.assets[0].uri);
+      } else {
+        reject("Image not selected");
+      }
+    });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "#E6E6E6" }}>
@@ -94,11 +129,45 @@ const AIME_EditProfile = ({ navigation }) => {
         onDonePress={() => navigation.goBack()}
         backButton={false}
       />
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.container}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            colors={["#12365D", "#021726"]}
+            // progressViewOffset={verticalScale(0)}
+            refreshing={isRefreshing}
+            onRefresh={() => {
+              setIsRefreshing(true);
+              getCurrentUser()
+                .then((user) => {
+                  setName(user.displayName);
+                  setEmail(user.email);
+                  setPhone(user.phoneNumber);
+                  setImage(user.photoURL);
+                })
+                .catch((err) => console.log(err))
+                .finally(() => setIsRefreshing(false));
+            }}
+          />
+        }
+      >
         {/* Profile Picture */}
         <View style={styles.ProfilePictureContainer}>
-          <TouchableOpacity activeOpacity={0.6}>
-            <View style={styles.ProfilePicture}>
+          <TouchableOpacity
+            onPress={() => {
+              pickImage()
+                .then((image) => handleEditProfilePic(image))
+                .catch((err) => console.log(err));
+            }}
+            activeOpacity={0.6}
+          >
+            <Shadow
+              startColor="rgba(0, 0, 0, 0.03)"
+              offset={[0, 7]}
+              distance={30}
+              style={styles.ProfilePicture}
+            >
               <Image
                 source={{
                   uri: image
@@ -108,7 +177,7 @@ const AIME_EditProfile = ({ navigation }) => {
                 // style={{height: 120, width: 120, borderRadius: 100}}
                 style={styles.ProfileImage}
               />
-            </View>
+            </Shadow>
             <View style={styles.ProfilePictureEditButton}>
               <Svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -349,6 +418,13 @@ const AIME_EditProfile = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+      {/* <Modal visible={modalImage} transparent={true} animationType={"slide"}>
+        <View style={{ backgroundColor: "rgba(0,0,0,0.5)", flex: 1 }}>
+          <View>
+            <
+          </View>
+        </View>
+      </Modal> */}
     </View>
   );
 };
@@ -357,7 +433,8 @@ export default AIME_EditProfile;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    // padding: 20,
+    paddingHorizontal: 20,
   },
   content: {
     padding: 15,
@@ -409,6 +486,8 @@ const styles = StyleSheet.create({
   },
   ProfilePictureContainer: {
     alignItems: "center",
+    marginTop: 20,
+    // backgroundColor: "green",
   },
   ProfilePictureEditButton: {
     backgroundColor: "#00284D",
@@ -424,18 +503,19 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     borderRadius: 100,
+    backgroundColor: "white",
 
     overflow: "hidden",
 
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 12,
+    // },
+    // shadowOpacity: 0.58,
+    // shadowRadius: 16.0,
 
-    elevation: 24,
+    // elevation: 24,
   },
 
   textSection: {
