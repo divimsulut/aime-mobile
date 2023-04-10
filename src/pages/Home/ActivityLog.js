@@ -8,7 +8,8 @@ import moment from "moment";
 import LottieView from "lottie-react-native";
 import { NoData } from "../../assets";
 
-const ActivityLog = ({ navigation }) => {
+const ActivityLog = ({ navigation, route }) => {
+  const { item } = route.params;
   const [startDate, setStartDate] = useState(moment().format("YYYY-MM-DD")); // Start of week
   const [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD")); // End of week
   const [selectDate, setSelectDate] = useState(
@@ -17,7 +18,7 @@ const ActivityLog = ({ navigation }) => {
   const scrollViewRef = useRef(); // Ref for scrollview
 
   // Filter data based on selected date (in week)
-  const filteredData = DataCheckinhist.filter((item) => {
+  const filteredData = item.filter((item) => {
     const itemDate = moment(item.date);
     return (
       itemDate.isSameOrAfter(startDate) && itemDate.isSameOrBefore(endDate)

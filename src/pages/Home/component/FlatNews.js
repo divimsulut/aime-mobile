@@ -21,7 +21,9 @@ const FlatNews = () => {
       <View style={styles.container}>
         <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.bottomContainer}>
-          <Text style={styles.textTitle}>{item.title}</Text>
+          <Text numberOfLines={4} style={styles.textTitle}>
+            {item.title}
+          </Text>
           <Text style={styles.textHighlight}>{item.highlight}</Text>
           <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.textButton}>Click here!</Text>

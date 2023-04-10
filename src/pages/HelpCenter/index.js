@@ -166,7 +166,11 @@ export default function HelpCenter({ navigation }) {
           </View>
 
           <View className="flex px-6 pb-28">
-            <View className="flex mt-10 h-20 w-[px] justify-center flex-row items-center space-x-2 rounded-3xl bg-[#C69D0E]">
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate("HelpChat")}
+              className="flex mt-10 h-20 w-[px] justify-start px-4 flex-row items-center space-x-2 rounded-3xl bg-[#C69D0E]"
+            >
               {/* Qustion Section */}
               <View className=" flex flex-col items-center justify-center  w-12 h-12 bg-[#002347] rounded-full ">
                 <View className="absolute flex flex-row items-center justify-center mt-2 w-8 h-8 bg-[#001424] border border-white rounded-full">
@@ -181,24 +185,10 @@ export default function HelpCenter({ navigation }) {
                   Still have any question?
                 </Text>
                 <Text className="text-white text-left ml-2 text-xs ">
-                  Start chat with "HELP"
+                  Press to start chat now
                 </Text>
               </View>
-              {/* Button Section */}
-              <View className="">
-                <TouchableOpacity
-                  className="flex flex-row items-center justify-center  w-[110px] h-9 border border-white rounded-2xl"
-                  onPress={() => navigation.navigate("HelpChat")}
-                >
-                  <Text
-                    className="text-white text-left ml-2 text-base "
-                    id="chatBtn"
-                  >
-                    Start Chat
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

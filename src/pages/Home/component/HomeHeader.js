@@ -23,11 +23,20 @@ import { LinearGradient } from "expo-linear-gradient";
 import { BlurView } from "expo-blur";
 import { getCurrentUser } from "../../../config";
 import axios from "axios";
+import moment from "moment";
 
 const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [lastHistory, setLastHistory] = useState(null);
+  const [history, setHistory] = useState([
+    {
+      destination: "",
+      time: "",
+      status: "",
+      date: "",
+    },
+  ]);
 
   useEffect(() => {
     getCurrentUser()
@@ -46,8 +55,14 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
     axios
       .get(`https://sharp-faceted-taleggio.glitch.me/destination/history/${id}`)
       .then(function (response) {
-        console.log(response.data.slice(-1)[0]);
         setLastHistory(response.data.slice(-1)[0]);
+        const hist = response.data.map((item) => ({
+          destination: item.destination.destinationName,
+          time: moment(item.timestamp).format("h:mm A"),
+          status: item.status === "in" ? "Check-In" : "Check-Out",
+          date: moment(item.timestamp).format("YYYY-MM-DD"),
+        }));
+        setHistory(hist);
       })
       .catch(function (error) {
         console.log(error);
@@ -95,7 +110,9 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={() => navigation.navigate("ActivityLog")}
+                onPress={() =>
+                  navigation.navigate("ActivityLog", { item: history })
+                }
               >
                 <Svg
                   height={30}

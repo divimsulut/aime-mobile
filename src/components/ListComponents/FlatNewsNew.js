@@ -16,7 +16,9 @@ const FlatNewsNew = ({ navigation, newsData }) => {
       <View style={styles.container}>
         <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.bottomContainer}>
-          <Text style={styles.textTitle}>{item.title}</Text>
+          <Text numberOfLines={4} style={styles.textTitle}>
+            {item.title}
+          </Text>
           {/* <Text style={styles.textHighlight} numberOfLines={1}>
             {item.content}
           </Text> */}

@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 import { Header } from "../../components";
@@ -15,7 +15,7 @@ const Notification = ({ navigation }) => {
         label="Notifications"
         navigation={navigation}
         color="black"
-        backgroundColor="transparent"
+        backgroundColor={Platform.OS === "android" ? "#E6E6E6" : "transparent"}
       />
       <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.content}>

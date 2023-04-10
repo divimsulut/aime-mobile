@@ -20,11 +20,13 @@ import { Svg, Defs, Mask, G, Path, ClipPath } from "react-native-svg";
 import axios from "axios";
 import { IconRedWarning } from "../../assets";
 import { getCurrentUser } from "../../config";
+import { ActivityIndicator } from "react-native";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   const [modal, setModal] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   // check if the user already provide passport data
   useEffect(() => {
@@ -61,6 +63,7 @@ const HomeNextGen = ({ navigation }) => {
 
   // get the news data
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get("https://sharp-faceted-taleggio.glitch.me/news")
       .then((res) => {
@@ -77,7 +80,8 @@ const HomeNextGen = ({ navigation }) => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
@@ -171,6 +175,7 @@ const HomeNextGen = ({ navigation }) => {
         <View style={styles.newsContainer}>
           <Text style={styles.label}>Imigration News</Text>
           <View style={{ alignItems: "center" }}>
+            <ActivityIndicator animating={isLoading} />
             <FlatNewsNew navigation={navigation} newsData={newsData} />
           </View>
         </View>
@@ -188,7 +193,7 @@ const HomeNextGen = ({ navigation }) => {
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => {
-                navigation.replace("EditPassport");
+                navigation.navigate("EditPassport");
                 setModal(false);
               }}
               style={styles.bottonContainer}

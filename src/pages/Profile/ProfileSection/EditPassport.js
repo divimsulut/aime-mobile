@@ -161,7 +161,7 @@ const EditPassport = ({ navigation }) => {
       <EditProfileHeader
         title={"Passport Information"}
         navigation={navigation}
-        backButton={false}
+        onBackPress={() => navigation.replace("Tabs")}
         onDonePress={() => {
           setIsLoading(true);
           handleDone();
@@ -592,6 +592,8 @@ const EditPassport = ({ navigation }) => {
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Select your stay permit type</Text>
             <SelectList
+              boxStyles={{ backgroundColor: "#C7C7C7" }}
+              dropdownStyles={{ backgroundColor: "#C7C7C7" }}
               data={stayPermit}
               save={"value"}
               search={false}

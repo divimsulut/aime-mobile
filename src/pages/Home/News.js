@@ -90,7 +90,11 @@ const styles = StyleSheet.create({
     top: verticalScale(-78),
     alignSelf: "center",
   },
-  radius: { borderRadius: moderateScale(20), overflow: "hidden" },
+  radius: {
+    borderRadius: moderateScale(20),
+    overflow: "hidden",
+    backgroundColor: Platform.OS === "android" ? "white" : "transparent",
+  },
   headlineMainContainer: {
     width: horizontalScale(330),
     overflow: "hidden",

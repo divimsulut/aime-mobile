@@ -16,6 +16,7 @@ import Button1Direction from "./components/Button1Direction";
 import Button2Call from "./components/Button2Call";
 import Button3Website from "./components/Button3Website";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import LoadingModal from "../../components";
 
 const OfficeDetail = ({ navigation, route }) => {
   // opacity
@@ -129,6 +130,7 @@ const OfficeDetail = ({ navigation, route }) => {
   //   "Jl. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado, Sulawesi Utara"
   // );
 
+  const [mapsLoad, setMapsLoad] = useState(false);
   const openMapsApp = (address) => {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
       address
@@ -143,8 +145,15 @@ const OfficeDetail = ({ navigation, route }) => {
     <View style={{ flex: 1 }}>
       <Header navigation={navigation} />
 
-      <View style={{ flex: 1 }}>
+      {mapsLoad && <LoadingModal />}
+      <View style={{ flex: 1, backgroundColor: "red" }}>
         <WebView
+          onLoad={() => {
+            setMapsLoad(true);
+          }}
+          onLoadEnd={() => {
+            setMapsLoad(false);
+          }}
           style={{ margin: -10, height: "10%" }}
           source={{
             //HTML catatan sementara -roger
