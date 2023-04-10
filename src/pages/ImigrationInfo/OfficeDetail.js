@@ -143,9 +143,9 @@ const OfficeDetail = ({ navigation, route }) => {
     <View style={{ flex: 1 }}>
       <Header navigation={navigation} />
 
-      <View style={{ flex: 1, backgroundColor: "red" }}>
+      <View style={{ flex: 1 }}>
         <WebView
-          style={{ margin: -10, backgroundColor: "green", height: "10%" }}
+          style={{ margin: -10, height: "10%" }}
           source={{
             //HTML catatan sementara -roger
             // style="width: 100%; overflow: hidden; height: 100%"
@@ -161,7 +161,7 @@ const OfficeDetail = ({ navigation, route }) => {
                     height="100%"
                     frameborder="0"
                     
-                    style="padding-top: -100px;"
+                    style="margin-top: -150px; padding-top: -200px; overflow: hidden"
                   >
                   </iframe>
                 </div>
