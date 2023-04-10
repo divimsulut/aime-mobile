@@ -170,7 +170,7 @@ const OfficeDetail = ({ navigation, route }) => {
                     height="100%"
                     frameborder="0"
                     
-                    style="padding-top: -100px;"
+                    style="margin-top: -150px; padding-top: -200px; overflow: hidden"
                   >
                   </iframe>
                 </div>
