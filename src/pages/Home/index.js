@@ -175,7 +175,7 @@ const HomeNextGen = ({ navigation }) => {
         <View style={styles.newsContainer}>
           <Text style={styles.label}>Imigration News</Text>
           <View style={{ alignItems: "center" }}>
-            <ActivityIndicator animating={isLoading} />
+            {isLoading && <ActivityIndicator animating={isLoading} />}
             <FlatNewsNew navigation={navigation} newsData={newsData} />
           </View>
         </View>

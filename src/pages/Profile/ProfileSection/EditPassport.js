@@ -93,23 +93,6 @@ const EditPassport = ({ navigation }) => {
   const [modalStayPermit, setModalStayPermit] = React.useState(false);
   const [modalDosp, setModalDosp] = React.useState(false);
 
-  // Pick an image function for passport photo
-  // const pickImage = async () => {
-  //   await new Promise(async (resolve, reject) => {
-  //     let result = await ImagePicker.launchImageLibraryAsync({
-  //       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-  //       allowsEditing: true,
-  //       quality: 1,
-  //     });
-
-  //     if (!result.canceled) {
-  //       resolve(result.assets[0].uri);
-  //     } else {
-  //       reject("canceled");
-  //     }
-  //   });
-  // };
-
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -125,20 +108,21 @@ const EditPassport = ({ navigation }) => {
   };
 
   const uploadImage = async (uri) => {
-    console.log("uri: ", uri);
-    const filename = uri.substring(uri.lastIndexOf("/") + 1);
-    const storageRef = ref(storage, `images/${filename}`);
-    const response = await fetch(uri);
-    const blob = await response.blob();
-    console.log(storageRef);
-    uploadBytes(storageRef, blob)
-      .then((snapshot) => {
-        console.log("Uploaded a blob or file!: ", snapshot);
-      })
-      .catch((error) => console.log("error: ", error));
-
-    // const url = await getDownloadURL(snapShot);
-    // console.log("url after upload: ", url);
+    setIsLoading(true);
+    try {
+      const filename = uri.substring(uri.lastIndexOf("/") + 1);
+      const storageRef = ref(storage, `images/${filename}`);
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      const snapshot = await uploadBytes(storageRef, blob);
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      console.log(downloadURL);
+      setData({ ...data, passportImage: downloadURL });
+    } catch (error) {
+      console.log("error uploading image: ", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // error checking
