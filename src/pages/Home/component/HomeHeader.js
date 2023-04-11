@@ -53,7 +53,7 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   // get last destination history
   const getLastHistory = (id) => {
     axios
-      .get(`https://sharp-faceted-taleggio.glitch.me/destination/history/${id}`)
+      .get(`https://aime-api.vercel.app/destination/history/${id}`)
       .then(function (response) {
         setLastHistory(response.data.slice(-1)[0]);
         const hist = response.data.map((item) => ({

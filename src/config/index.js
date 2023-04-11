@@ -15,6 +15,8 @@ import {
   signOut,
   PhoneAuthProvider,
 } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -185,3 +187,6 @@ export const sendVCode = async (phone) => {
   const verificationId = await auth.verifyPhoneNumber(phone);
   console.log("yuhu: ", verificationId);
 };
+
+// storage
+export const storage = getStorage(firebase);

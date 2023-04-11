@@ -18,7 +18,8 @@ import axios from "axios";
 import * as ImagePicker from "expo-image-picker";
 import { Upload } from "../../../assets";
 import AnimatedLottieView from "lottie-react-native";
-import { getCurrentUser } from "../../../config";
+import { getCurrentUser, storage } from "../../../config";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const EditPassport = ({ navigation }) => {
   //  Data passport
@@ -93,6 +94,22 @@ const EditPassport = ({ navigation }) => {
   const [modalDosp, setModalDosp] = React.useState(false);
 
   // Pick an image function for passport photo
+  // const pickImage = async () => {
+  //   await new Promise(async (resolve, reject) => {
+  //     let result = await ImagePicker.launchImageLibraryAsync({
+  //       mediaTypes: ImagePicker.MediaTypeOptions.Images,
+  //       allowsEditing: true,
+  //       quality: 1,
+  //     });
+
+  //     if (!result.canceled) {
+  //       resolve(result.assets[0].uri);
+  //     } else {
+  //       reject("canceled");
+  //     }
+  //   });
+  // };
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -101,8 +118,27 @@ const EditPassport = ({ navigation }) => {
     });
 
     if (!result.canceled) {
-      setData({ ...data, passportImage: result.assets[0].uri });
+      return result.assets[0].uri;
+    } else {
+      throw new Error("Image selection canceled");
     }
+  };
+
+  const uploadImage = async (uri) => {
+    console.log("uri: ", uri);
+    const filename = uri.substring(uri.lastIndexOf("/") + 1);
+    const storageRef = ref(storage, `images/${filename}`);
+    const response = await fetch(uri);
+    const blob = await response.blob();
+    console.log(storageRef);
+    uploadBytes(storageRef, blob)
+      .then((snapshot) => {
+        console.log("Uploaded a blob or file!: ", snapshot);
+      })
+      .catch((error) => console.log("error: ", error));
+
+    // const url = await getDownloadURL(snapShot);
+    // console.log("url after upload: ", url);
   };
 
   // error checking
@@ -142,7 +178,7 @@ const EditPassport = ({ navigation }) => {
     handleError()
       .then(() => {
         axios
-          .post("https://sharp-faceted-taleggio.glitch.me/user", data)
+          .post("https://aime-api.vercel.app/user", data)
           .then((res) => {
             console.log(res.data);
             navigation.replace("Tabs");
@@ -287,7 +323,11 @@ const EditPassport = ({ navigation }) => {
                 justifyContent: "center",
                 alignItems: "center",
               }}
-              onPress={pickImage}
+              onPress={() =>
+                pickImage()
+                  .then((res) => uploadImage(res))
+                  .catch((error) => console.log("mengerror nih: ", error))
+              }
             >
               <IconCamera />
             </TouchableOpacity>

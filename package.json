@@ -1,15 +1,13 @@
 {
   "name": "aime-dev",
-  "expo": {
-    "version": "1.0.0"
-  },
+  "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "npx expo start --tunnel",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build": "npm version patch && eas build -p android --profile preview"
+    "build": "npm version patch && eas build -p android --profile preview --version $(node -p \"require('./package.json').version\")"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",
@@ -47,6 +45,5 @@
     "npm-version": "^1.1.0",
     "tailwindcss": "^3.2.7"
   },
-  "private": true,
-  "version": "0.0.1"
+  "private": true
 }
