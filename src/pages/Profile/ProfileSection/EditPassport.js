@@ -65,6 +65,7 @@ const EditPassport = ({ navigation }) => {
 
   // Get nationality from api
   useEffect(() => {
+    setIsLoading(true);
     let counter = 1;
     axios
       .get("https://restcountries.com/v3.1/all")
@@ -77,7 +78,8 @@ const EditPassport = ({ navigation }) => {
           }));
         setDataNationality(data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   //   Modal for edit data

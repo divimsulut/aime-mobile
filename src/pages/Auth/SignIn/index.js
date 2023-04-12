@@ -39,7 +39,7 @@ const SignIn = ({ navigation }) => {
       .then((user) => {
         if (user === "email not verified") {
           alert(
-            "Please verify your email. Verification link has sent to your email address"
+            "Please verify your email. Verification link has sent to your email address. Check 'Spam' if the email is not in your inbox."
           );
           return;
         }
