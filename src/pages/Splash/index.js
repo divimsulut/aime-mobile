@@ -19,7 +19,7 @@ const Splash = ({ navigation }) => {
         <IconAime style={{ marginTop: verticalScale(128) }} />
         <Text style={styles.textAIME}>AIME</Text>
         <Text style={styles.textAIMELong}>Aplikasi Imigrasi Melindungi</Text>
-        <Text style={styles.textVersion}>Version 1.1</Text>
+        <Text style={styles.textVersion}>Version 1.0</Text>
       </View>
     </LinearGradient>
   );

@@ -35,6 +35,8 @@ import {
   verticalScale,
 } from "../../../constant";
 import * as ImagePicker from "expo-image-picker";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../../../config";
 
 const AIME_EditProfile = ({ navigation }) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -119,6 +121,26 @@ const AIME_EditProfile = ({ navigation }) => {
     });
   };
 
+  // upload image to storage
+  const uploadImage = async (uri) => {
+    setIsRefreshing(true);
+    try {
+      const filename = uri.substring(uri.lastIndexOf("/") + 1);
+      const storageRef = ref(storage, `images/${filename}`);
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      const snapshot = await uploadBytes(storageRef, blob);
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      console.log(downloadURL);
+      await handleEditProfilePic(downloadURL);
+    } catch (error) {
+      console.log("error uploading image: ", error);
+      alert(error);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "#E6E6E6" }}>
       <EditProfileHeader
@@ -157,7 +179,7 @@ const AIME_EditProfile = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => {
               pickImage()
-                .then((image) => handleEditProfilePic(image))
+                .then((image) => uploadImage(image))
                 .catch((err) => console.log(err));
             }}
             activeOpacity={0.6}

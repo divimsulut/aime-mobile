@@ -148,6 +148,7 @@ export const signOutUser = async (navigation) => {
 
 // edit profile picture
 export const handleEditProfilePic = async (uri) => {
+  console.log(uri);
   await updateProfile(auth.currentUser, {
     photoURL: uri,
   })

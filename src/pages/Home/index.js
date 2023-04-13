@@ -46,21 +46,6 @@ const HomeNextGen = ({ navigation }) => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://aime-api.vercel.app/user/${userId}`)
-  //     .then((res) => {
-  //       if (res.data === "User does not exist") {
-  //         setModal(true);
-  //       } else {
-  //         setModal(false);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log("njir error: ", err);
-  //     });
-  // }, [userId]);
-
   // get the news data
   useEffect(() => {
     setIsLoading(true);
@@ -79,7 +64,7 @@ const HomeNextGen = ({ navigation }) => {
         setNewsData(newData);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("error in fetching news data: ", err);
       })
       .finally(() => setIsLoading(false));
   }, []);

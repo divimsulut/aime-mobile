@@ -8,12 +8,12 @@ import {
 } from "react-native";
 import React from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
-import { DataNews } from "../../data";
 
 const FlatNewsNew = ({ navigation, newsData }) => {
-  const Components = ({ item }) => {
+  const Components = ({ item, index }) => {
+    console.log(index);
     return (
-      <View style={styles.container}>
+      <View key={index} style={styles.container}>
         <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.bottomContainer}>
           <Text numberOfLines={4} style={styles.textTitle}>
@@ -38,8 +38,8 @@ const FlatNewsNew = ({ navigation, newsData }) => {
       estimatedItemSize={10}
       data={newsData}
       numColumns={2}
-      keyExtractor={(item) => item.key}
-      renderItem={({ item }) => <Components item={item} />}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={({ item, index }) => <Components item={item} index={index} />}
     />
   );
 };

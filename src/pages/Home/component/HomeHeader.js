@@ -39,6 +39,7 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   ]);
 
   useEffect(() => {
+    console.log("Get user data mount: ");
     getCurrentUser()
       .then((user) => {
         setUser(user);
@@ -48,7 +49,10 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+    return () => {
+      onRefreshEnd();
+    };
+  }, [isRefreshing]);
 
   // get last destination history
   const getLastHistory = (id) => {
@@ -69,12 +73,12 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
       });
   };
 
-  if (isRefreshing && user) {
-    console.log("refreshing");
-    console.log(user.uid);
-    getLastHistory(user.uid);
-    onRefreshEnd();
-  }
+  // if (isRefreshing && user) {
+  //   console.log("refreshing");
+  //   console.log(user.uid);
+  //   getLastHistory(user.uid);
+  //   onRefreshEnd();
+  // }
 
   if (isLoading) {
     return (
