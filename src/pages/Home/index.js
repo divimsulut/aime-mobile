@@ -7,7 +7,7 @@ import {
   RefreshControl,
   Modal,
 } from "react-native";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   HomeHeader,
@@ -48,6 +48,7 @@ const HomeNextGen = ({ navigation }) => {
 
   // get the news data
   useEffect(() => {
+    let tempID = 0;
     setIsLoading(true);
     axios
       .get("https://aime-api.vercel.app/news")
@@ -59,9 +60,11 @@ const HomeNextGen = ({ navigation }) => {
           image: item.image,
           date: item.date,
           content: item.excerpt,
+          id: tempID++,
         }));
 
         setNewsData(newData);
+        console.log("news data fatched");
       })
       .catch((err) => {
         console.log("error in fetching news data: ", err);

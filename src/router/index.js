@@ -5,7 +5,7 @@ import {
   Dimensions,
   Animated,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Splash,
   Welcome,
@@ -44,8 +44,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import { Svg, Path } from "react-native-svg";
 import { moderateScale, verticalScale } from "../constant";
-import LottieView from "lottie-react-native";
-import { Home } from "../assets";
+import { auth } from "../config";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -277,16 +277,37 @@ const Tabs = () => {
 };
 
 const Router = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("user logged in: ", user);
+        setUser(user);
+      } else {
+        console.log("user logged out");
+        setUser(null);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
   return (
-    <Stack.Navigator
-      initialRouteName="Splash"
-      // initialRouteName="EditPassport" //Bypass langsung ke Profile SEMENTARA
-    >
-      <Stack.Screen
-        name="Splash"
-        component={Splash}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator>
+      {user ? (
+        <Stack.Screen
+          name="Tabs"
+          component={Tabs}
+          options={{ headerShown: false }}
+        />
+      ) : (
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{ headerShown: false }}
+        />
+      )}
       <Stack.Screen
         name="Welcome"
         component={Welcome}
@@ -310,11 +331,6 @@ const Router = () => {
       <Stack.Screen
         name="SignIn"
         component={SignIn}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Tabs"
-        component={Tabs}
         options={{ headerShown: false }}
       />
       <Stack.Screen

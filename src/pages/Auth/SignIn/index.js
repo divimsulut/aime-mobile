@@ -7,7 +7,7 @@ import {
   View,
   Animated,
 } from "react-native";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   horizontalScale,
   moderateScale,
@@ -43,7 +43,6 @@ const SignIn = ({ navigation }) => {
           );
           return;
         }
-        console.log("after success login: ", user);
         navigation.dispatch(
           CommonActions.reset({
             index: 0,

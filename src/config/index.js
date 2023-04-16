@@ -8,12 +8,10 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   sendPasswordResetEmail,
-  setPersistence,
   GoogleAuthProvider,
   signInWithPopup,
   updateEmail,
   signOut,
-  PhoneAuthProvider,
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
@@ -38,11 +36,16 @@ const firebase = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export default firebase;
 
-const auth = getAuth(firebase);
-console.log(auth);
-setPersistence(auth, "local").catch((error) => {
-  console.log("setPresistence error: ", error.message);
-});
+export const auth = getAuth(firebase);
+
+auth
+  .setPersistence("LOCAL")
+  .then(() => {
+    console.log("setPresistence success: Localy");
+  })
+  .catch((error) => {
+    console.log("setPresistence error: ", error.message);
+  });
 
 // Google Sign In
 export const googleSignIn = () => {

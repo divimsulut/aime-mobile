@@ -10,10 +10,9 @@ import React from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 
 const FlatNewsNew = ({ navigation, newsData }) => {
-  const Components = ({ item, index }) => {
-    console.log(index);
+  const Components = ({ item }) => {
     return (
-      <View key={index} style={styles.container}>
+      <View style={styles.container}>
         <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.bottomContainer}>
           <Text numberOfLines={4} style={styles.textTitle}>
@@ -38,8 +37,8 @@ const FlatNewsNew = ({ navigation, newsData }) => {
       estimatedItemSize={10}
       data={newsData}
       numColumns={2}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={({ item, index }) => <Components item={item} index={index} />}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => <Components item={item} />}
     />
   );
 };
