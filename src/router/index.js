@@ -277,37 +277,34 @@ const Tabs = () => {
 };
 
 const Router = () => {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("user logged in: ", user);
-        setUser(user);
-      } else {
-        console.log("user logged out");
-        setUser(null);
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       console.log("user logged in: ", user);
+  //       setUser(user);
+  //     } else {
+  //       console.log("user logged out");
+  //       setUser(null);
+  //     }
+  //   });
 
-    return unsubscribe;
-  }, []);
+  //   return unsubscribe;
+  // }, []);
 
   return (
     <Stack.Navigator>
-      {user ? (
-        <Stack.Screen
-          name="Tabs"
-          component={Tabs}
-          options={{ headerShown: false }}
-        />
-      ) : (
-        <Stack.Screen
-          name="Splash"
-          component={Splash}
-          options={{ headerShown: false }}
-        />
-      )}
+      <Stack.Screen
+        name="Splash"
+        component={Splash}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Tabs"
+        component={Tabs}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Welcome"
         component={Welcome}

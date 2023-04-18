@@ -381,7 +381,10 @@ const EditPassport = ({ navigation }) => {
           <View style={{ paddingTop: 20, paddingHorizontal: 20 }}>
             <Text style={styles.label}>Date Of Birth</Text>
             <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
             >
               <Text style={[styles.textInput, { width: "75%" }]}>
                 {moment(data.birthDate).format("DD MMMM YYYY")}
@@ -788,13 +791,12 @@ const styles = StyleSheet.create({
 
   textInput: {
     backgroundColor: "#C7C7C7",
-    marginTop: 4,
-    height: 50,
+    // height: 50,
     paddingHorizontal: 10,
-    paddingVertical: 13,
+    paddingVertical: 10,
     borderRadius: 10,
 
-    fontFamily: "Poppins-Medium",
+    // fontFamily: "Poppins-Medium",
     fontSize: 18,
   },
 });

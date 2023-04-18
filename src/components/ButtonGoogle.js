@@ -3,19 +3,20 @@ import React from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../constant";
 import { IconGoogle } from "../assets";
 import { Svg } from "react-native-svg";
-import { googleSignIn } from "../config";
+import { auth } from "../config";
 import { useNavigation } from "@react-navigation/native";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const ButtonGoogle = ({ text }) => {
   const navigation = useNavigation();
+  const provider = new GoogleAuthProvider();
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() =>
-        googleSignIn()
-          .then(() => navigation.navigate("Tabs"))
-          .catch(() => console.log("error"))
-      }
+      onPress={async () => {
+        const res = await signInWithPopup(auth, provider);
+        console.log(res);
+      }}
     >
       <View style={styles.button}>
         <Svg height="36" width="36" viewBox="0 0 44 44">

@@ -11,9 +11,9 @@ import {
 } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { Camera } from "expo-camera";
-import { Svg, Path } from "react-native-svg";
+import { Svg, Path, Rect } from "react-native-svg";
 import LottieView from "lottie-react-native";
-import { ImageGreenChecklist, Scanner } from "../../assets";
+import { ImageGreenChecklist, Scanner, CameraFrame } from "../../assets";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import axios from "axios";
 import { LoadingModal } from "../../components";
@@ -35,31 +35,70 @@ const ScanBarcode = ({ navigation }) => {
   // ------------------ Camera ------------------
 
   // Camera Frame
-  const CameraFrame = () => {
-    return (
-      <Svg
-        width={"100%"}
-        height={"100%"}
-        viewBox="0 0 431 932"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <Path
-          d="M58 344v-15c0-13.807 11.193-25 25-25h20M374 344.5v-15c0-13.807-11.193-25-25-25h-20M374 587.5v15c0 13.807-11.193 25-25 25h-20M59 587.5v15c0 13.807 11.193 25 25 25h20"
-          stroke="#3498DB"
-          strokeWidth={6}
-          strokeLinecap="round"
-        />
-        <Path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M431 0H0v932h431V0zM81 302c-13.807 0-25 11.193-25 25v277c0 13.807 11.193 25 25 25h269c13.807 0 25-11.193 25-25V327c0-13.807-11.193-25-25-25H81z"
-          fill="#021726"
-          fillOpacity={0.86}
-        />
-      </Svg>
-    );
-  };
+  // const CameraFrame = () => {
+  //   const { width, height } = Dimensions.get("window");
+  //   const squareSize = width * 0.7;
+  //   const squareX = (width - squareSize) / 2;
+  //   const squareY = (height - squareSize) / 2;
+  //   const borderRadius = squareSize * 0.05;
+  //   console.log(width, height);
+  //   return (
+  //     <Svg
+  //       viewBox={`0 0 ${width} ${height}`}
+  //       fill="none"
+  //       xmlns="http://www.w3.org/2000/svg"
+  //     >
+  //       <Path
+  //         d="M58 344v-15c0-13.807 11.193-25 25-25h20M374 344.5v-15c0-13.807-11.193-25-25-25h-20M374 587.5v15c0 13.807-11.193 25-25 25h-20M59 587.5v15c0 13.807 11.193 25 25 25h20"
+  //         stroke="#3498DB"
+  //         strokeWidth={6}
+  //         strokeLinecap="round"
+  //       />
+  //       <Path
+  //         fillRule="evenodd"
+  //         clipRule="evenodd"
+  //         d="M431 0H0v932h431V0zM81 302c-13.807 0-25 11.193-25 25v277c0 13.807 11.193 25 25 25h269c13.807 0 25-11.193 25-25V327c0-13.807-11.193-25-25-25H81z"
+  //         fill="#021726"
+  //         fillOpacity={0.86}
+  //       />
+  //     </Svg>
+  //     // <Svg width={width} height={height}>
+  //     //   <Rect x="0" y="0" width={width} height={height} fill="black" />
+  //     //   <Rect
+  //     //     x={squareX}
+  //     //     y={squareY}
+  //     //     width={squareSize}
+  //     //     height={squareSize}
+  //     //     rx={borderRadius}
+  //     //     fill="transparent"
+  //     //     strokeWidth="5"
+  //     //     stroke="white"
+  //     //   />
+  //     //   <Path
+  //     //     d={`M${squareX},${squareY + borderRadius}
+  //     //       A${borderRadius},${borderRadius} 0 0 1 ${
+  //     //       squareX + borderRadius
+  //     //     },${squareY}
+  //     //       L${squareX + squareSize - borderRadius},${squareY}
+  //     //       A${borderRadius},${borderRadius} 0 0 1 ${squareX + squareSize},${
+  //     //       squareY + borderRadius
+  //     //     }
+  //     //       L${squareX + squareSize},${squareY + squareSize - borderRadius}
+  //     //       A${borderRadius},${borderRadius} 0 0 1 ${
+  //     //       squareX + squareSize - borderRadius
+  //     //     },${squareY + squareSize}
+  //     //       L${squareX + borderRadius},${squareY + squareSize}
+  //     //       A${borderRadius},${borderRadius} 0 0 1 ${squareX},${
+  //     //       squareY + squareSize - borderRadius
+  //     //     }
+  //     //       Z`}
+  //     //     fill="transparent"
+  //     //     strokeWidth="5"
+  //     //     stroke="white"
+  //     //   />
+  //     // </Svg>
+  //   );
+  // };
 
   // Camera perissions
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -239,7 +278,7 @@ const ScanBarcode = ({ navigation }) => {
     return (
       <View style={styles.container}>
         <View style={styles.frameContainer}>
-          <CameraFrame />
+          <CameraFrame width={"100%"} height={"100%"} />
           {!modalVisible && (
             <View style={styles.animationStyle}>
               <LottieView source={Scanner} autoPlay resizeMode="cover" loop />

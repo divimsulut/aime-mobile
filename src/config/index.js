@@ -12,6 +12,8 @@ import {
   signInWithPopup,
   updateEmail,
   signOut,
+  setPersistence,
+  browserLocalPersistence,
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
@@ -38,8 +40,7 @@ export default firebase;
 
 export const auth = getAuth(firebase);
 
-auth
-  .setPersistence("LOCAL")
+setPersistence(auth, browserLocalPersistence)
   .then(() => {
     console.log("setPresistence success: Localy");
   })
@@ -50,23 +51,13 @@ auth
 // Google Sign In
 export const googleSignIn = () => {
   const provider = new GoogleAuthProvider();
-  console.log(provider);
-  return new Promise((resolve, reject) => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result);
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        resolve(user);
-        console.log(user);
-        console.log("success");
-      })
-      .catch((error) => {
-        console.log("error yuhu");
-        reject(error);
-      });
-  });
+  signInWithPopup(auth, provider)
+    .then((userCredential) => {
+      console.log("SUCCES_SIGN_GOOGLE: ", userCredential);
+    })
+    .catch((err) => {
+      console.log("ERR@: ", err);
+    });
 };
 
 // Sign Up function

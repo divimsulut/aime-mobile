@@ -17,7 +17,7 @@ const EditProfileHeader = ({
       style={[
         styles.container,
         {
-          borderBottomWidth: borderBottomWidth ? 2 : 0,
+          borderBottomWidth: borderBottomWidth ? 1.5 : 0,
           borderBottomColor: borderBottomWidth
             ? "rgba(56, 55, 55, 0.31)"
             : "transparent",

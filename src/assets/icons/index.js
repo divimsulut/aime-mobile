@@ -37,8 +37,10 @@ import IconArrowLeftBlack from "./arrowLeftBlack.svg";
 import IconCamera from "./cameraIcon.svg";
 import IconRedWarning from "./redwarningIcon";
 import IconPencilBlue from "./pencilIcon.svg";
+import CameraFrame from "./cameraFrame.svg";
 
 export {
+  CameraFrame,
   IconWhiteChecklist2,
   IconPencil,
   HeaderHomeBg,
