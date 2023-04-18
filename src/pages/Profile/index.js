@@ -24,9 +24,11 @@ import {
   Settings_PP,
 } from "../../components";
 import { IconCross } from "../../assets";
+import axios from "axios";
 
 const AIME_SettingsScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
+  const [phoneNum, setPhoneNum] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -35,6 +37,12 @@ const AIME_SettingsScreen = ({ navigation }) => {
   React.useEffect(() => {
     getCurrentUser()
       .then((user) => {
+        axios
+          .get(`https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`)
+          .then((res) => {
+            setPhoneNum(res.data.phoneNum);
+          })
+          .catch((err) => console.log("ERR @GET_PHONENUM_PROFILE_SC", err));
         setUser(user);
         setIsLoading(false);
       })
@@ -74,6 +82,16 @@ const AIME_SettingsScreen = ({ navigation }) => {
               setIsRefreshing(true);
               getCurrentUser()
                 .then((user) => {
+                  axios
+                    .get(
+                      `https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`
+                    )
+                    .then((res) => {
+                      setPhoneNum(res.data.phoneNum);
+                    })
+                    .catch((err) =>
+                      console.log("ERR @GET_PHONENUM_PROFILE_SC", err)
+                    );
                   setUser(user);
                 })
                 .catch((err) => console.log(err))
@@ -159,7 +177,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={styles.ProfileCardDetail1}>{user.phoneNumber}</Text>
+          <Text style={styles.ProfileCardDetail1}>{phoneNum}</Text>
           <Text style={styles.ProfileCardDetail1}>{user.email}</Text>
         </View>
 

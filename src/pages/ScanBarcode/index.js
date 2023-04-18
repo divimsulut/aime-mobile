@@ -199,7 +199,7 @@ const ScanBarcode = ({ navigation }) => {
   useEffect(() => {
     setIsLoadingData(true);
     axios
-      .get("https://aime-api.vercel.app/destination")
+      .get("https://sharp-faceted-taleggio.glitch.me/destination")
       .then((response) => {
         setDestinationData(response.data);
         setIsLoadingData(false);
@@ -214,7 +214,7 @@ const ScanBarcode = ({ navigation }) => {
   const pushData = async (uuid, destinationId) => {
     setIsLoadingData(true);
     await axios
-      .post("https://aime-api.vercel.app/destination/check", {
+      .post("https://sharp-faceted-taleggio.glitch.me/destination/check", {
         uuid,
         destinationId,
       })

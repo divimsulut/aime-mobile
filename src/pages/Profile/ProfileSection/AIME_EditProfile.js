@@ -11,35 +11,28 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Svg, Path, G, Defs, ClipPath } from "react-native-svg";
-
-import { IconPencilBlue, ImageLandscape3, ImagePeople } from "../../../assets";
-import { EditProfileHeader } from "../../../components";
+import { IconPencilBlue } from "../../../assets";
+import { EditProfileHeader, LoadingModal } from "../../../components";
 import {
-  auth,
   getCurrentUser,
   handleEditEmail,
   handleEditName,
   handleEditProfilePic,
-  sendVCode,
+  handleEditPhoneNum,
 } from "../../../config";
 import axios from "axios";
 import moment from "moment";
 const seperator = 2;
 const seperator_color = "rgba(161, 161, 161, 0.3)";
 import { Shadow } from "react-native-shadow-2";
-import { SelectList } from "react-native-dropdown-select-list";
-import { PhoneAuthProvider } from "firebase/auth";
-import {
-  horizontalScale,
-  moderateScale,
-  verticalScale,
-} from "../../../constant";
 import * as ImagePicker from "expo-image-picker";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../config";
 
 const AIME_EditProfile = ({ navigation }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [userId, setUserId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -53,7 +46,6 @@ const AIME_EditProfile = ({ navigation }) => {
   const [modalName, setModalName] = useState(false);
   const [modalEmail, setModalEmail] = useState(false);
   const [modalPhoneNum, setModalPhoneNum] = useState(false);
-  const [modalImage, setModalImage] = useState(false);
 
   // get profile data
   useEffect(() => {
@@ -61,8 +53,8 @@ const AIME_EditProfile = ({ navigation }) => {
       .then((user) => {
         setName(user.displayName);
         setEmail(user.email);
-        setPhone(user.phoneNumber);
         setImage(user.photoURL);
+        setUserId(user.uid);
       })
       .catch((err) => {
         console.log(err);
@@ -74,7 +66,7 @@ const AIME_EditProfile = ({ navigation }) => {
     getCurrentUser()
       .then((user) => {
         axios
-          .get(`https://aime-api.vercel.app/user/${user.uid}`)
+          .get(`https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`)
           .then((res) => {
             if (res.data === "User does not exist") {
               console.log("User does not exist");
@@ -167,6 +159,16 @@ const AIME_EditProfile = ({ navigation }) => {
                   setEmail(user.email);
                   setPhone(user.phoneNumber);
                   setImage(user.photoURL);
+                  axios
+                    .get(
+                      `https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`
+                    )
+                    .then((res) => {
+                      setData({ ...data, phoneNum: res.data.phoneNum });
+                    })
+                    .catch((err) =>
+                      console.log("ERR @GET_PHONENUM_PROFILE_SC", err)
+                    );
                 })
                 .catch((err) => console.log(err))
                 .finally(() => setIsRefreshing(false));
@@ -253,9 +255,7 @@ const AIME_EditProfile = ({ navigation }) => {
               onPress={() => setModalPhoneNum(true)}
               style={{ flexDirection: "row" }}
             >
-              <Text style={{ marginRight: 4 }}>
-                {phone === "+" ? "" : phone}
-              </Text>
+              <Text style={{ marginRight: 4 }}>{data.phoneNum}</Text>
               <IconPencilBlue width={10} height={10} />
             </TouchableOpacity>
           </View>
@@ -376,7 +376,18 @@ const AIME_EditProfile = ({ navigation }) => {
           <EditProfileHeader
             title={"Edit Phone Number"}
             onDonePress={() => {
-              // handleEditEmail(email).then(() => setModalEmail(false))
+              setIsLoading(true);
+              handleEditPhoneNum(userId, phone)
+                .then((res) => {
+                  console.log(res);
+                  setModalPhoneNum(false);
+                })
+                .catch((err) => {
+                  console.log(err);
+                })
+                .finally(() => {
+                  setIsLoading(false);
+                });
             }}
             onBackPress={() => setModalPhoneNum(false)}
           />
@@ -440,13 +451,7 @@ const AIME_EditProfile = ({ navigation }) => {
           </View>
         </View>
       </Modal>
-      {/* <Modal visible={modalImage} transparent={true} animationType={"slide"}>
-        <View style={{ backgroundColor: "rgba(0,0,0,0.5)", flex: 1 }}>
-          <View>
-            <
-          </View>
-        </View>
-      </Modal> */}
+      {isLoading && <LoadingModal />}
     </View>
   );
 };

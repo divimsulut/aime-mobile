@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { CommonActions } from "@react-navigation/native";
+import axios from "axios";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -45,7 +46,7 @@ setPersistence(auth, browserLocalPersistence)
     console.log("setPresistence success: Localy");
   })
   .catch((error) => {
-    console.log("setPresistence error: ", error.message);
+    console.log("ERR @SETPERSISTENCE_FB: ", error.message);
   });
 
 // Google Sign In
@@ -56,7 +57,7 @@ export const googleSignIn = () => {
       console.log("SUCCES_SIGN_GOOGLE: ", userCredential);
     })
     .catch((err) => {
-      console.log("ERR@: ", err);
+      console.log("ERR @GOOGLE_SIGNIN_FB: ", err);
     });
 };
 
@@ -78,8 +79,7 @@ export const createUser = (fullName, email, password, navigation) => {
       })
       .catch((error) => {
         reject(error);
-        console.log(error.code);
-        console.log("error");
+        console.log("ERR @CREATE_USER_FB: ", error);
       });
   });
 };
@@ -93,10 +93,10 @@ export const signIn = ({ email, password }) => {
           resolve("email not verified");
           sendEmailVerification(userCredential.user)
             .then(() => console.log("email sent"))
-            .catch((err) => console.log(err));
+            .catch((err) => console.log("ERR @SEND_MAIL_VER_FB: ", err));
           signOut(auth)
             .then(() => console.log("sign out"))
-            .catch((error) => console.log(error));
+            .catch((error) => console.log("ERR @SIGNOUT_FB", error));
           return;
         }
         resolve(userCredential.user);
@@ -104,16 +104,20 @@ export const signIn = ({ email, password }) => {
       })
       .catch((error) => {
         reject(error);
-        console.log("error");
+        console.log("ERR @SIGNIN_/W_EMAILPASS: ", error);
       });
   });
 };
 
 // Reset password function
 export const resetPass = (email) => {
-  sendPasswordResetEmail(auth, email).then(() => {
-    console.log("email sent");
-  });
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      console.log("email sent");
+    })
+    .catch((error) => {
+      console.log("ERR @SEND_RESET_PASS_/V_EMAIL: ", error);
+    });
 };
 
 // get current user
@@ -137,7 +141,7 @@ export const signOutUser = async (navigation) => {
         })
       )
     )
-    .catch((error) => console.log("sign out function: ", error));
+    .catch((error) => console.log("ERR @SIGNOUT_FB: ", error));
 };
 
 // edit profile picture
@@ -147,7 +151,7 @@ export const handleEditProfilePic = async (uri) => {
     photoURL: uri,
   })
     .then(() => console.log("profile pic updated"))
-    .catch((error) => console.log(error));
+    .catch((error) => console.log("ERR @UPDATE_PROFILE_PICT_FB: ", error));
 };
 
 // edit name
@@ -156,31 +160,31 @@ export const handleEditName = async (name) => {
     displayName: name,
   })
     .then(() => console.log("name updated"))
-    .catch((error) => console.log(error));
+    .catch((error) => console.log("ERR @UPDATE_NAME_FB: ", error));
 };
 
 // edit email
 export const handleEditEmail = async (email) => {
   await updateEmail(auth.currentUser, email)
     .then(() => console.log("email updated"))
-    .catch((error) => console.log(error));
+    .catch((error) => console.log("ERR @UPDATE_EMAIL_FB: ", error));
 };
 
-// edit phoneNumber
-export const handleEditPhoneNum = async (num) => {
-  await updateProfile(auth.currentUser, {
-    phoneNumber: num,
-  })
-    .then(() => console.log("phone number updated"))
-    .catch((error) => console.log(error));
-};
-
-// send verification code
-export const sendVCode = async (phone) => {
-  console.log("sent: ", phone);
-  // const provider = new PhoneAuthProvider(auth);
-  const verificationId = await auth.verifyPhoneNumber(phone);
-  console.log("yuhu: ", verificationId);
+// handle edit phone number
+export const handleEditPhoneNum = (userId, phone) => {
+  return new Promise(async (resolve, reject) => {
+    await axios
+      .patch(`https://sharp-faceted-taleggio.glitch.me/user/${userId}`, {
+        uuid: userId,
+        phoneNum: phone,
+      })
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        reject("ERR @UPDATE_PHONE_NUM", err);
+      });
+  });
 };
 
 // storage
