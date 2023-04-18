@@ -154,7 +154,7 @@ export default function HelpCenter({ navigation }) {
                     </TouchableOpacity>
 
                     <Text
-                      className="text-white text-left text-base mr-6 "
+                      className="text-white text-left text-base mr-8 "
                       id="question"
                     >
                       {item.question}
@@ -164,7 +164,7 @@ export default function HelpCenter({ navigation }) {
                   {/* Answare Section */}
                   <View className="flex flex-col items-center justify-center">
                     <Text
-                      style={{ paddingleft: -10 }}
+                      style={{ paddingLeft: -10 }}
                       className={`text-[#636363] text-left text-base  ${
                         item.id === openId ? "block" : "hidden"
                       }`}
