@@ -432,22 +432,6 @@ const AIME_EditProfile = ({ navigation }) => {
                 placeholder={"8123456789"}
               />
             </View>
-            {/* <TouchableOpacity
-              onPress={() => sendVCode(phone)}
-              style={{
-                width: "100%",
-                backgroundColor: "#42AA93",
-                paddingHorizontal: 5,
-                paddingVertical: 10,
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: 10,
-                borderRadius: 15,
-              }}
-            >
-              <Text>Send Verification Code</Text>
-            </TouchableOpacity> */}
-            <Text>// This field still in progress</Text>
           </View>
         </View>
       </Modal>

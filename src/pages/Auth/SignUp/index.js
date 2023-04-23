@@ -174,6 +174,7 @@ const SignUp = ({ navigation }) => {
               placeholder="Email"
               onChangeText={(e) => setEmail(e)}
               error={emailErrorColor}
+              keyboardType="email-address"
             />
             <Input
               placeholder="Password"

@@ -127,7 +127,7 @@ const Tabs = () => {
           listeners={{
             tabPress: (e) => {
               Animated.spring(animatedValue, {
-                toValue: getWidth() * 1.05,
+                toValue: getWidth() * 1.11,
                 useNativeDriver: true,
               }).start();
             },

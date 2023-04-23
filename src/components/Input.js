@@ -4,6 +4,8 @@ import { verticalScale, horizontalScale, moderateScale } from "../constant";
 import { IconEye, IconEyeClose } from "../assets";
 
 const Input = ({
+  onSubmitPressed = () => {},
+  keyboardType = "default",
   error = "transparent",
   password,
   onChange = () => {},
@@ -22,6 +24,8 @@ const Input = ({
       >
         <TextInput
           {...props}
+          onSubmitEditing={onSubmitPressed}
+          keyboardType={keyboardType}
           value={value}
           secureTextEntry={hidePassword}
           style={styles.textInput}

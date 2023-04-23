@@ -132,6 +132,7 @@ const SignIn = ({ navigation }) => {
                 placeholder="email"
                 onChangeText={(e) => setEmail(e)}
                 error={errorColor}
+                keyboardType="email-address"
               />
               <Input
                 placeholder="Password"
@@ -139,6 +140,7 @@ const SignIn = ({ navigation }) => {
                 onChangeText={(e) => setPassword(e)}
                 error={errorColor}
                 value={password}
+                onSubmitPressed={handleSignIn}
               />
             </View>
             {/* Form end */}
