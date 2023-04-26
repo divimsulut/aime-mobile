@@ -1,7 +1,7 @@
 export default [
   {
     key: "1",
-    name: "Class I Immigration Office - Manado",
+    name: "Manado - Class I Immigration Office",
     address: "Jl. 17 Agustus, Manado, Teling Atas, Kec. Wanea, Kota Manado",
     image:
       "https://alphacast.id/x/ptktp/aime/kantorimigrasi/foto/Kantor%20Imigrasi%20Kelas%20I%20Manado.png",
@@ -12,10 +12,13 @@ export default [
     callCenter: "(+62)8114326010",
     website: "manado.imigrasi.go.id",
     nameGoogleMaps: "Kantor Imigrasi Kelas I - Manado",
+    latitude: 1.4672808548967058,
+    longitude: 124.84560192429825,
+    altitude: 0,
   },
   {
     key: "2",
-    name: "Class II Immigration Office - Bitung",
+    name: "Bitung - Class II Immigration Office",
     address:
       "Jl. Dr Sam Ratulangi, Bitung Barat Dua, Maesa, Bitung City, North Sulawesi",
     image:
@@ -27,10 +30,13 @@ export default [
     callCenter: "(+62)438-31869",
     website: "bitung.imigrasi.go.id",
     nameGoogleMaps: "Kantor Imigrasi Kelas II TPI Bitung",
+    latitude: 1.4444251731267288,
+    longitude: 125.18357842336539,
+    altitude: 0,
   },
   {
     key: "3",
-    name: "Class II Immigration Office - Kotamobagu",
+    name: "Kotamobagu - Class II Immigration Office",
     address:
       "Jl. Veteran, Motoboi Kecil, Kotamobagu Selatan, Kotamobagu City, North Sulawesi",
     image:
@@ -42,5 +48,8 @@ export default [
     callCenter: "(+62)81242686432",
     website: "kotamobagu.imigrasi.go.id",
     nameGoogleMaps: "Kantor Imigrasi Kelas II Non TPI Kotamobagu",
+    latitude: 0.7236759992807489,
+    longitude: 124.30642732336705,
+    altitude: 0,
   },
 ];

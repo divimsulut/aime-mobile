@@ -10,7 +10,6 @@ import React, { useState } from "react";
 import { WebView } from "react-native-webview";
 
 import { Header } from "../../components";
-import { ImageLandscape3 } from "../../assets";
 import { verticalScale, horizontalScale, moderateScale } from "../../constant";
 import Button1Direction from "./components/Button1Direction";
 import Button2Call from "./components/Button2Call";

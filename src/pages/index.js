@@ -28,7 +28,6 @@ import DestionationDetail from "./SubPages/DestinationDetail";
 import ImigrationInfo from "./ImigrationInfo";
 import NearbyOffice from "./ImigrationInfo/NearbyOffice";
 import OfficeDetail from "./ImigrationInfo/OfficeDetail";
-import OfficeDetail2 from "./ImigrationInfo/OfficeDetail2";
 import ScanBarcode from "./ScanBarcode";
 
 // Help Section
@@ -73,7 +72,6 @@ export {
   ImigrationInfo,
   NearbyOffice,
   OfficeDetail,
-  OfficeDetail2,
   ScanBarcode,
 
   // Help Section

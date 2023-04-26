@@ -8,7 +8,9 @@ import {
   Linking,
   Pressable,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import * as Location from "expo-location";
+
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { Header } from "../../components";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
@@ -136,10 +138,40 @@ const NearbyOffice = ({ navigation }) => {
     Linking.openURL(url);
   };
 
+  // For GPS
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+    console.log(location);
+    console.log(location.coords.latitude);
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <Header label={"Office Near You"} navigation={navigation} />
-      <Text>NearbyOffice</Text>
+      <Text>NearbyOfficeAAA</Text>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>{text}</Text>
+      </View>
+
       <BottomSheet
         index={0}
         snapPoints={snapPoints}

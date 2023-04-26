@@ -6,12 +6,95 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import * as Location from "expo-location";
+
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { ImageRadar } from "../../assets";
 import { FlatImigrationOffice, Header } from "../../components";
 import { DataKantorImigrasi } from "../../data";
+
+// For GPS
+// const [location, setLocation] = useState(null);
+// const [errorMsg, setErrorMsg] = useState(null);
+
+// let text = "Waiting..";
+// if (errorMsg) {
+//   text = errorMsg;
+// } else if (location) {
+//   text = JSON.stringify(location);
+//   console.log(location);
+//   console.log(location.coords.latitude);
+// }
+
+function findNearestCoordinate(coordinates, target) {
+  const R = 6371; // Earth's radius in kilometers
+  let closestCoordinate = null;
+  let closestDistance = Infinity;
+
+  for (let i = 0; i < coordinates.length; i++) {
+    const { latitude, longitude, altitude } = coordinates[i];
+    console.log(latitude, longitude, altitude);
+
+    console.log("TARGET: ", target);
+    const dLat = toRadians(target.coords.latitude - latitude);
+    const dLon = toRadians(target.coords.longitude - longitude);
+    const lat1 = toRadians(latitude);
+    const lat2 = toRadians(target.coords.latitude);
+    console.log("dLat, dLon, lat1, lat2: ", dLat, dLon, lat1, lat2);
+
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c;
+
+    console.log("DISTANCE: ", distance);
+    console.log("closestDistance: ", closestDistance);
+
+    if (distance < closestDistance && altitude === target.coords.altitude) {
+      closestDistance = distance;
+      closestCoordinate = coordinates[i];
+
+      console.log("ABC", closestDistance);
+    }
+  }
+
+  console.log("closestCoordinate: ", closestCoordinate);
+  return closestCoordinate;
+}
+
+function toRadians(degrees) {
+  return degrees * (Math.PI / 180);
+}
+
+const handleNearby = (navigation) => {
+  getGPSLocation().then((location) => {
+    const nearestOfficeResult = findNearestCoordinate(
+      DataKantorImigrasi,
+      location
+    );
+    console.log("LOCATION: ", nearestOfficeResult, location);
+    if (nearestOfficeResult) {
+      navigation.navigate("OfficeDetail", { item: nearestOfficeResult });
+    }
+  });
+};
+
+const getGPSLocation = () => {
+  return new Promise(async (resolve, reject) => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      reject("Permission to access location was denied");
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    console.log(location);
+    resolve(location);
+  });
+};
 
 const ImigrationInfo = ({ navigation }) => {
   const HeaderComponent = () => {
@@ -19,7 +102,10 @@ const ImigrationInfo = ({ navigation }) => {
       <View>
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.navigate("NearbyOffice")}
+          onPress={() => {
+            handleNearby(navigation);
+            // navigation.navigate("NearbyOffice");
+          }}
         >
           <LinearGradient
             colors={["#FFF504", "#C69D0E"]}
