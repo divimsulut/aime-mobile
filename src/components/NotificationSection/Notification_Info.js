@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
 
   messagecontainer1: {
     width: 200,
+    marginLeft: 7,
+    // backgroundColor: "yellow",
   },
   messagetext1: {
     fontSize: 16,
@@ -73,11 +75,18 @@ const styles = StyleSheet.create({
   messagetime1: {
     fontSize: 9,
     color: "#817575",
+    position: "absolute",
+    right: 0,
+    bottom: "50%",
+    transform: [{ translateY: -15 }],
   },
 
   item_row: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    paddingVertical: 20,
+    borderBottomWidth: 2,
+    borderColor: "rgba(161, 161, 161, 0.3)",
+    // backgroundColor: "green",
   },
 });

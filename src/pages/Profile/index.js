@@ -8,6 +8,7 @@ import {
   Alert,
   Modal,
   RefreshControl,
+  Platform,
 } from "react-native";
 import React, { Component, useState } from "react";
 import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
@@ -68,7 +69,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
         label="More"
         navigation={navigation}
         color="black"
-        backgroundColor="transparent"
+        backgroundColor={Platform.OS === "ios" ? "transparent" : "#E6E6E6"}
         backBtn={false}
       />
       <ScrollView
@@ -266,7 +267,7 @@ const styles = StyleSheet.create({
     paddingTop: 90,
     // fontFamily: 'Poppins',
     // fontWeight: 100,
-    backgroundColor: "#E6E6E",
+    backgroundColor: "#E6E6E6",
     // backgroundColor: 'red',
   },
   content: {

@@ -21,24 +21,16 @@ const Notification = ({ navigation }) => {
         <View style={styles.content}>
           <Text style={styles.H2}>Today</Text>
           <Notification_Check />
-          <View style={styles.Line1} />
           <Notification_Check />
-          <View style={styles.Line1} />
           <Notification_Check />
-          <View style={styles.Line1} />
           <Notification_Check />
-          <View style={styles.Line1} />
           <Notification_Check />
 
           <Text style={styles.H2}>2 Days Ago</Text>
           <Notification_Info />
-          <View style={styles.Line1} />
           <Notification_Info />
-          <View style={styles.Line1} />
           <Notification_Info />
-          <View style={styles.Line1} />
           <Notification_Info />
-          <View style={styles.Line1} />
           <Notification_Info />
         </View>
       </ScrollView>
@@ -53,6 +45,7 @@ const styles = StyleSheet.create({
     padding: 20,
     // fontFamily: 'Poppins',
     // fontWeight: 100,
+    backgroundColor: "#E6E6E6",
   },
   content: {
     padding: 15,

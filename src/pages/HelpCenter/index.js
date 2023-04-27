@@ -12,6 +12,7 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import { Header } from "../../components";
 import { LinearGradient } from "expo-linear-gradient";
 import { horizontalScale, verticalScale } from "../../constant";
+import { Platform } from "react-native";
 
 export default function HelpCenter({ navigation }) {
   const [openId, setOpenId] = React.useState(null);
@@ -75,12 +76,17 @@ export default function HelpCenter({ navigation }) {
       <Header
         label={"Help Center"}
         navigation={navigation}
-        backgroundColor="rgba(6, 32, 53, 0.6)"
+        backgroundColor={
+          Platform.OS === "ios" ? "rgba(6, 32, 53, 0.6)" : "rgba(6, 32, 53, 1)"
+        }
         backBtn={false}
       />
       <ScrollView className="">
         <View className="">
-          <View className="flex flex-col mt-[90px]">
+          <View
+            className="flex flex-col"
+            style={{ marginTop: verticalScale(103) }}
+          >
             {/* <View className="flex bg-[#021726] blur opacity-50 w-full h-24 z-10 absolute"></View>  */}
             <LinearGradient
               colors={["rgba(2, 23, 38, 0.5)", "rgba(2, 23, 38, 0)"]}
