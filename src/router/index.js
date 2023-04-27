@@ -155,9 +155,9 @@ const Tabs = () => {
                   <View
                     style={{
                       backgroundColor: "white",
-                      borderWidth: 11,
-                      width: 100,
-                      height: 100,
+                      borderWidth: 8,
+                      width: 80,
+                      height: 80,
                       borderRadius: 100,
                       borderColor: "#051C2F",
                       justifyContent: "center",

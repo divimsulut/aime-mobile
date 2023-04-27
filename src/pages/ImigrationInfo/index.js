@@ -53,7 +53,13 @@ function findNearestCoordinate(coordinates, target) {
     console.log("DISTANCE: ", distance);
     console.log("closestDistance: ", closestDistance);
 
-    if (distance < closestDistance && altitude === target.coords.altitude) {
+    console.log(
+      altitude,
+      target.coords.altitude,
+      altitude === target.coords.altitude
+    );
+
+    if (distance < closestDistance) {
       closestDistance = distance;
       closestCoordinate = coordinates[i];
 
@@ -70,19 +76,22 @@ function toRadians(degrees) {
 }
 
 const handleNearby = (navigation) => {
-  getGPSLocation().then((location) => {
-    const nearestOfficeResult = findNearestCoordinate(
-      DataKantorImigrasi,
-      location
-    );
-    console.log("LOCATION: ", nearestOfficeResult, location);
-    if (nearestOfficeResult) {
-      navigation.navigate("OfficeDetail", { item: nearestOfficeResult });
-    }
-  });
+  getGPSLocation()
+    .then((location) => {
+      const nearestOfficeResult = findNearestCoordinate(
+        DataKantorImigrasi,
+        location
+      );
+      console.log("LOCATION: ", nearestOfficeResult, location);
+      if (nearestOfficeResult) {
+        navigation.navigate("OfficeDetail", { item: nearestOfficeResult });
+      }
+    })
+    .catch((err) => console.log("error: ", err));
 };
 
 const getGPSLocation = () => {
+  console.log("getGPSLocation");
   return new Promise(async (resolve, reject) => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
@@ -90,9 +99,18 @@ const getGPSLocation = () => {
       return;
     }
 
-    let location = await Location.getCurrentPositionAsync({});
-    console.log(location);
-    resolve(location);
+    console.log("yuhu");
+    Location.getCurrentPositionAsync({})
+      .then((location) => {
+        console.log("location: ", location);
+        resolve(location);
+      })
+      .catch((err) => {
+        reject("ERR @GET_GPS_CURRENT_LOCATION: ", err);
+      });
+    // let location = await Location.getCurrentPositionAsync({});
+    // console.log(location);
+    // resolve(location);
   });
 };
 
@@ -186,7 +204,6 @@ const styles = StyleSheet.create({
   buttonFind: {
     borderRadius: moderateScale(25),
     width: "100%",
-    height: verticalScale(112),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

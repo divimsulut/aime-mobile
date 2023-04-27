@@ -80,17 +80,18 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     backgroundColor: "#00284D",
-    height: verticalScale(59),
+    // height: verticalScale(59),
     flexDirection: "row",
   },
   textContainer: {
     width: horizontalScale(175),
-    paddingTop: verticalScale(5),
+    paddingVertical: verticalScale(5),
     paddingLeft: horizontalScale(13),
   },
   textDestination: {
     fontFamily: "Poppins-SemiBold",
-    fontSize: moderateScale(18),
+    // fontSize: moderateScale(18),
+    fontSize: 14,
     color: "white",
   },
   textLocation: {
@@ -106,7 +107,6 @@ const styles = StyleSheet.create({
   buttonStyle: {
     backgroundColor: "#E5CF00",
     width: horizontalScale(85),
-    height: verticalScale(18),
     borderRadius: moderateScale(30),
     justifyContent: "center",
     alignItems: "center",

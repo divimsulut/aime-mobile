@@ -51,13 +51,16 @@ export default Welcome;
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: horizontalScale(25),
   },
-  text: {
-    marginTop: verticalScale(348),
-    marginLeft: horizontalScale(55),
-  },
+  // text: {
+  //   marginTop: verticalScale(348),
+  //   marginLeft: horizontalScale(55),
+  // },
   button: {
     marginTop: verticalScale(75),
-    marginHorizontal: horizontalScale(65),
+    // marginHorizontal: horizontalScale(65),
   },
 });

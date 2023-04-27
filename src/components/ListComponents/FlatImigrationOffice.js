@@ -16,9 +16,11 @@ const FlatImigrationOffice = ({ item, navigation }) => {
           style={{
             width: horizontalScale(216),
             marginLeft: horizontalScale(10),
+            paddingBottom: 20,
           }}
         >
           <Text
+            numberOfLines={2}
             style={{
               fontFamily: "Poppins-SemiBold",
               fontSize: moderateScale(18),
@@ -27,11 +29,12 @@ const FlatImigrationOffice = ({ item, navigation }) => {
           >
             {item.name}
           </Text>
-          <View style={{ flexDirection: "row", marginTop: verticalScale(15) }}>
+          <View style={{ flexDirection: "row", marginTop: verticalScale(5) }}>
             <Svg width={12} height={12} viewBox="0 0 12 12">
               <IconPin />
             </Svg>
             <Text
+              numberOfLines={2}
               style={{
                 fontFamily: "Poppins-Medium",
                 fontSize: moderateScale(10),
@@ -74,7 +77,7 @@ export default FlatImigrationOffice;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: verticalScale(134),
+    // height: verticalScale(134),
     backgroundColor: "white",
     borderRadius: moderateScale(20),
     flexDirection: "row",
@@ -82,7 +85,6 @@ const styles = StyleSheet.create({
   },
   image: {
     width: horizontalScale(143),
-    height: verticalScale(134),
     borderTopLeftRadius: moderateScale(20),
     borderBottomLeftRadius: moderateScale(20),
   },

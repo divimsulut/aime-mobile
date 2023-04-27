@@ -1,4 +1,10 @@
-import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { verticalScale, horizontalScale, moderateScale } from "../constant";
 import { IconEye, IconEyeClose } from "../assets";
@@ -18,7 +24,12 @@ const Input = ({
   const { onChangeText, ...rest } = props;
 
   return (
-    <View style={{ marginBottom: verticalScale(20) }}>
+    <View
+      style={{
+        marginBottom: verticalScale(20),
+        // backgroundColor: "green",
+      }}
+    >
       <View
         style={[styles.inputContainer, { borderColor: error, borderWidth: 2 }]}
       >

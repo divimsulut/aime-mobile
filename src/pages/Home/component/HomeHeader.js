@@ -89,7 +89,12 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   }
 
   return (
-    <View style={styles.itemContainer}>
+    <View
+      style={[
+        styles.itemContainer,
+        { position: Platform.OS === "ios" ? "absolute" : "relative" },
+      ]}
+    >
       <BlurView intensity={30} tint="default">
         <View style={styles.mainContainer}>
           {/* -------------------------------------------------------- */}
@@ -98,7 +103,12 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
             <View style={styles.aimeLogoContainer}>
-              <Svg height={30} width={30} viewBox="0 0 100 100">
+              <Svg
+                // style={{ backgroundColor: "green" }}
+                height={30}
+                width={30}
+                viewBox="0 0 100 100"
+              >
                 <IconAime />
               </Svg>
               <Text style={styles.textAime}>AIME</Text>
@@ -291,17 +301,19 @@ export default HomeHeader;
 
 const styles = StyleSheet.create({
   itemContainer: {
-    position: "absolute",
     top: 0,
     width: "100%",
     overflow: "hidden",
     // backgroundColor: "red",
   },
   mainContainer: {
-    backgroundColor: "rgba(16, 50, 84, 0.6)",
-    height: verticalScale(250),
+    backgroundColor:
+      Platform.OS === "ios" ? "rgba(16, 50, 84, 0.6)" : "rgba(16, 50, 84, 1)",
+    // backgroundColor: "green",
+    // height: verticalScale(250),
     paddingHorizontal: horizontalScale(15),
     paddingTop: verticalScale(30),
+    paddingBottom: verticalScale(20),
   },
 
   aimeLogoContainer: {
@@ -321,7 +333,7 @@ const styles = StyleSheet.create({
 
   headerContainer: {
     // backgroundColor: "red",
-    height: verticalScale(137),
+    // minHeight: verticalScale(160),
     marginTop: verticalScale(20),
     borderRadius: moderateScale(15),
     overflow: "hidden",

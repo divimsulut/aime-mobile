@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Linking,
   Animated,
+  Image,
 } from "react-native";
 import React, { useState } from "react";
 import { WebView } from "react-native-webview";
@@ -18,109 +19,8 @@ import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import LoadingModal from "../../components";
 
 const OfficeDetail = ({ navigation, route }) => {
-  // opacity
-  const opacity = React.useRef(new Animated.Value(1)).current;
-
-  // y position
-  const yPosition = React.useRef(new Animated.Value(260)).current;
-
   // variables
   const snapPoints = React.useMemo(() => ["20%", "88%"], []);
-
-  // handleAnimation
-  const handleAnimation = (index) => {
-    if (index === 1) {
-      Animated.sequence([
-        Animated.timing(opacity, {
-          toValue: 0.25,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 0.5,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 0.75,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 1,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]).start();
-      Animated.sequence([
-        Animated.timing(yPosition, {
-          toValue: 0,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(yPosition, {
-          toValue: 55.5,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(yPosition, {
-          toValue: 111,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(yPosition, {
-          toValue: 240,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    } else {
-      Animated.sequence([
-        Animated.timing(opacity, {
-          toValue: 0.75,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 0.5,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 0.25,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 0,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]).start();
-      Animated.sequence([
-        Animated.timing(yPosition, {
-          toValue: 222,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(yPosition, {
-          toValue: 111,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(yPosition, {
-          toValue: 55.5,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(yPosition, {
-          toValue: 0,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    }
-  };
 
   // Action buttons
   // const [VarPhoneNumber, setVarPhoneNumber] = useState("(+62)811-43260010");
@@ -185,19 +85,13 @@ const OfficeDetail = ({ navigation, route }) => {
       <BottomSheet
         index={0}
         snapPoints={snapPoints}
-        onChange={handleAnimation}
         backgroundStyle={styles.bottomSheetContainer}
         handleIndicatorStyle={{ backgroundColor: "white" }}
       >
-        <Animated.Image
-          source={{ uri: item.image }}
-          style={[styles.imageContainer, { opacity }]}
-        />
-        <Animated.View
+        <View
           style={{
             flex: 1,
             paddingHorizontal: horizontalScale(18),
-            transform: [{ translateY: yPosition }],
           }}
         >
           <Text style={styles.textKantor}>{item.name}</Text>
@@ -269,10 +163,14 @@ const OfficeDetail = ({ navigation, route }) => {
                 </View>
                 {/* Address Container  */}
               </View>
-              <View style={{ height: 260 }} />
+              <Image
+                source={{ uri: item.image }}
+                style={styles.imageContainer}
+              />
+              <View style={{ height: 180 }} />
             </BottomSheetScrollView>
           </View>
-        </Animated.View>
+        </View>
       </BottomSheet>
     </View>
   );
@@ -289,9 +187,10 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: "100%",
-    height: 222,
-    position: "absolute",
-    zIndex: 0,
+    height: "20%",
+    marginTop: verticalScale(20),
+    borderRadius: moderateScale(15),
+    // position: "absolute",
   },
   sliderIndicator: {
     width: horizontalScale(54),

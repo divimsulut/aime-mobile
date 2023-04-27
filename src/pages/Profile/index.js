@@ -251,6 +251,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
             </Modal>
           </View>
         </View>
+        <View style={{ height: 150 }} />
       </ScrollView>
     </View>
   );
@@ -260,6 +261,7 @@ export default AIME_SettingsScreen;
 
 const styles = StyleSheet.create({
   container: {
+    // flex: 1,
     // padding: 20,
     paddingTop: 90,
     // fontFamily: 'Poppins',

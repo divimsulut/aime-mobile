@@ -37,11 +37,14 @@ const ExploreDestination = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Header
+        color="white"
         navigation={navigation}
         intensity={Platform.OS === "ios" ? 30 : 1}
         // set the background color of the header to transparent if the os is android and default value if the os is ios
         backgroundColor={
-          Platform.OS === "ios" ? "rgba(16, 50, 84, 0.6)" : "rgba(0,0,0,0.2)"
+          Platform.OS === "ios"
+            ? "rgba(16, 50, 84, 0.6)"
+            : "rgba(16, 50, 84, 0.9)"
         }
       />
       <ScrollView stickyHeaderIndices={[1]}>
@@ -196,7 +199,7 @@ const styles = StyleSheet.create({
     height: verticalScale(0),
   },
   searchContainer: {
-    height: verticalScale(46),
+    height: 40,
     width: horizontalScale(372),
     backgroundColor: "white",
     borderRadius: moderateScale(20),

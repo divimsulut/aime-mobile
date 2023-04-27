@@ -15,7 +15,7 @@ const FlatNewsNew = ({ navigation, newsData }) => {
       <View style={styles.container}>
         <Image source={{ uri: item.image }} style={styles.image} />
         <View style={styles.bottomContainer}>
-          <Text numberOfLines={4} style={styles.textTitle}>
+          <Text numberOfLines={3} style={styles.textTitle}>
             {item.title}
           </Text>
           {/* <Text style={styles.textHighlight} numberOfLines={1}>
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomContainer: {
-    height: verticalScale(132),
+    // height: verticalScale(132),
+    paddingBottom: "15%",
     width: "100%",
     // backgroundColor: 'green',
     paddingHorizontal: horizontalScale(5),
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: horizontalScale(58),
-    height: verticalScale(16),
+    // height: verticalScale(16),
     backgroundColor: "#E5CF00",
     position: "absolute",
     bottom: verticalScale(14),

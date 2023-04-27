@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     height: verticalScale(181),
     width: "100%",
     backgroundColor: "#E6E6E6",
-    marginTop: verticalScale(260),
+    marginTop: "5%",
     borderTopLeftRadius: moderateScale(10),
     borderTopRightRadius: moderateScale(10),
     paddingVertical: verticalScale(20),
@@ -210,9 +210,9 @@ const styles = StyleSheet.create({
   popularDestinationContainer: {
     backgroundColor: "#E6E6E6",
     width: "100%",
-    height: verticalScale(298),
     marginVertical: moderateScale(6),
     paddingTop: verticalScale(31),
+    paddingBottom: verticalScale(20),
   },
   newsContainer: {
     backgroundColor: "#E6E6E6",

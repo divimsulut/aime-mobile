@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: "#E5CF00",
     width: horizontalScale(325),
-    height: verticalScale(48),
+    paddingVertical: 4,
     borderRadius: moderateScale(8),
     justifyContent: "center",
     alignItems: "center",

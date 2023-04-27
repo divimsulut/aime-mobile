@@ -278,7 +278,13 @@ const ScanBarcode = ({ navigation }) => {
     return (
       <View style={styles.container}>
         <View style={styles.frameContainer}>
-          <CameraFrame width={"100%"} height={"100%"} />
+          <CameraFrame
+            height={Dimensions.get("window").height}
+            width={"100%"}
+            // style={{ flex: 1 }}
+            preserveAspectRatio="xMidYMid slice"
+            // viewBox="0 0 10 10"
+          />
           {!modalVisible && (
             <View style={styles.animationStyle}>
               <LottieView source={Scanner} autoPlay resizeMode="cover" loop />
@@ -338,12 +344,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: "100%",
+    // backgroundColor: "green",
+    justifyContent: "center",
+    alignItems: "center",
   },
   animationStyle: {
     position: "absolute",
     width: "100%",
     height: 330,
-    top: "30%",
+    top: "50%",
+    transform: [{ translateY: -165 }],
   },
   cameraPreview: {
     flex: 1,

@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Animated,
+  ScrollView,
   Modal,
   ActivityIndicator,
 } from "react-native";
@@ -143,7 +144,7 @@ const SignUp = ({ navigation }) => {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.page}>
+      <ScrollView style={styles.page}>
         <View style={styles.container}>
           <Text style={styles.textHeader}>Lets Get Started</Text>
           <Text style={styles.textWellcome}>
@@ -232,7 +233,7 @@ const SignUp = ({ navigation }) => {
           </View>
         </View>
         {isLoading && <LoadingModal />}
-      </View>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };
