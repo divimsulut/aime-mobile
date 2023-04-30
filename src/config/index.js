@@ -9,8 +9,6 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   sendPasswordResetEmail,
-  GoogleAuthProvider,
-  signInWithPopup,
   updateEmail,
   signOut,
   setPersistence,
@@ -48,18 +46,6 @@ setPersistence(auth, browserLocalPersistence)
   .catch((error) => {
     console.log("ERR @SETPERSISTENCE_FB: ", error.message);
   });
-
-// Google Sign In
-export const googleSignIn = () => {
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then((userCredential) => {
-      console.log("SUCCES_SIGN_GOOGLE: ", userCredential);
-    })
-    .catch((err) => {
-      console.log("ERR @GOOGLE_SIGNIN_FB: ", err);
-    });
-};
 
 // Sign Up function
 export const createUser = (fullName, email, password, navigation) => {

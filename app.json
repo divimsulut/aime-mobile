@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "com.ktp.AIME",
     "name": "AIME",
     "slug": "AIME-dev",
     "version": "1.0.0",
@@ -44,7 +45,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ktp.AIME",
+      "package": "com.ktp.aime",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"

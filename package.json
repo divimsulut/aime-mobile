@@ -3,11 +3,11 @@
   "version": "1.0.4",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "npx expo start --tunnel",
+    "start": "expo start --tunnel",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build": "npm version patch && eas build -p android --profile preview --version $(node -p \"require('./package.json').version\")"
+    "build": "npm version patch && eas build -p android --profile preview"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",
@@ -42,7 +42,11 @@
     "react-native-svg": "13.4.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-native-webview": "^11.26.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "expo-auth-session": "~4.0.3",
+    "expo-crypto": "~12.2.1",
+    "expo-web-browser": "~12.1.1",
+    "expo-application": "~5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
