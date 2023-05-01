@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { moderateScale, verticalScale } from "../../../../constant";
+import { moderateScale, verticalScale } from "../constant";
 
 const ButtonLogin = ({ text, signIn }) => {
   return (

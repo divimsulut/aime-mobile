@@ -96,14 +96,18 @@ export const signIn = ({ email, password }) => {
 };
 
 // Reset password function
-export const resetPass = (email) => {
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      console.log("email sent");
-    })
-    .catch((error) => {
-      console.log("ERR @SEND_RESET_PASS_/V_EMAIL: ", error);
-    });
+export const resetPass = async (email) => {
+  await new Promise((resolve, reject) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        resolve("email sent");
+        console.log("email sent");
+      })
+      .catch((error) => {
+        console.log("ERR @SEND_RESET_PASS_/V_EMAIL: ", error);
+        reject(error.code);
+      });
+  });
 };
 
 // get current user

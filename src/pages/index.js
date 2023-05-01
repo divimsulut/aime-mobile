@@ -10,9 +10,6 @@ import SuccessRegister from "./Auth/SignUp/SuccessRegister";
 // Sign In Section
 import SignIn from "./Auth/SignIn";
 import ForgetPass from "./Auth/SignIn/ForgetPass";
-import OtpPage from "./Auth/SignIn/OtpPage";
-import ResetPass from "./Auth/SignIn/ResetPass";
-import PassChanged from "./Auth/SignIn/PassChanged";
 
 // Home Section
 import HomeNextGen from "./Home";
@@ -26,7 +23,6 @@ import DestionationDetail from "./SubPages/DestinationDetail";
 
 // Imigration Section
 import ImigrationInfo from "./ImigrationInfo";
-import NearbyOffice from "./ImigrationInfo/NearbyOffice";
 import OfficeDetail from "./ImigrationInfo/OfficeDetail";
 import ScanBarcode from "./ScanBarcode";
 
@@ -55,9 +51,6 @@ export {
   // Sign In Section
   SignIn,
   ForgetPass,
-  OtpPage,
-  ResetPass,
-  PassChanged,
 
   // Home Section
   HomeNextGen,
@@ -70,7 +63,6 @@ export {
 
   // Imigration Section
   ImigrationInfo,
-  NearbyOffice,
   OfficeDetail,
   ScanBarcode,
 

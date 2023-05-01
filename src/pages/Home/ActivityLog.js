@@ -122,7 +122,12 @@ const ActivityLog = ({ navigation, route }) => {
                           item.status == "Check-In" ? "#08C755" : "#8F1E2F",
                       }}
                     />
-                    <View style={{ marginLeft: horizontalScale(8) }}>
+                    <View
+                      style={{
+                        marginLeft: horizontalScale(8),
+                        paddingVertical: verticalScale(4),
+                      }}
+                    >
                       <Text style={styles.textDestination}>
                         {item.destination}
                       </Text>
@@ -197,11 +202,12 @@ const styles = StyleSheet.create({
   },
   dataContainer: {
     backgroundColor: "#D2D2D2",
-    height: verticalScale(60),
+    // height: verticalScale(60),
+    // paddingVertical: verticalScale(10),
     flexDirection: "row",
     borderRadius: moderateScale(10),
     overflow: "hidden",
-    marginVertical: verticalScale(4),
+    marginVertical: 6,
   },
   textDestination: {
     fontFamily: "Poppins-SemiBold",

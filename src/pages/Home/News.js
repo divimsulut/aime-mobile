@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     marginLeft: horizontalScale(11),
   },
   articleContainer: {
-    marginTop: verticalScale(119),
+    marginTop: 119,
     marginBottom: verticalScale(50),
     marginHorizontal: horizontalScale(20),
   },

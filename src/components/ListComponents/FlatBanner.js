@@ -7,12 +7,8 @@ import {
   Animated,
 } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  horizontalScale,
-  moderateScale,
-  verticalScale,
-} from "../../../constant";
-import { DataImage } from "../../../data";
+import { horizontalScale, moderateScale, verticalScale } from "../../constant";
+import { DataImage } from "../../data";
 
 const FlatBanner = () => {
   const flatListRef = useRef(null);

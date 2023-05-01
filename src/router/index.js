@@ -5,7 +5,7 @@ import {
   Dimensions,
   Animated,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Splash,
   Welcome,
@@ -22,12 +22,8 @@ import {
   DestionationDetail,
   News,
   ActivityLog,
-  NearbyOffice,
   OfficeDetail,
   ForgetPass,
-  OtpPage,
-  ResetPass,
-  PassChanged,
   HelpChat,
   Notification,
   FavoriteList,
@@ -44,8 +40,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import { Svg, Path } from "react-native-svg";
 import { moderateScale, verticalScale } from "../constant";
-import { auth } from "../config";
-import { onAuthStateChanged } from "firebase/auth";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -277,22 +271,6 @@ const Tabs = () => {
 };
 
 const Router = () => {
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       console.log("user logged in: ", user);
-  //       setUser(user);
-  //     } else {
-  //       console.log("user logged out");
-  //       setUser(null);
-  //     }
-  //   });
-
-  //   return unsubscribe;
-  // }, []);
-
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -351,11 +329,6 @@ const Router = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="NearbyOffice"
-        component={NearbyOffice}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
         name="OfficeDetail"
         component={OfficeDetail}
         options={{ headerShown: false }}
@@ -365,22 +338,6 @@ const Router = () => {
         component={ForgetPass}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="OtpPage"
-        component={OtpPage}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="ResetPass"
-        component={ResetPass}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="PassChanged"
-        component={PassChanged}
-        options={{ headerShown: false }}
-      />
-
       <Stack.Screen
         name="HelpChat"
         component={HelpChat}

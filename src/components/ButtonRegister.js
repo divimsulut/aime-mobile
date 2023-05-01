@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { moderateScale, verticalScale } from "../../../../constant";
-import { createUser } from "../../../../config";
+import { moderateScale, verticalScale } from "../constant";
+import { createUser } from "../config";
 
 const ButtonRegister = ({
   text,

@@ -21,8 +21,8 @@ import {
   ButtonGoogle,
   Input,
   LoadingModal,
+  ButtonRegister,
 } from "../../../components";
-import ButtonRegister from "./components/ButtonRegister";
 
 const SignUp = ({ navigation }) => {
   // State

@@ -7,21 +7,17 @@ import {
   Platform,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import {
-  horizontalScale,
-  moderateScale,
-  verticalScale,
-} from "../../../constant";
+import { horizontalScale, moderateScale, verticalScale } from "../constant";
 import {
   IconAime,
   IconHistory,
   IconNotification,
   IconWhiteChecklist2,
-} from "../../../assets/icons";
+} from "../assets/icons";
 import Svg, { Path } from "react-native-svg";
 import { LinearGradient } from "expo-linear-gradient";
 import { BlurView } from "expo-blur";
-import { getCurrentUser } from "../../../config";
+import { getCurrentUser } from "../config";
 import axios from "axios";
 import moment from "moment";
 

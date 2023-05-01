@@ -1,4 +1,4 @@
-import FlatBanner from "../../pages/Home/component/FlatBanner";
+import FlatBanner from "./FlatBanner";
 import FlatPopularDestination from "./FlatPopularDestination";
 import FlatNewsNew from "./FlatNewsNew";
 import FlatCard from "./FlatCard";

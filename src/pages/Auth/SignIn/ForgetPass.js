@@ -5,8 +5,9 @@ import {
   TouchableOpacity,
   Keyboard,
   TouchableWithoutFeedback,
+  ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   horizontalScale,
   verticalScale,
@@ -17,12 +18,26 @@ import { Input } from "../../../components";
 import { resetPass } from "../../../config";
 
 const ForgetPass = ({ navigation }) => {
+  const [countDown, setCountDown] = useState(0);
   const [email, setEmail] = useState("");
-  console.log(email);
+
+  useEffect(() => {
+    let interval = null;
+
+    if (countDown > 0) {
+      interval = setInterval(() => {
+        setCountDown(countDown - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  });
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.page}>
+      <ScrollView style={styles.page}>
         <TouchableOpacity
           style={{
             position: "absolute",
@@ -51,15 +66,46 @@ const ForgetPass = ({ navigation }) => {
               />
             </View>
           </View>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.buttonContainer}
-            onPress={() => {
-              resetPass(email);
-            }}
-          >
-            <Text style={styles.textButton}>Send code</Text>
-          </TouchableOpacity>
+          {countDown === 0 ? (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.buttonContainer}
+              onPress={() => {
+                resetPass(email)
+                  .then(() => {
+                    setCountDown(30);
+                    alert(
+                      "Reset link sent to your email. Please check your inbox or spam folder."
+                    );
+                  })
+                  .catch((err) => alert(err));
+              }}
+            >
+              <Text style={styles.textButton}>Send reset link</Text>
+            </TouchableOpacity>
+          ) : (
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  fontSize: moderateScale(12),
+                  color: "#1E1E1E",
+                }}
+              >
+                Send link again
+              </Text>
+              <Text
+                style={{
+                  fontFamily: "Poppins-Medium",
+                  fontSize: moderateScale(12),
+                  color: "#817575",
+                  marginLeft: horizontalScale(5),
+                }}
+              >
+                {countDown}
+              </Text>
+            </View>
+          )}
         </View>
         <View style={styles.footer}>
           <Text
@@ -86,7 +132,7 @@ const ForgetPass = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </TouchableWithoutFeedback>
   );
 };
@@ -135,7 +181,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   footer: {
-    marginTop: verticalScale(345),
+    marginTop: verticalScale(300),
     alignSelf: "center",
     flexDirection: "row",
   },

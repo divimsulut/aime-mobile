@@ -1,9 +1,10 @@
 import Input from "./Input";
+import ButtonRegister from "./ButtonRegister";
 import ButtonGoogle from "./ButtonGoogle";
 import ButtonFacebook from "./ButtonFacebook";
-import ButtonLogin from "../pages/Auth/SignIn/components/ButtonLogin";
+import ButtonLogin from "./ButtonLogin";
 import ButtonBack from "./ButtonBack";
-import HomeHeader from "../pages/Home/component/HomeHeader";
+import HomeHeader from "./HomeHeader";
 import Header from "./Header";
 import LoadingModal from "./LoadingModal";
 import EditProfileHeader from "./EditProfileHeader";
@@ -20,6 +21,7 @@ export {
   HomeHeader,
   Header,
   Input,
+  ButtonRegister,
   ButtonBack,
   ButtonGoogle,
   ButtonFacebook,

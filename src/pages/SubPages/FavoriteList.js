@@ -1,14 +1,7 @@
-import {
-  FlatList,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { FlatList, Image, ScrollView, StyleSheet, View } from "react-native";
 import React from "react";
 import { Header, ItemFavoriteList } from "../../components";
-import { ImageFLBanner, ImageLandScape, ImageLandscape2 } from "../../assets";
+import { ImageFLBanner } from "../../assets";
 import { verticalScale } from "../../constant";
 
 import { DataFavoriteList } from "../../data";
