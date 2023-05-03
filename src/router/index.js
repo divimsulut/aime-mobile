@@ -40,6 +40,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import { Svg, Path } from "react-native-svg";
 import { moderateScale, verticalScale } from "../constant";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../config";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -270,17 +272,12 @@ const Tabs = () => {
   );
 };
 
-const Router = () => {
+const SignOutStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="Splash"
         component={Splash}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Tabs"
-        component={Tabs}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -309,6 +306,23 @@ const Router = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="ForgetPass"
+        component={ForgetPass}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const SignInStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Tabs"
+        component={Tabs}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
         name="ExploreDestination"
         component={ExploreDestination}
         options={{ headerShown: false }}
@@ -331,11 +345,6 @@ const Router = () => {
       <Stack.Screen
         name="OfficeDetail"
         component={OfficeDetail}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="ForgetPass"
-        component={ForgetPass}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -383,6 +392,136 @@ const Router = () => {
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
+  );
+};
+
+const Router = () => {
+  const [user, setUser] = useState();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      setUser(null);
+    }
+  });
+
+  return (
+    // <Stack.Navigator>
+    //   {!user ? (
+    //     <Stack.Screen
+    //       name="Splash"
+    //       component={Splash}
+    //       options={{ headerShown: false }}
+    //     />
+    //   ) : (
+    //     <Stack.Screen
+    //       name="Tabs"
+    //       component={Tabs}
+    //       options={{ headerShown: false }}
+    //     />
+    //   )}
+    //   <Stack.Screen
+    //     name="Welcome"
+    //     component={Welcome}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="SignUp"
+    //     component={SignUp}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="Verify"
+    //     component={Verify}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="SuccessRegister"
+    //     component={SuccessRegister}
+    //     options={{ headerShown: false }}
+    //   />
+
+    //   <Stack.Screen
+    //     name="ForgetPass"
+    //     component={ForgetPass}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="SignIn"
+    //     component={SignIn}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="ExploreDestination"
+    //     component={ExploreDestination}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="DestionationDetail"
+    //     component={DestionationDetail}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="News"
+    //     component={News}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="ActivityLog"
+    //     component={ActivityLog}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="OfficeDetail"
+    //     component={OfficeDetail}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="HelpChat"
+    //     component={HelpChat}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="Notification"
+    //     component={Notification}
+    //     options={{ headerShown: false }}
+    //   />
+
+    //   {/* Favorite List */}
+    //   <Stack.Screen
+    //     name="FavoriteList"
+    //     component={FavoriteList}
+    //     options={{ headerShown: false }}
+    //   />
+
+    //   {/* PROFILE SECTION */}
+    //   <Stack.Screen
+    //     name="EditProfile"
+    //     component={EditProfile}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="EditPassport"
+    //     component={EditPassport}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="Profile_Notification"
+    //     component={Profile_Notification}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="Profile_PP"
+    //     component={Profile_PP}
+    //     options={{ headerShown: false }}
+    //   />
+    //   <Stack.Screen
+    //     name="Profile_AboutApp"
+    //     component={Profile_AboutApp}
+    //     options={{ headerShown: false }}
+    //   />
+    // </Stack.Navigator>
+    user ? <SignInStack /> : <SignOutStack />
   );
 };
 

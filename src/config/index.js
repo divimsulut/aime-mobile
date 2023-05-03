@@ -3,7 +3,6 @@ import { CommonActions } from "@react-navigation/native";
 import axios from "axios";
 import { initializeApp } from "firebase/app";
 import {
-  getAuth,
   updateProfile,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -11,10 +10,11 @@ import {
   sendPasswordResetEmail,
   updateEmail,
   signOut,
-  setPersistence,
-  browserLocalPersistence,
+  initializeAuth,
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getReactNativePersistence } from "firebase/auth/react-native";
 
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -37,15 +37,9 @@ const firebase = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export default firebase;
 
-export const auth = getAuth(firebase);
-
-setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    console.log("setPresistence success: Localy");
-  })
-  .catch((error) => {
-    console.log("ERR @SETPERSISTENCE_FB: ", error.message);
-  });
+export const auth = initializeAuth(firebase, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});
 
 // Sign Up function
 export const createUser = (fullName, email, password, navigation) => {
@@ -120,17 +114,9 @@ export const getCurrentUser = () =>
   });
 
 // sign out function
-export const signOutUser = async (navigation) => {
+export const signOutUser = async () => {
   await auth
     .signOut()
-    .then(() =>
-      navigation.dispatch(
-        CommonActions.reset({
-          index: 0,
-          routes: [{ name: "SignIn" }],
-        })
-      )
-    )
     .catch((error) => console.log("ERR @SIGNOUT_FB: ", error));
 };
 

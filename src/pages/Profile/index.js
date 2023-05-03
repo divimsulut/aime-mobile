@@ -234,7 +234,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
                   <TouchableOpacity
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => {
-                      signOutUser(navigation);
+                      signOutUser();
                       setModalVisible(!modalVisible);
                     }}
                   >

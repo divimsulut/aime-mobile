@@ -27,7 +27,7 @@ const FlatNewsNew = ({ navigation, newsData }) => {
           activeOpacity={0.8}
           onPress={() => navigation.navigate("News", { item: item })}
         >
-          <Text style={styles.textButton}>Click Here!</Text>
+          <Text style={styles.textButton}>Read</Text>
         </TouchableOpacity>
       </View>
     );

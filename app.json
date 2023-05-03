@@ -1,6 +1,6 @@
 {
   "expo": {
-    "scheme": "aimeredirect",
+    "scheme": ["aimeredirect", "fb957707211936307"],
     "name": "AIME",
     "slug": "AIME-dev",
     "version": "1.0.0",

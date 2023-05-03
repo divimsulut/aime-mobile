@@ -23,18 +23,9 @@ const ButtonGoogle = ({ text }) => {
         response.authentication.idToken,
         response.authentication.accessToken
       );
-      signInWithCredential(auth, credential)
-        .then((userCredential) => {
-          navigation.dispatch(
-            CommonActions.reset({
-              index: 0,
-              routes: [{ name: "Tabs" }],
-            })
-          );
-        })
-        .catch((error) => {
-          alert("error in google sign in: " + error);
-        });
+      signInWithCredential(auth, credential).catch((error) => {
+        alert("error in google sign in: " + error);
+      });
     }
   }, [response]);
 

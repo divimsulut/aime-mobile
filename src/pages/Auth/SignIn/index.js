@@ -43,12 +43,6 @@ const SignIn = ({ navigation }) => {
           );
           return;
         }
-        navigation.dispatch(
-          CommonActions.reset({
-            index: 0,
-            routes: [{ name: "Tabs" }],
-          })
-        );
       })
       .catch((error) => {
         // clear input when error

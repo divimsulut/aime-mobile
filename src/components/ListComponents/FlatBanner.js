@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  View,
-  Animated,
-} from "react-native";
+import { FlatList, Image, StyleSheet, View } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { DataImage } from "../../data";
@@ -14,24 +7,27 @@ const FlatBanner = () => {
   const flatListRef = useRef(null);
   const itemWidth = horizontalScale(346);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [onDrag, setOnDrag] = useState(false);
 
   // SCROLL EVERY 3 SECONDS
 
   useEffect(() => {
+    if (!onDrag) {
+      flatListRef.current.scrollToIndex({
+        index: selectedIndex,
+        animated: true,
+        viewPosition: 0.5,
+      });
+    }
     const intervalId = setInterval(() => {
       if (selectedIndex === DataImage.length - 1) {
         setSelectedIndex(0);
       } else {
         setSelectedIndex(selectedIndex + 1);
       }
-      flatListRef.current.scrollToIndex({
-        index: selectedIndex,
-        animated: true,
-        viewPosition: 0.5,
-      });
     }, 3000);
     return () => clearInterval(intervalId);
-  }, [selectedIndex]);
+  }, [selectedIndex, onDrag]);
 
   const Component = ({ item }) => {
     return (
@@ -50,6 +46,14 @@ const FlatBanner = () => {
   };
   return (
     <FlatList
+      onScrollBeginDrag={() => {
+        setOnDrag(true);
+      }}
+      onScrollEndDrag={(e) => {
+        const newIndex = Math.round(e.nativeEvent.contentOffset.x / itemWidth);
+        setOnDrag(false);
+        setSelectedIndex(newIndex);
+      }}
       ref={flatListRef}
       data={DataImage}
       scrollEventThrottle={16}
@@ -58,7 +62,6 @@ const FlatBanner = () => {
       snapToAlignment={"center"}
       snapToInterval={itemWidth}
       decelerationRate={0}
-      scrolltoin
       showsHorizontalScrollIndicator={false}
       renderItem={({ item }) => {
         return <Component item={item} />;
