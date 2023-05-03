@@ -184,14 +184,14 @@ const AIME_SettingsScreen = ({ navigation }) => {
 
         {/* SETTINGS ITEMS  */}
         <View style={styles.content}>
-          <Text style={styles.H1}>Settings</Text>
+          <Text style={styles.H1}>Other</Text>
           <View style={styles.SettingsItem}>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate("Profile_Notification")}
             >
               <Settings_Notification />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View style={styles.SettingsItem}>
             <TouchableOpacity

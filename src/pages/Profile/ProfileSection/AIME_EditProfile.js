@@ -40,7 +40,6 @@ const AIME_EditProfile = ({ navigation }) => {
   const [data, setData] = useState({});
   const [phoneCode, setPhoneCode] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
-  console.log(phone);
 
   // modals
   const [modalName, setModalName] = useState(false);

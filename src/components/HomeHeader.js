@@ -96,7 +96,10 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
           {/* -------------------------------------------------------- */}
 
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
           >
             <View style={styles.aimeLogoContainer}>
               <Svg
@@ -111,29 +114,43 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
             </View>
 
             <View style={styles.buttonContainer}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => navigation.navigate("Notification")}
               >
                 <Svg height={30} width={30} viewBox="4 0 30 30">
                   <IconNotification />
                 </Svg>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
 
               <TouchableOpacity
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  backgroundColor: "transparent",
+                  borderWidth: 1.5,
+                  borderColor: "white",
+                  paddingHorizontal: 8,
+                  paddingVertical: 4,
+                  justifyContent: "center",
+                  borderRadius: 25,
+                }}
                 onPress={() =>
                   navigation.navigate("ActivityLog", { item: history })
                 }
+                activeOpacity={0.6}
               >
-                <Svg
-                  height={30}
-                  width={30}
-                  viewBox="4 0 30 30"
-                  style={{
-                    marginLeft: horizontalScale(10),
-                  }}
-                >
+                <Svg height={30} width={30} viewBox="4 0 30 30">
                   <IconHistory />
                 </Svg>
+                <Text
+                  style={{
+                    color: "white",
+                    marginLeft: horizontalScale(5),
+                    fontSize: 10,
+                  }}
+                >
+                  {"Check-in/out\nhistory"}
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -308,7 +325,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "green",
     // height: verticalScale(250),
     paddingHorizontal: horizontalScale(15),
-    paddingTop: verticalScale(30),
+    paddingTop: verticalScale(40),
     paddingBottom: verticalScale(20),
   },
 

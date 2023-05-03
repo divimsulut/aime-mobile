@@ -110,15 +110,20 @@ const ExploreDestination = ({ navigation }) => {
               <Text style={styles.textTitle}>Explore Destination</Text>
               <TouchableOpacity
                 onPress={() => navigation.navigate("FavoriteList")}
-                style={{ flexDirection: "row", alignItems: "center" }}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
               >
                 <Text
                   style={{
-                    textAlign: "center",
+                    textAlign: "left",
                     color: "black",
+                    marginRight: 10,
+                    fontSize: 12,
                   }}
                 >
-                  Favorite Destination
+                  {"Favorite\nDestination"}
                 </Text>
                 <IconArrowRight />
               </TouchableOpacity>

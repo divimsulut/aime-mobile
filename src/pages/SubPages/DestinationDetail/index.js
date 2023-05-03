@@ -8,19 +8,18 @@ import {
   Linking,
 } from "react-native";
 import React from "react";
-import { ImageLandscape3 } from "../../../assets/images";
 import {
   horizontalScale,
   moderateScale,
   verticalScale,
 } from "../../../constant";
-import { Svg } from "react-native-svg";
-import { IconPinYellow, IconBack } from "../../../assets/icons";
+import { Svg, Path } from "react-native-svg";
+import { IconPinYellow } from "../../../assets/icons";
 import FlatImage from "../../../components/ListComponents/FlatImage";
-import { DataImage } from "../../../data";
 import { Shadow } from "react-native-shadow-2";
 import { Header } from "../../../components";
 import { ScrollView } from "react-native";
+import Fontisto from "@expo/vector-icons/Fontisto";
 
 const DestionationDetail = ({ navigation, route }) => {
   const { item } = route.params;
@@ -43,15 +42,33 @@ const DestionationDetail = ({ navigation, route }) => {
         />
       </View>
       <ScrollView style={styles.detailContainer}>
-        <Text
-          style={{
-            fontFamily: "Poppins-ExtraBold",
-            fontSize: moderateScale(30),
-            color: "white",
-          }}
-        >
-          {item.destination}
-        </Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <Text
+            style={{
+              fontFamily: "Poppins-ExtraBold",
+              fontSize: moderateScale(30),
+              color: "white",
+              alignContent: "center",
+            }}
+          >
+            {item.destination}
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              console.log("pressed");
+            }}
+            activeOpacity={0.7}
+            style={{
+              backgroundColor: "rgba(77, 117, 149, 1)",
+              padding: 10,
+              borderRadius: 50,
+              position: "absolute",
+              right: 0,
+            }}
+          >
+            <Fontisto name="star" color={"white"} size={15} />
+          </TouchableOpacity>
+        </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Svg width="21" height="21" viewBox="0 0 21 21">
             <IconPinYellow />
