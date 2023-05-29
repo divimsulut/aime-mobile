@@ -33,7 +33,21 @@ const AIME_SettingsScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  console.log(user);
+
+  const automateUpdate = (user, data) => {
+    if (user.email !== data.email) {
+      console.log("update email");
+      axios.patch(`https://aime-api.vercel.app/user/${user.uid}`, {
+        email: user.email,
+      });
+    }
+    if (user.photoURL !== data.profileImage) {
+      console.log("update profile image");
+      axios.patch(`https://aime-api.vercel.app/user/${user.uid}`, {
+        profileImage: user.photoURL,
+      });
+    }
+  };
 
   React.useEffect(() => {
     getCurrentUser()
@@ -42,6 +56,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
           .get(`https://aime-api.vercel.app/user/${user.uid}`)
           .then((res) => {
             setPhoneNum(res.data.phoneNum);
+            automateUpdate(user, res.data);
           })
           .catch((err) => console.log("ERR @GET_PHONENUM_PROFILE_SC", err));
         setUser(user);
