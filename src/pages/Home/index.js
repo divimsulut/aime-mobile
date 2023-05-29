@@ -32,7 +32,7 @@ const HomeNextGen = ({ navigation }) => {
   useEffect(() => {
     getCurrentUser().then((user) => {
       axios
-        .get(`https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`)
+        .get(`https://aime-api.vercel.app/user/${user.uid}`)
         .then((res) => {
           if (res.data === "User does not exist") {
             setModal(true);
@@ -51,7 +51,7 @@ const HomeNextGen = ({ navigation }) => {
     let tempID = 0;
     setIsLoading(true);
     axios
-      .get("https://sharp-faceted-taleggio.glitch.me/news")
+      .get("https://aime-api.vercel.app/news")
       .then((res) => {
         const newData = res.data.map((item) => ({
           title: item.title,

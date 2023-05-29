@@ -39,7 +39,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
     getCurrentUser()
       .then((user) => {
         axios
-          .get(`https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`)
+          .get(`https://aime-api.vercel.app/user/${user.uid}`)
           .then((res) => {
             setPhoneNum(res.data.phoneNum);
           })
@@ -84,9 +84,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
               getCurrentUser()
                 .then((user) => {
                   axios
-                    .get(
-                      `https://sharp-faceted-taleggio.glitch.me/user/${user.uid}`
-                    )
+                    .get(`https://aime-api.vercel.app/user/${user.uid}`)
                     .then((res) => {
                       setPhoneNum(res.data.phoneNum);
                     })

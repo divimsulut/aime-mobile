@@ -150,7 +150,7 @@ export const handleEditEmail = async (email) => {
 export const handleEditPhoneNum = (userId, phone) => {
   return new Promise(async (resolve, reject) => {
     await axios
-      .patch(`https://sharp-faceted-taleggio.glitch.me/user/${userId}`, {
+      .patch(`https://aime-api.vercel.app/user/${userId}`, {
         uuid: userId,
         phoneNum: phone,
       })

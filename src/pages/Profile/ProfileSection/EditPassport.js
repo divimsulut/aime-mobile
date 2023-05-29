@@ -164,7 +164,7 @@ const EditPassport = ({ navigation }) => {
     handleError()
       .then(() => {
         axios
-          .post("https://sharp-faceted-taleggio.glitch.me/user", data)
+          .post("https://aime-api.vercel.app/user", data)
           .then((res) => {
             console.log(res.data);
             navigation.replace("Tabs");
