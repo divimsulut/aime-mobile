@@ -13,7 +13,7 @@ import {
   moderateScale,
   verticalScale,
 } from "../../../constant";
-import { Svg, Path } from "react-native-svg";
+import { Svg } from "react-native-svg";
 import { IconPinYellow } from "../../../assets/icons";
 import FlatImage from "../../../components/ListComponents/FlatImage";
 import { Shadow } from "react-native-shadow-2";
@@ -23,7 +23,6 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 
 const DestionationDetail = ({ navigation, route }) => {
   const { item } = route.params;
-  console.log(item.image);
 
   const openMapsApp = (address) => {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
@@ -37,37 +36,50 @@ const DestionationDetail = ({ navigation, route }) => {
       <Header navigation={navigation} />
       <View style={{ height: "47%", width: "100%" }}>
         <Image
-          source={{ uri: item.image }}
+          source={{ uri: item.imageURL }}
           style={{ resizeMode: "cover", flex: 1 }}
         />
       </View>
+
       <ScrollView style={styles.detailContainer}>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop: verticalScale(40),
+          }}
+        >
           <Text
             style={{
               fontFamily: "Poppins-ExtraBold",
               fontSize: moderateScale(30),
               color: "white",
               alignContent: "center",
+              width: "85%",
             }}
           >
-            {item.destination}
+            {item.destinationName}
           </Text>
-          <TouchableOpacity
-            onPress={() => {
-              console.log("pressed");
-            }}
-            activeOpacity={0.7}
+          <View
             style={{
-              backgroundColor: "rgba(77, 117, 149, 1)",
-              padding: 10,
-              borderRadius: 50,
-              position: "absolute",
-              right: 0,
+              flex: 1,
+              marginLeft: 5,
             }}
           >
-            <Fontisto name="star" color={"white"} size={15} />
-          </TouchableOpacity>
+            {/* <TouchableOpacity
+              activeOpacity={0.8}
+              style={{
+                backgroundColor: "rgba(77, 117, 149, 1)",
+                width: 40,
+                height: 40,
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: 50,
+              }}
+            >
+              <Fontisto name="star" color={"white"} size={15} />
+            </TouchableOpacity> */}
+          </View>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Svg width="21" height="21" viewBox="0 0 21 21">
@@ -81,11 +93,10 @@ const DestionationDetail = ({ navigation, route }) => {
               marginLeft: horizontalScale(3),
             }}
           >
-            {item.location}
+            {item.address}
           </Text>
         </View>
         <Text
-          numberOfLines={3}
           style={{
             fontFamily: "Poppins-Medium",
             fontSize: moderateScale(15),
@@ -107,7 +118,7 @@ const DestionationDetail = ({ navigation, route }) => {
         </Text>
         <View>
           <FlatList
-            data={item.previewImage}
+            data={item.previewImages}
             keyExtractor={(item) => item.key}
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -123,7 +134,7 @@ const DestionationDetail = ({ navigation, route }) => {
             offset={[0, 10]}
           >
             <TouchableOpacity
-              onPress={() => openMapsApp(item.destination)}
+              onPress={() => openMapsApp(item.destinationName)}
               style={styles.buttonContainer}
               activeOpacity={0.8}
             >
@@ -160,7 +171,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderTopLeftRadius: moderateScale(30),
     borderTopRightRadius: moderateScale(30),
-    paddingTop: verticalScale(45),
     paddingHorizontal: horizontalScale(30),
   },
   buttonContainer: {

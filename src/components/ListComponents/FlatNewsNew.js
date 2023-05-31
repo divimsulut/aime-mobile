@@ -37,7 +37,7 @@ const FlatNewsNew = ({ navigation, newsData }) => {
       estimatedItemSize={10}
       data={newsData}
       numColumns={2}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.index}
       renderItem={({ item }) => <Components item={item} />}
     />
   );

@@ -11,20 +11,16 @@ const FlatCard = ({ item, navigation }) => {
       activeOpacity={0.8}
       onPress={() => navigation.navigate("DestionationDetail", { item: item })}
     >
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <Image source={{ uri: item.imageURL }} style={styles.image} />
       <View style={styles.detailContainer}>
         <View style={{ marginTop: verticalScale(5) }}>
           <Text numberOfLines={1} style={styles.textDestination}>
-            {item.destination}
+            {item.destinationName}
           </Text>
           <Text numberOfLines={2} style={styles.textAddress}>
-            {item.location}
+            {item.address}
           </Text>
         </View>
-        {/* <View style={styles.distanceContainer}>
-          <IconPin />
-          <Text style={styles.textDistance}>(25.3 km)</Text>
-        </View> */}
       </View>
       <View style={styles.viewAllContainer}>
         <Text style={styles.textViewAll}>View All</Text>

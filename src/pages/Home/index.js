@@ -21,10 +21,11 @@ import axios from "axios";
 import { IconRedWarning } from "../../assets";
 import { getCurrentUser } from "../../config";
 import { ActivityIndicator } from "react-native";
-import { newsGetAPI, userGetAPI } from "../../api";
+import { bannerGetAPI, newsGetAPI, userGetAPI } from "../../api";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
+  const [bannerData, setBannerData] = React.useState(null);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   const [modal, setModal] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -47,30 +48,24 @@ const HomeNextGen = ({ navigation }) => {
     });
   }, []);
 
-  // get the news data
-  useEffect(() => {
-    let tempID = 0;
-    setIsLoading(true);
-    axios
-      .get(newsGetAPI)
-      .then((res) => {
-        const newData = res.data.map((item) => ({
-          title: item.title,
-          link: item.link,
-          author: item.author,
-          image: item.image,
-          date: item.date,
-          content: item.excerpt,
-          id: tempID++,
-        }));
+  const fetchData = async () => {
+    try {
+      const responseNewsPromise = axios.get(newsGetAPI);
+      const responseBannerPromise = axios.get(bannerGetAPI);
 
-        setNewsData(newData);
-        console.log("news data fatched");
-      })
-      .catch((err) => {
-        console.log("error in fetching news data: ", err);
-      })
-      .finally(() => setIsLoading(false));
+      const responseBanner = await responseBannerPromise;
+      setBannerData(responseBanner.data.banner);
+
+      const responseNews = await responseNewsPromise;
+      setNewsData(responseNews.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // get the  data
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
@@ -90,6 +85,7 @@ const HomeNextGen = ({ navigation }) => {
             refreshing={isRefreshing}
             onRefresh={() => {
               setIsRefreshing(true);
+              fetchData();
             }}
           />
         }
@@ -97,7 +93,7 @@ const HomeNextGen = ({ navigation }) => {
       >
         {/* Banner Section */}
         <View style={styles.bannerContainer}>
-          <FlatBanner />
+          {bannerData && <FlatBanner data={bannerData} />}
         </View>
 
         {/* Popular Destination Section */}

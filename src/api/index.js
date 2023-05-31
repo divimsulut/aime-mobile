@@ -15,3 +15,5 @@ export const newsGetAPI = "https://aime-api.vercel.app/news";
 export const destinationGetAPI = "https://aime-api.vercel.app/destination";
 
 export const checkinPostAPI = "https://aime-api.vercel.app/destination/check";
+
+export const bannerGetAPI = "https://aime-api.vercel.app/banner";

@@ -7,7 +7,7 @@ import {
   Platform,
 } from "react-native";
 import React from "react";
-import { ButtonBack, Header } from "../../components";
+import { Header } from "../../components";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { Shadow } from "react-native-shadow-2";
 import { BlurView } from "expo-blur";
@@ -54,7 +54,7 @@ const News = ({ navigation, route }) => {
 
           <View style={styles.articleContainer}>
             <Text style={styles.textArticle}>
-              {item.content.split(". ").map((item, index) => {
+              {item.excerpt.split(". ").map((item, index) => {
                 return (
                   <Text key={index}>
                     {item}

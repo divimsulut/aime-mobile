@@ -1,16 +1,14 @@
 import { FlatList, Image, StyleSheet, View } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
-import { DataImage } from "../../data";
 
-const FlatBanner = () => {
+const FlatBanner = ({ data }) => {
   const flatListRef = useRef(null);
   const itemWidth = horizontalScale(346);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [onDrag, setOnDrag] = useState(false);
 
   // SCROLL EVERY 3 SECONDS
-
   useEffect(() => {
     if (!onDrag) {
       flatListRef.current.scrollToIndex({
@@ -20,7 +18,7 @@ const FlatBanner = () => {
       });
     }
     const intervalId = setInterval(() => {
-      if (selectedIndex === DataImage.length - 1) {
+      if (selectedIndex === data?.length - 1) {
         setSelectedIndex(0);
       } else {
         setSelectedIndex(selectedIndex + 1);
@@ -39,7 +37,7 @@ const FlatBanner = () => {
         }}
       >
         <View style={styles.imageContainer}>
-          <Image source={{ uri: item.image }} style={{ flex: 1 }} />
+          <Image source={{ uri: item.url }} style={{ flex: 1 }} />
         </View>
       </View>
     );
@@ -55,9 +53,9 @@ const FlatBanner = () => {
         setSelectedIndex(newIndex);
       }}
       ref={flatListRef}
-      data={DataImage}
+      data={data}
       scrollEventThrottle={16}
-      keyExtractor={(item) => item.key}
+      keyExtractor={(item) => item.index}
       horizontal
       snapToAlignment={"center"}
       snapToInterval={itemWidth}

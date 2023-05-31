@@ -8,7 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IconArrowRight,
   ImageLandscape3,
@@ -21,18 +21,42 @@ import {
 } from "../../../constant";
 import { Svg, Path } from "react-native-svg";
 import { Shadow } from "react-native-shadow-2";
-import { ButtonBack, FlatCard, Header } from "../../../components";
-import { DataDestination } from "../../../data";
+import {
+  ButtonBack,
+  FlatCard,
+  Header,
+  LoadingModal,
+} from "../../../components";
 import { Platform } from "react-native";
+import axios from "axios";
+import { destinationGetAPI } from "../../../api";
 
 const ExploreDestination = ({ navigation }) => {
   const [search, setSearch] = useState("");
-  const filteredData = DataDestination.filter((item) => {
+  const [loading, setLoading] = useState(false);
+  const [destinationData, setDestinationData] = useState();
+  const filteredData = destinationData?.filter((item) => {
     return (
-      item.destination.toLowerCase().includes(search.toLowerCase()) ||
-      item.location.toLowerCase().includes(search.toLowerCase())
+      item.destinationName.toLowerCase().includes(search.toLowerCase()) ||
+      item.address.toLowerCase().includes(search.toLowerCase())
     );
   });
+
+  const getDestination = async () => {
+    setLoading(true);
+    try {
+      const response = await axios(destinationGetAPI);
+      setDestinationData(response.data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getDestination();
+  }, []);
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -108,7 +132,7 @@ const ExploreDestination = ({ navigation }) => {
               }}
             >
               <Text style={styles.textTitle}>Explore Destination</Text>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => navigation.navigate("FavoriteList")}
                 style={{
                   flexDirection: "row",
@@ -126,23 +150,16 @@ const ExploreDestination = ({ navigation }) => {
                   {"Favorite\nDestination"}
                 </Text>
                 <IconArrowRight />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
 
             <View style={{ marginTop: verticalScale(24) }}>
-              <FlatList
-                data={filteredData}
-                keyExtractor={(item) => item.key}
-                renderItem={({ item }) => (
-                  <FlatCard item={item} navigation={navigation} />
-                )}
-                contentContainerStyle={{
-                  width: "100%",
-                  // backgroundColor: 'green',
-                  paddingHorizontal: horizontalScale(14),
-                }}
-              />
-              {filteredData.length === 0 && (
+              {filteredData?.map((item, index) => {
+                return (
+                  <FlatCard key={index} item={item} navigation={navigation} />
+                );
+              })}
+              {filteredData?.length === 0 && (
                 <View style={{ alignItems: "center", marginTop: "10%" }}>
                   <Image source={ImageNoResult} />
                   <Text
@@ -170,6 +187,7 @@ const ExploreDestination = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      {loading && <LoadingModal />}
     </View>
   );
 };
