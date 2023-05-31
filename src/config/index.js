@@ -15,6 +15,7 @@ import {
 import { getStorage } from "firebase/storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getReactNativePersistence } from "firebase/auth/react-native";
+import { userPatchAPI } from "../api";
 
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -150,7 +151,7 @@ export const handleEditEmail = async (email) => {
 export const handleEditPhoneNum = (userId, phone) => {
   return new Promise(async (resolve, reject) => {
     await axios
-      .patch(`https://aime-api.vercel.app/user/${userId}`, {
+      .patch(userPatchAPI(userId), {
         uuid: userId,
         phoneNum: phone,
       })

@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomContainer: {
-    // height: verticalScale(132),
+    height: verticalScale(110),
     paddingBottom: "15%",
     width: "100%",
     // backgroundColor: 'green',

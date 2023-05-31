@@ -20,6 +20,7 @@ import { BlurView } from "expo-blur";
 import { getCurrentUser } from "../config";
 import axios from "axios";
 import moment from "moment";
+import { getHistAPI } from "../api";
 
 const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   const [user, setUser] = useState(null);
@@ -53,7 +54,7 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   // get last destination history
   const getLastHistory = (id) => {
     axios
-      .get(`https://aime-api.vercel.app/destination/history/${id}`)
+      .get(getHistAPI(id))
       .then(function (response) {
         setLastHistory(response.data.slice(-1)[0]);
         const hist = response.data.map((item) => ({

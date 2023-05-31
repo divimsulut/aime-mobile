@@ -20,6 +20,7 @@ import { Upload } from "../../../assets";
 import AnimatedLottieView from "lottie-react-native";
 import { getCurrentUser, storage } from "../../../config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { userPostAPI } from "../../../api";
 
 const EditPassport = ({ navigation }) => {
   //  Data passport
@@ -164,7 +165,7 @@ const EditPassport = ({ navigation }) => {
     handleError()
       .then(() => {
         axios
-          .post("https://aime-api.vercel.app/user", data)
+          .post(userPostAPI, data)
           .then((res) => {
             console.log(res.data);
             navigation.replace("Tabs");

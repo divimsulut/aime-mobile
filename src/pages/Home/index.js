@@ -21,6 +21,7 @@ import axios from "axios";
 import { IconRedWarning } from "../../assets";
 import { getCurrentUser } from "../../config";
 import { ActivityIndicator } from "react-native";
+import { newsGetAPI, userGetAPI } from "../../api";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
@@ -32,7 +33,7 @@ const HomeNextGen = ({ navigation }) => {
   useEffect(() => {
     getCurrentUser().then((user) => {
       axios
-        .get(`https://aime-api.vercel.app/user/${user.uid}`)
+        .get(userGetAPI(user.uid))
         .then((res) => {
           if (res.data === "User does not exist") {
             setModal(true);
@@ -51,7 +52,7 @@ const HomeNextGen = ({ navigation }) => {
     let tempID = 0;
     setIsLoading(true);
     axios
-      .get("https://aime-api.vercel.app/news")
+      .get(newsGetAPI)
       .then((res) => {
         const newData = res.data.map((item) => ({
           title: item.title,

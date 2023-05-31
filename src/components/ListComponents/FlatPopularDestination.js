@@ -9,37 +9,40 @@ import {
 import React from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { DataDestination } from "../../data";
+import { Shadow } from "react-native-shadow-2";
 
 const FlatPopularDestination = ({ navigation }) => {
   const Component = ({ item }) => {
     return (
-      <View style={styles.container}>
-        <Image
-          source={{ uri: item.image }}
-          style={{ width: "100%", flex: 1 }}
-        />
-        <View style={styles.bottomContainer}>
-          <View style={styles.textContainer}>
-            <Text numberOfLines={1} style={styles.textDestination}>
-              {item.destination}
-            </Text>
-            <Text numberOfLines={1} style={styles.textLocation}>
-              {item.location}
-            </Text>
-          </View>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("DestionationDetail", { item: item })
-              }
-              style={styles.buttonStyle}
-              activeOpacity={0.8}
-            >
-              <Text style={styles.textButton}>View Detail</Text>
-            </TouchableOpacity>
+      <Shadow offset={[2, 2]} distance={8} startColor="#00000010">
+        <View style={styles.container}>
+          <Image
+            source={{ uri: item.image }}
+            style={{ width: "100%", flex: 1 }}
+          />
+          <View style={styles.bottomContainer}>
+            <View style={styles.textContainer}>
+              <Text numberOfLines={1} style={styles.textDestination}>
+                {item.destination}
+              </Text>
+              <Text numberOfLines={1} style={styles.textLocation}>
+                {item.location}
+              </Text>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("DestionationDetail", { item: item })
+                }
+                style={styles.buttonStyle}
+                activeOpacity={0.8}
+              >
+                <Text style={styles.textButton}>View Detail</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
+      </Shadow>
     );
   };
   return (
@@ -47,7 +50,11 @@ const FlatPopularDestination = ({ navigation }) => {
       data={DataDestination}
       keyExtractor={(item) => item.key}
       horizontal
-      contentContainerStyle={{ paddingLeft: horizontalScale(10) }}
+      contentContainerStyle={{
+        paddingLeft: horizontalScale(10),
+        height: verticalScale(210),
+        alignItems: "center",
+      }}
       showsHorizontalScrollIndicator={false}
       renderItem={({ item }) => {
         return <Component item={item} />;
@@ -66,21 +73,10 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginRight: horizontalScale(10),
     backgroundColor: "white",
-
-    //Shadow
-    shadowColor: "#00284D",
-    shadowOffset: {
-      width: 0,
-      height: 9,
-    },
-    shadowOpacity: 0.48,
-    shadowRadius: 11.95,
-
-    elevation: 18,
   },
   bottomContainer: {
     backgroundColor: "#00284D",
-    // height: verticalScale(59),
+    height: verticalScale(59),
     flexDirection: "row",
   },
   textContainer: {

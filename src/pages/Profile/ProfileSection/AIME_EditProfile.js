@@ -28,6 +28,7 @@ import { Shadow } from "react-native-shadow-2";
 import * as ImagePicker from "expo-image-picker";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../config";
+import { userGetAPI } from "../../../api";
 
 const AIME_EditProfile = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +66,7 @@ const AIME_EditProfile = ({ navigation }) => {
     getCurrentUser()
       .then((user) => {
         axios
-          .get(`https://aime-api.vercel.app/user/${user.uid}`)
+          .get(userGetAPI(user.uid))
           .then((res) => {
             if (res.data === "User does not exist") {
               console.log("User does not exist");
@@ -159,7 +160,7 @@ const AIME_EditProfile = ({ navigation }) => {
                   setPhone(user.phoneNumber);
                   setImage(user.photoURL);
                   axios
-                    .get(`https://aime-api.vercel.app/user/${user.uid}`)
+                    .get(userGetAPI(user.uid))
                     .then((res) => {
                       setData({ ...data, phoneNum: res.data.phoneNum });
                     })

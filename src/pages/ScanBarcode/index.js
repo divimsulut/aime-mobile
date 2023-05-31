@@ -20,6 +20,7 @@ import { LoadingModal } from "../../components";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import moment from "moment";
 import { getCurrentUser } from "../../config";
+import { checkinPostAPI, destinationGetAPI } from "../../api";
 
 const ScanBarcode = ({ navigation }) => {
   //  Data Destination
@@ -199,7 +200,7 @@ const ScanBarcode = ({ navigation }) => {
   useEffect(() => {
     setIsLoadingData(true);
     axios
-      .get("https://aime-api.vercel.app/destination")
+      .get(destinationGetAPI)
       .then((response) => {
         setDestinationData(response.data);
         setIsLoadingData(false);
@@ -214,7 +215,7 @@ const ScanBarcode = ({ navigation }) => {
   const pushData = async (uuid, destinationId) => {
     setIsLoadingData(true);
     await axios
-      .post("https://aime-api.vercel.app/destination/check", {
+      .post(checkinPostAPI, {
         uuid,
         destinationId,
       })

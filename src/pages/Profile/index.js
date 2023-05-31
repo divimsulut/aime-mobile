@@ -10,7 +10,7 @@ import {
   RefreshControl,
   Platform,
 } from "react-native";
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
 import { getCurrentUser, signOutUser } from "../../config";
 import { verticalScale } from "../../constant";
@@ -21,11 +21,11 @@ import {
   Header,
   Settings_About,
   Settings_LogOut,
-  Settings_Notification,
   Settings_PP,
 } from "../../components";
 import { IconCross } from "../../assets";
 import axios from "axios";
+import { userGetAPI, userPatchAPI } from "../../api";
 
 const AIME_SettingsScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
@@ -37,13 +37,13 @@ const AIME_SettingsScreen = ({ navigation }) => {
   const automateUpdate = (user, data) => {
     if (user.email !== data.email) {
       console.log("update email");
-      axios.patch(`https://aime-api.vercel.app/user/${user.uid}`, {
+      axios.patch(userPatchAPI(user.uid), {
         email: user.email,
       });
     }
     if (user.photoURL !== data.profileImage) {
       console.log("update profile image");
-      axios.patch(`https://aime-api.vercel.app/user/${user.uid}`, {
+      axios.patch(userPatchAPI(user.uid), {
         profileImage: user.photoURL,
       });
     }
@@ -53,7 +53,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
     getCurrentUser()
       .then((user) => {
         axios
-          .get(`https://aime-api.vercel.app/user/${user.uid}`)
+          .get(userGetAPI(user.uid))
           .then((res) => {
             setPhoneNum(res.data.phoneNum);
             automateUpdate(user, res.data);
@@ -99,7 +99,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
               getCurrentUser()
                 .then((user) => {
                   axios
-                    .get(`https://aime-api.vercel.app/user/${user.uid}`)
+                    .get(userGetAPI(user.uid))
                     .then((res) => {
                       setPhoneNum(res.data.phoneNum);
                     })
