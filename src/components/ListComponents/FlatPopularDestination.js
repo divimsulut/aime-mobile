@@ -11,22 +11,22 @@ import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { DataDestination } from "../../data";
 import { Shadow } from "react-native-shadow-2";
 
-const FlatPopularDestination = ({ navigation }) => {
+const FlatPopularDestination = ({ navigation, data }) => {
   const Component = ({ item }) => {
     return (
       <Shadow offset={[2, 2]} distance={8} startColor="#00000010">
         <View style={styles.container}>
           <Image
-            source={{ uri: item.image }}
+            source={{ uri: item.imageURL }}
             style={{ width: "100%", flex: 1 }}
           />
           <View style={styles.bottomContainer}>
             <View style={styles.textContainer}>
               <Text numberOfLines={1} style={styles.textDestination}>
-                {item.destination}
+                {item.destinationName}
               </Text>
               <Text numberOfLines={1} style={styles.textLocation}>
-                {item.location}
+                {item.address}
               </Text>
             </View>
             <View style={styles.buttonContainer}>
@@ -47,8 +47,8 @@ const FlatPopularDestination = ({ navigation }) => {
   };
   return (
     <FlatList
-      data={DataDestination}
-      keyExtractor={(item) => item.key}
+      data={data}
+      keyExtractor={(item) => item.id}
       horizontal
       contentContainerStyle={{
         paddingLeft: horizontalScale(10),

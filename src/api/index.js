@@ -13,6 +13,7 @@ export const userPostAPI = "https://aime-api.vercel.app/user";
 export const newsGetAPI = "https://aime-api.vercel.app/news";
 
 export const destinationGetAPI = "https://aime-api.vercel.app/destination";
+export const popularGetAPI = "https://aime-api.vercel.app/destination/popular";
 
 export const checkinPostAPI = "https://aime-api.vercel.app/destination/check";
 

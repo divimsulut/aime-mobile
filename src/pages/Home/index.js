@@ -14,6 +14,7 @@ import {
   FlatBanner,
   FlatPopularDestination,
   FlatNewsNew,
+  LoadingModal,
 } from "../../components";
 import { horizontalScale, moderateScale, verticalScale } from "../../constant";
 import { Svg, Defs, Mask, G, Path, ClipPath } from "react-native-svg";
@@ -21,13 +22,15 @@ import axios from "axios";
 import { IconRedWarning } from "../../assets";
 import { getCurrentUser } from "../../config";
 import { ActivityIndicator } from "react-native";
-import { bannerGetAPI, newsGetAPI, userGetAPI } from "../../api";
+import { bannerGetAPI, newsGetAPI, popularGetAPI, userGetAPI } from "../../api";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
   const [bannerData, setBannerData] = React.useState(null);
+  const [popularDestination, setPopularDestination] = React.useState([]);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   const [modal, setModal] = React.useState(false);
+  const [initLoading, setInitLoading] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
   // check if the user already provide passport data
@@ -52,6 +55,10 @@ const HomeNextGen = ({ navigation }) => {
     try {
       const responseNewsPromise = axios.get(newsGetAPI);
       const responseBannerPromise = axios.get(bannerGetAPI);
+      const responsePopularPromise = axios.get(popularGetAPI);
+
+      const responsePopular = await responsePopularPromise;
+      setPopularDestination(responsePopular.data);
 
       const responseBanner = await responseBannerPromise;
       setBannerData(responseBanner.data.banner);
@@ -60,11 +67,14 @@ const HomeNextGen = ({ navigation }) => {
       setNewsData(responseNews.data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setInitLoading(false);
     }
   };
 
   // get the  data
   useEffect(() => {
+    setInitLoading(true);
     fetchData();
   }, []);
 
@@ -153,7 +163,10 @@ const HomeNextGen = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-          <FlatPopularDestination navigation={navigation} />
+          <FlatPopularDestination
+            navigation={navigation}
+            data={popularDestination}
+          />
         </View>
 
         {/* News Section */}
@@ -188,6 +201,7 @@ const HomeNextGen = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+      {initLoading && <LoadingModal />}
     </LinearGradient>
   );
 };
