@@ -37,15 +37,23 @@ const AIME_SettingsScreen = ({ navigation }) => {
   const automateUpdate = (user, data) => {
     if (user.email !== data.email) {
       console.log("update email");
-      axios.patch(userPatchAPI(user.uid), {
-        email: user.email,
-      });
+      axios.patch(
+        userPatchAPI(user.uid),
+        {
+          email: user.email,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
     }
     if (user.photoURL !== data.profileImage) {
       console.log("update profile image");
-      axios.patch(userPatchAPI(user.uid), {
-        profileImage: user.photoURL,
-      });
+      axios.patch(
+        userPatchAPI(user.uid),
+        {
+          profileImage: user.photoURL,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
     }
   };
 
@@ -116,7 +124,9 @@ const AIME_SettingsScreen = ({ navigation }) => {
               getCurrentUser()
                 .then((user) => {
                   axios
-                    .get(userGetAPI(user.uid))
+                    .get(userGetAPI(user.uid), {
+                      headers: { Authorization: `Bearer ${token}` },
+                    })
                     .then((res) => {
                       setPhoneNum(res.data.phoneNum);
                     })
