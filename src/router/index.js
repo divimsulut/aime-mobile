@@ -42,6 +42,9 @@ import { Svg, Path } from "react-native-svg";
 import { moderateScale, verticalScale } from "../constant";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config";
+import axios from "axios";
+import { loginAPI } from "../api";
+import * as SecureStore from "expo-secure-store";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -395,11 +398,30 @@ const SignInStack = () => {
   );
 };
 
+const storeToken = async (value) => {
+  try {
+    await SecureStore.setItemAsync("token", value);
+    console.log("key stored");
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const Router = () => {
   const [user, setUser] = useState();
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
+      axios
+        .post(loginAPI, { email: user.email, uid: user.uid })
+        .then((res) => {
+          SecureStore.setItemAsync("token", res.data.token)
+            .then(() => console.log("data stored"))
+            .catch((err) => console.log(err));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       setUser(null);
     }

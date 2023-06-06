@@ -10,13 +10,11 @@ import {
   RefreshControl,
   Platform,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Svg, Path, Circle, G, Mask, Defs, ClipPath } from "react-native-svg";
 import { getCurrentUser, signOutUser } from "../../config";
 import { verticalScale } from "../../constant";
-
 import { ColorB_White, ColorC, ColorAA } from "../../constant";
-
 import {
   Header,
   Settings_About,
@@ -26,6 +24,7 @@ import {
 import { IconCross } from "../../assets";
 import axios from "axios";
 import { userGetAPI, userPatchAPI } from "../../api";
+import * as SecureStore from "expo-secure-store";
 
 const AIME_SettingsScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
@@ -33,6 +32,7 @@ const AIME_SettingsScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [token, setToken] = useState("");
 
   const automateUpdate = (user, data) => {
     if (user.email !== data.email) {
@@ -49,23 +49,40 @@ const AIME_SettingsScreen = ({ navigation }) => {
     }
   };
 
-  React.useEffect(() => {
-    getCurrentUser()
-      .then((user) => {
-        axios
-          .get(userGetAPI(user.uid))
-          .then((res) => {
-            setPhoneNum(res.data.phoneNum);
-            automateUpdate(user, res.data);
-          })
-          .catch((err) => console.log("ERR @GET_PHONENUM_PROFILE_SC", err));
-        setUser(user);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const getToken = async (key) => {
+    try {
+      const res = await SecureStore.getItemAsync(key);
+      setToken(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getToken("token");
   }, []);
+
+  React.useEffect(() => {
+    if (token) {
+      getCurrentUser()
+        .then((user) => {
+          axios
+            .get(userGetAPI(user.uid), {
+              headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((res) => {
+              setPhoneNum(res.data.phoneNum);
+              automateUpdate(user, res.data);
+            })
+            .catch((err) => console.log("ERR @GET_PHONENUM_PROFILE_SC", err));
+          setUser(user);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [token]);
 
   if (isLoading) {
     return (

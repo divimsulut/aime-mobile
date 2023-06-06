@@ -1,3 +1,5 @@
+export const loginAPI = "https://aime-api.vercel.app/auth/login/client";
+
 export const getHistAPI = (id) => {
   return `https://aime-api.vercel.app/destination/history/${id}`;
 };

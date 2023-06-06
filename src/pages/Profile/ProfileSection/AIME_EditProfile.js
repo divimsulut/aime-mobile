@@ -29,6 +29,7 @@ import * as ImagePicker from "expo-image-picker";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../config";
 import { userGetAPI } from "../../../api";
+import * as SecureStore from "expo-secure-store";
 
 const AIME_EditProfile = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,11 +42,18 @@ const AIME_EditProfile = ({ navigation }) => {
   const [data, setData] = useState({});
   const [phoneCode, setPhoneCode] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
+  const [token, setToken] = useState("");
 
   // modals
   const [modalName, setModalName] = useState(false);
   const [modalEmail, setModalEmail] = useState(false);
   const [modalPhoneNum, setModalPhoneNum] = useState(false);
+
+  // get token from secure storage
+  const getToken = async (key) => {
+    const res = await SecureStore.getItemAsync(key);
+    setToken(res);
+  };
 
   // get profile data
   useEffect(() => {
@@ -61,27 +69,35 @@ const AIME_EditProfile = ({ navigation }) => {
       });
   }, []);
 
+  useEffect(() => {
+    getToken("token");
+  }, []);
+
   // get passport data
   useEffect(() => {
-    getCurrentUser()
-      .then((user) => {
-        axios
-          .get(userGetAPI(user.uid))
-          .then((res) => {
-            if (res.data === "User does not exist") {
-              console.log("User does not exist");
-              return;
-            }
-            setData(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    if (token) {
+      getCurrentUser()
+        .then(async (user) => {
+          axios
+            .get(userGetAPI(user.uid), {
+              headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((res) => {
+              if (res.data === "User does not exist") {
+                console.log("User does not exist");
+                return;
+              }
+              setData(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [token]);
 
   // set phone number each update
   useEffect(() => {

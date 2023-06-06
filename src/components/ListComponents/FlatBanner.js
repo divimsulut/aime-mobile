@@ -30,6 +30,7 @@ const FlatBanner = ({ data }) => {
   const Component = ({ item }) => {
     return (
       <View
+        key={item.index}
         style={{
           width: itemWidth,
           alignItems: "center",
@@ -55,7 +56,6 @@ const FlatBanner = ({ data }) => {
       ref={flatListRef}
       data={data}
       scrollEventThrottle={16}
-      keyExtractor={(item) => item.index}
       horizontal
       snapToAlignment={"center"}
       snapToInterval={itemWidth}
