@@ -128,8 +128,6 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
                   flexDirection: "row",
                   alignItems: "center",
                   backgroundColor: "transparent",
-                  borderWidth: 1.5,
-                  borderColor: "white",
                   paddingHorizontal: 8,
                   paddingVertical: 4,
                   justifyContent: "center",

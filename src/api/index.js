@@ -1,22 +1,24 @@
-export const loginAPI = "https://aime-api.vercel.app/auth/login/client";
+const baseURL = `https://aime-api.vercel.app`;
+
+export const loginAPI = `${baseURL}/auth/login/client`;
 
 export const getHistAPI = (id) => {
-  return `https://aime-api.vercel.app/destination/history/${id}`;
+  return `${baseURL}/destination/history/${id}`;
 };
 
 export const userPatchAPI = (id) => {
-  return `https://aime-api.vercel.app/user/${id}`;
+  return `${baseURL}/user/${id}`;
 };
 export const userGetAPI = (id) => {
-  return `https://aime-api.vercel.app/user/${id}`;
+  return `${baseURL}/user/${id}`;
 };
-export const userPostAPI = "https://aime-api.vercel.app/user";
+export const userPostAPI = `${baseURL}/user`;
 
-export const newsGetAPI = "https://aime-api.vercel.app/news";
+export const newsGetAPI = `${baseURL}/news`;
 
-export const destinationGetAPI = "https://aime-api.vercel.app/destination";
-export const popularGetAPI = "https://aime-api.vercel.app/destination/popular";
+export const destinationGetAPI = `${baseURL}/destination`;
+export const popularGetAPI = `${baseURL}/destination/popular`;
 
-export const checkinPostAPI = "https://aime-api.vercel.app/destination/check";
+export const checkinPostAPI = `${baseURL}/destination/check`;
 
-export const bannerGetAPI = "https://aime-api.vercel.app/banner";
+export const bannerGetAPI = `${baseURL}/banner`;

@@ -21,8 +21,8 @@ import { Svg, Defs, Mask, G, Path, ClipPath } from "react-native-svg";
 import axios from "axios";
 import { IconRedWarning } from "../../assets";
 import { getCurrentUser } from "../../config";
-import { ActivityIndicator } from "react-native";
 import { bannerGetAPI, newsGetAPI, popularGetAPI, userGetAPI } from "../../api";
+import * as SecureStore from "expo-secure-store";
 
 const HomeNextGen = ({ navigation }) => {
   const [newsData, setNewsData] = React.useState([]);
@@ -31,13 +31,22 @@ const HomeNextGen = ({ navigation }) => {
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   const [modal, setModal] = React.useState(false);
   const [initLoading, setInitLoading] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  // const [token, setToken] = React.useState("");
+
+  // useEffect(() => {
+  //   SecureStore.getItemAsync("token").then((res) => {
+  //     setToken(res);
+  //   });
+  // }, []);
 
   // check if the user already provide passport data
   useEffect(() => {
-    getCurrentUser().then((user) => {
+    getCurrentUser().then(async (user) => {
+      const token = await SecureStore.getItemAsync("token");
       axios
-        .get(userGetAPI(user.uid))
+        .get(userGetAPI(user.uid), {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
           if (res.data === "User does not exist") {
             setModal(true);
@@ -46,7 +55,11 @@ const HomeNextGen = ({ navigation }) => {
           }
         })
         .catch((err) => {
-          console.log("njir error: ", err);
+          if (err.response?.data.message === "Unauthorized") {
+            setModal(true);
+          } else {
+            console.log("Error occurred: ", err.message);
+          }
         });
     });
   }, []);
@@ -173,7 +186,6 @@ const HomeNextGen = ({ navigation }) => {
         <View style={styles.newsContainer}>
           <Text style={styles.label}>Imigration News</Text>
           <View style={{ alignItems: "center" }}>
-            {isLoading && <ActivityIndicator animating={isLoading} />}
             <FlatNewsNew navigation={navigation} newsData={newsData} />
           </View>
         </View>
