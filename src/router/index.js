@@ -411,17 +411,19 @@ const Router = () => {
   const [user, setUser] = useState();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      setUser(user);
       axios
         .post(loginAPI, { email: user.email, uid: user.uid })
-        .then((res) => {
-          SecureStore.setItemAsync("token", res.data.token)
-            .then(() => console.log("data stored"))
-            .catch((err) => console.log(err));
+        .then(async (res) => {
+          await SecureStore.setItemAsync("token", res.data.token).catch((err) =>
+            console.log(err)
+          );
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch(async (error) => {
+          await SecureStore.deleteItemAsync("token").catch((err) =>
+            console.log(err)
+          );
+        })
+        .finally(() => setUser(user));
     } else {
       setUser(null);
     }

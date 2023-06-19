@@ -45,7 +45,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ktp.aime",
+      "package": "com.aime.mobile",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"

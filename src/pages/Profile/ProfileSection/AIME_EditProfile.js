@@ -134,7 +134,7 @@ const AIME_EditProfile = ({ navigation }) => {
     setIsRefreshing(true);
     try {
       const filename = uri.substring(uri.lastIndexOf("/") + 1);
-      const storageRef = ref(storage, `images/${filename}`);
+      const storageRef = ref(storage, `images/profilePicture/${filename}`);
       const response = await fetch(uri);
       const blob = await response.blob();
       const snapshot = await uploadBytes(storageRef, blob);

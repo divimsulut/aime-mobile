@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-import { CommonActions } from "@react-navigation/native";
 import axios from "axios";
 import { initializeApp } from "firebase/app";
 import {
@@ -22,15 +21,13 @@ import { userPatchAPI } from "../api";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyASGhrzhbiJjx0anndtCsnLLO_6XYMPOAE",
-  authDomain: "aime-sulut.firebaseapp.com",
-  projectId: "aime-sulut",
-  storageBucket: "aime-sulut.appspot.com",
-  messagingSenderId: "17458371709",
-  appId: "1:17458371709:web:5deb8395c2b7f7f2586514",
-  measurementId: "G-SJZ42P44GN",
+  apiKey: "AIzaSyBrigAza54IO6NxMKJ1qPa3sInB8xkGkX0",
+  authDomain: "aime-390301.firebaseapp.com",
+  projectId: "aime-390301",
+  storageBucket: "aime-390301.appspot.com",
+  messagingSenderId: "65604286298",
+  appId: "1:65604286298:web:ad9ffd380c5c1d86fc2563",
 };
 
 // Initialize Firebase

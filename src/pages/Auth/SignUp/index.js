@@ -47,7 +47,6 @@ const SignUp = ({ navigation }) => {
 
   // Animation
   const shakeAnimation = useRef(new Animated.Value(0)).current;
-  console.log(fullName, email, password, confirmPass);
 
   // regex email
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -219,7 +218,7 @@ const SignUp = ({ navigation }) => {
           {/* Button google and facebook */}
           <View style={styles.googleFacebookButtonContainer}>
             <ButtonGoogle text={"Google"} />
-            <ButtonFacebook text={"Facebook"} />
+            {/* <ButtonFacebook text={"Facebook"} /> */}
           </View>
 
           {/* Terms and condition */}
@@ -296,7 +295,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: verticalScale(34),
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     width: "100%",
   },
   textFooterContainer: {

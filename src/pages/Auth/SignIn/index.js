@@ -31,7 +31,6 @@ const SignIn = ({ navigation }) => {
   const [errorColor, setErrorColor] = useState("transparent");
   const shakeAnimation = useRef(new Animated.Value(0)).current;
   const [isLoading, setIsLoading] = useState(false);
-  console.log(email, password);
 
   const handleSignIn = () => {
     setIsLoading(true);
@@ -192,9 +191,9 @@ const SignIn = ({ navigation }) => {
           >
             <ButtonGoogle text={"Google"} />
           </View>
-          <View style={{ marginTop: verticalScale(20) }}>
+          {/* <View style={{ marginTop: verticalScale(20) }}>
             <ButtonFacebook text={"Facebook"} />
-          </View>
+          </View> */}
           {/* Button google and facebook end*/}
         </View>
         {isLoading && <LoadingModal />}

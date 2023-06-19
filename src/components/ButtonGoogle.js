@@ -12,9 +12,9 @@ const ButtonGoogle = ({ text }) => {
   const navigation = useNavigation();
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:
-      "17458371709-8pcua1v57f3qgdaubfifj1unuui125ug.apps.googleusercontent.com",
+      "65604286298-1gbps77mbho0jc5qnqnlfiqochrmq2p9.apps.googleusercontent.com",
     androidClientId:
-      "17458371709-81l067b2knfkcm16qivc4v431o2q5o0a.apps.googleusercontent.com",
+      "65604286298-a9irppt1am49abqqmq4k6a9dn2edbu89.apps.googleusercontent.com",
   });
 
   useEffect(() => {

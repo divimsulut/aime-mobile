@@ -36,7 +36,6 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   ]);
 
   useEffect(() => {
-    console.log("Get user data mount: ");
     getCurrentUser()
       .then((user) => {
         setUser(user);

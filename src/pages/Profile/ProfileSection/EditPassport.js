@@ -18,9 +18,10 @@ import axios from "axios";
 import * as ImagePicker from "expo-image-picker";
 import { Upload } from "../../../assets";
 import AnimatedLottieView from "lottie-react-native";
-import { getCurrentUser, storage } from "../../../config";
+import { auth, getCurrentUser, storage } from "../../../config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { userPostAPI } from "../../../api";
+import { signOut } from "firebase/auth";
 
 const EditPassport = ({ navigation }) => {
   //  Data passport
@@ -114,7 +115,7 @@ const EditPassport = ({ navigation }) => {
     setIsLoading(true);
     try {
       const filename = uri.substring(uri.lastIndexOf("/") + 1);
-      const storageRef = ref(storage, `images/${filename}`);
+      const storageRef = ref(storage, `images/passport/${filename}`);
       const response = await fetch(uri);
       const blob = await response.blob();
       const snapshot = await uploadBytes(storageRef, blob);
@@ -169,6 +170,8 @@ const EditPassport = ({ navigation }) => {
           .then((res) => {
             console.log(res.data);
             navigation.replace("Tabs");
+            alert("Data has been updated! Please re-login to see the changes");
+            signOut(auth);
           })
           .catch((error) => console.log(error))
           .finally(() => setIsLoading(false));

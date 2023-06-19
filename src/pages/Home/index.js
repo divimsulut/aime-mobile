@@ -31,38 +31,19 @@ const HomeNextGen = ({ navigation }) => {
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   const [modal, setModal] = React.useState(false);
   const [initLoading, setInitLoading] = React.useState(false);
-  // const [token, setToken] = React.useState("");
+  // const [token, setToken] = React.useState(null);
 
-  // useEffect(() => {
-  //   SecureStore.getItemAsync("token").then((res) => {
-  //     setToken(res);
-  //   });
-  // }, []);
-
-  // check if the user already provide passport data
-  useEffect(() => {
-    getCurrentUser().then(async (user) => {
-      const token = await SecureStore.getItemAsync("token");
+  const checkPassportData = (token) => {
+    getCurrentUser().then((user) => {
       axios
         .get(userGetAPI(user.uid), {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((res) => {
-          if (res.data === "User does not exist") {
-            setModal(true);
-          } else {
-            setModal(false);
-          }
-        })
         .catch((err) => {
-          if (err.response?.data.message === "Unauthorized") {
-            setModal(true);
-          } else {
-            console.log("Error occurred: ", err.message);
-          }
+          console.log("error get user data", err);
         });
     });
-  }, []);
+  };
 
   const fetchData = async () => {
     try {
@@ -85,10 +66,30 @@ const HomeNextGen = ({ navigation }) => {
     }
   };
 
+  // const getToken = async () => {
+  //   try {
+  //     const token = await SecureStore.getItemAsync("token");
+  //     setToken(token);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   // get the  data
   useEffect(() => {
     setInitLoading(true);
     fetchData();
+    // getToken();
+  }, []);
+
+  useEffect(async () => {
+    const token = await SecureStore.getItemAsync("token");
+    setModal(false);
+    if (token) {
+      checkPassportData(token);
+    } else if (token === null) {
+      setModal(true);
+    }
   }, []);
 
   return (
@@ -116,7 +117,7 @@ const HomeNextGen = ({ navigation }) => {
       >
         {/* Banner Section */}
         <View style={styles.bannerContainer}>
-          {bannerData && <FlatBanner data={bannerData} />}
+          {bannerData?.length > 0 && <FlatBanner data={bannerData} />}
         </View>
 
         {/* Popular Destination Section */}
