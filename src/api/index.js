@@ -1,4 +1,4 @@
-const baseURL = `https://aime-api.vercel.app`;
+const baseURL = `https://aime-api-divimsulut.vercel.app`;
 
 export const loginAPI = `${baseURL}/auth/login/client`;
 
