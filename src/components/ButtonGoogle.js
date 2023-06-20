@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { horizontalScale, moderateScale, verticalScale } from "../constant";
 import { IconGoogle } from "../assets";
 import { Svg } from "react-native-svg";
 import * as Google from "expo-auth-session/providers/google";
 import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 import { auth } from "../config";
-import { useNavigation, CommonActions } from "@react-navigation/native";
+import LoadingModal from "./LoadingModal";
 
 const ButtonGoogle = ({ text }) => {
-  const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:
       "65604286298-1gbps77mbho0jc5qnqnlfiqochrmq2p9.apps.googleusercontent.com",
@@ -19,29 +19,39 @@ const ButtonGoogle = ({ text }) => {
 
   useEffect(() => {
     if (response?.type === "success") {
-      const credential = GoogleAuthProvider.credential(
-        response.authentication.idToken,
-        response.authentication.accessToken
-      );
-      signInWithCredential(auth, credential).catch((error) => {
-        alert("error in google sign in: " + error);
-      });
+      setLoading(true);
+      try {
+        const credential = GoogleAuthProvider.credential(
+          response.authentication.idToken,
+          response.authentication.accessToken
+        );
+        signInWithCredential(auth, credential).catch((error) => {
+          alert("error in google sign in: " + error);
+        });
+      } catch (err) {
+        alert("error in google sign in: " + err);
+      } finally {
+        setLoading(false);
+      }
     }
   }, [response]);
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      disabled={!request}
-      onPress={() => promptAsync()}
-    >
-      <View style={styles.button}>
-        <Svg height="36" width="36" viewBox="0 0 44 44">
-          <IconGoogle />
-        </Svg>
-        <Text style={styles.buttonText}>{text}</Text>
-      </View>
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        disabled={!request}
+        onPress={() => promptAsync()}
+      >
+        <View style={styles.button}>
+          <Svg height="36" width="36" viewBox="0 0 44 44">
+            <IconGoogle />
+          </Svg>
+          <Text style={styles.buttonText}>{text}</Text>
+        </View>
+      </TouchableOpacity>
+      {loading && <LoadingModal />}
+    </>
   );
 };
 
