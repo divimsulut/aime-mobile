@@ -25,6 +25,7 @@ import { IconCross } from "../../assets";
 import axios from "axios";
 import { userGetAPI, userPatchAPI } from "../../api";
 import * as SecureStore from "expo-secure-store";
+import { Linking } from "react-native";
 
 const AIME_SettingsScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
@@ -236,7 +237,11 @@ const AIME_SettingsScreen = ({ navigation }) => {
           <View style={styles.SettingsItem}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => navigation.navigate("Profile_PP")}
+              onPress={() =>
+                Linking.openURL(
+                  "https://www.privacypolicyonline.com/live.php?token=n06K64IpUDEyfyHserEzxkS8LEP6VtJH"
+                )
+              }
             >
               <Settings_PP />
             </TouchableOpacity>

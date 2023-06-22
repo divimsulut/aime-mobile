@@ -23,6 +23,7 @@ import {
   LoadingModal,
   ButtonRegister,
 } from "../../../components";
+import { Linking } from "react-native";
 
 const SignUp = ({ navigation }) => {
   // State
@@ -226,8 +227,14 @@ const SignUp = ({ navigation }) => {
             <Text style={styles.textFooter}>
               By clicking register, you agree to our
             </Text>
-            <TouchableOpacity>
-              <Text style={styles.textPolicy}>Terms, Data Policy</Text>
+            <TouchableOpacity
+              onPress={() =>
+                Linking.openURL(
+                  `https://www.privacypolicyonline.com/live.php?token=n06K64IpUDEyfyHserEzxkS8LEP6VtJH`
+                )
+              }
+            >
+              <Text style={styles.textPolicy}>Privacy Policy</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -9,8 +9,10 @@ import ImageLandscape3 from "./landscapeImage3.png";
 import ImageRadar from "./radarImage.png";
 import ImageFLBanner from "./FavoriteListBanner1.png";
 import ImageNoResult from "./noResultImage.png";
+import ImageImigrasiMelindungi from "./ImigrasiMelindungi.png";
 
 export {
+  ImageImigrasiMelindungi,
   ImageChecklistWhite,
   ImageRadar,
   ImageLandscape3,
