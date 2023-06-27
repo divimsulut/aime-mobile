@@ -13,10 +13,10 @@ import { Header } from "../../components";
 import { LinearGradient } from "expo-linear-gradient";
 import { horizontalScale, verticalScale } from "../../constant";
 import { Platform } from "react-native";
+import data from "../../data/faq";
 
 export default function HelpCenter({ navigation }) {
   const [openId, setOpenId] = React.useState(null);
-  const [data, setData] = React.useState([]);
   const date = new Date();
   const currentTime = date.getHours();
   const [search, setSearch] = useState("");
@@ -31,35 +31,6 @@ export default function HelpCenter({ navigation }) {
   } else {
     greeting = "Good Evening";
   }
-
-  React.useEffect(() => {
-    setData([
-      {
-        id: "1",
-        question: "How to scan the QR-Code?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 1Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
-      },
-      {
-        id: "2",
-        question: "How to change checkin status?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 2Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
-      },
-      {
-        id: "3",
-        question: "How to change the registered email at AIME?",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 3Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
-      },
-      {
-        id: "4",
-        question: "Where I visited did not provide a barcode that I could scan",
-        answer:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 4Nunc sed semper nunc. Sed auctor, nisl sit amet aliquam lacinia, nisl nisl aliquet nisl, nec aliquam nisl nisl sit amet nisl. ",
-      },
-    ]);
-  }, []);
 
   useEffect(() => {
     setFilter(

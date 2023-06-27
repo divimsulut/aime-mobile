@@ -39,7 +39,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import { Svg, Path } from "react-native-svg";
-import { moderateScale, verticalScale } from "../constant";
+import { horizontalScale, moderateScale, verticalScale } from "../constant";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config";
 import axios from "axios";
@@ -126,7 +126,7 @@ const Tabs = () => {
           listeners={{
             tabPress: (e) => {
               Animated.spring(animatedValue, {
-                toValue: getWidth() * 1.11,
+                toValue: getWidth() * 1.13,
                 useNativeDriver: true,
               }).start();
             },
@@ -217,7 +217,7 @@ const Tabs = () => {
           listeners={{
             tabPress: (e) => {
               Animated.spring(animatedValue, {
-                toValue: getWidth() * 3.35,
+                toValue: getWidth() * 3.365,
                 useNativeDriver: true,
               }).start();
             },
@@ -260,7 +260,7 @@ const Tabs = () => {
       <Animated.View
         style={{
           zIndex: 0,
-          width: getWidth() - 20,
+          width: horizontalScale(50),
           height: verticalScale(5),
           backgroundColor: "#BEAE1E",
           position: "absolute",
@@ -429,124 +429,7 @@ const Router = () => {
     }
   });
 
-  return (
-    // <Stack.Navigator>
-    //   {!user ? (
-    //     <Stack.Screen
-    //       name="Splash"
-    //       component={Splash}
-    //       options={{ headerShown: false }}
-    //     />
-    //   ) : (
-    //     <Stack.Screen
-    //       name="Tabs"
-    //       component={Tabs}
-    //       options={{ headerShown: false }}
-    //     />
-    //   )}
-    //   <Stack.Screen
-    //     name="Welcome"
-    //     component={Welcome}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="SignUp"
-    //     component={SignUp}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="Verify"
-    //     component={Verify}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="SuccessRegister"
-    //     component={SuccessRegister}
-    //     options={{ headerShown: false }}
-    //   />
-
-    //   <Stack.Screen
-    //     name="ForgetPass"
-    //     component={ForgetPass}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="SignIn"
-    //     component={SignIn}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="ExploreDestination"
-    //     component={ExploreDestination}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="DestionationDetail"
-    //     component={DestionationDetail}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="News"
-    //     component={News}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="ActivityLog"
-    //     component={ActivityLog}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="OfficeDetail"
-    //     component={OfficeDetail}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="HelpChat"
-    //     component={HelpChat}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="Notification"
-    //     component={Notification}
-    //     options={{ headerShown: false }}
-    //   />
-
-    //   {/* Favorite List */}
-    //   <Stack.Screen
-    //     name="FavoriteList"
-    //     component={FavoriteList}
-    //     options={{ headerShown: false }}
-    //   />
-
-    //   {/* PROFILE SECTION */}
-    //   <Stack.Screen
-    //     name="EditProfile"
-    //     component={EditProfile}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="EditPassport"
-    //     component={EditPassport}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="Profile_Notification"
-    //     component={Profile_Notification}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="Profile_PP"
-    //     component={Profile_PP}
-    //     options={{ headerShown: false }}
-    //   />
-    //   <Stack.Screen
-    //     name="Profile_AboutApp"
-    //     component={Profile_AboutApp}
-    //     options={{ headerShown: false }}
-    //   />
-    // </Stack.Navigator>
-    user ? <SignInStack /> : <SignOutStack />
-  );
+  return user ? <SignInStack /> : <SignOutStack />;
 };
 
 function getWidth() {
