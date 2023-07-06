@@ -7,6 +7,7 @@ import {
   ImageImigrasiMelindungi,
 } from "../../assets";
 import { horizontalScale, verticalScale } from "../../constant";
+import { expo } from "../../../app.json";
 
 const Splash = ({ navigation }) => {
   useEffect(() => {
@@ -26,9 +27,8 @@ const Splash = ({ navigation }) => {
           style={styles.textKantor}
         >{`Divisi Keimigrasian\nKanwil Kemenkumham Sulawesi Utara`}</Text>
         <Image source={ImageImigrasiMelindungi} style={styles.imageImigrasi} />
-        <Text style={styles.textAIME}>AIMe</Text>
         <Text style={styles.textAIMELong}>Aplikasi Imigrasi Melindungi</Text>
-        <Text style={styles.textVersion}>Version 1.0</Text>
+        <Text style={styles.textVersion}>{expo.version}</Text>
       </View>
     </LinearGradient>
   );

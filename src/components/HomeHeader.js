@@ -21,6 +21,7 @@ import { getCurrentUser } from "../config";
 import axios from "axios";
 import moment from "moment";
 import { getHistAPI } from "../api";
+import { ImageImigrasiMelindungi } from "../assets";
 
 const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
   const [user, setUser] = useState(null);
@@ -102,15 +103,17 @@ const HomeHeader = ({ navigation, isRefreshing, onRefreshEnd }) => {
             }}
           >
             <View style={styles.aimeLogoContainer}>
-              <Svg
-                // style={{ backgroundColor: "green" }}
-                height={30}
-                width={30}
-                viewBox="0 0 100 100"
-              >
-                <IconAime />
-              </Svg>
-              <Text style={styles.textAime}>AIME</Text>
+              <View style={{ width: 30, height: 30 }}>
+                <Image
+                  source={ImageImigrasiMelindungi}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    resizeMode: "contain",
+                  }}
+                />
+              </View>
+              <Text style={styles.textAime}>AIMe</Text>
             </View>
 
             <View style={styles.buttonContainer}>
