@@ -208,59 +208,15 @@ export default function HelpCenter({ navigation }) {
               <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity
                   style={{
-                    backgroundColor: "#25D366",
-                    padding: 10,
-                    margin: 5,
-                    borderRadius: 10,
-                    flex: 1,
-                  }}
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://api.whatsapp.com/send/?phone=6285159556468`
-                    )
-                  }
-                >
-                  <Text
-                    style={{
-                      color: "white",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                  >
-                    Whatsapp
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: "#0088CC",
-                    padding: 10,
-                    margin: 5,
-                    borderRadius: 10,
-                    flex: 1,
-                  }}
-                  onPress={() => Linking.openURL(`https://t.me/+6287709106468`)}
-                >
-                  <Text
-                    style={{
-                      color: "white",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                  >
-                    Telegram
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity
-                  style={{
                     backgroundColor: "#00C6FF",
                     padding: 10,
                     margin: 5,
                     borderRadius: 10,
                     flex: 1,
                   }}
-                  onPress={() => Linking.openURL(`https://m.me/alphacast.id`)}
+                  onPress={() =>
+                    Linking.openURL(`https://m.me/kemenkumham.sulut.1`)
+                  }
                 >
                   <Text
                     style={{
@@ -280,7 +236,9 @@ export default function HelpCenter({ navigation }) {
                     borderRadius: 10,
                     flex: 1,
                   }}
-                  onPress={() => Linking.openURL(`http://ig.me/m/alphacast.id`)}
+                  onPress={() =>
+                    Linking.openURL(`http://ig.me/m/kemenkumhamsulut`)
+                  }
                 >
                   <Text
                     style={{
@@ -292,6 +250,48 @@ export default function HelpCenter({ navigation }) {
                     Instagram
                   </Text>
                 </TouchableOpacity>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: "#25D366",
+                    padding: 10,
+                    margin: 5,
+                    borderRadius: 10,
+                    flex: 1,
+                  }}
+                  onPress={() => Linking.openURL(`https://wa.me/6289609439000`)}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    Whatsapp
+                  </Text>
+                </TouchableOpacity>
+                {/* <TouchableOpacity
+                  style={{
+                    backgroundColor: "#0088CC",
+                    padding: 10,
+                    margin: 5,
+                    borderRadius: 10,
+                    flex: 1,
+                  }}
+                  onPress={() => Linking.openURL(`https://t.me/6281360609881`)}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    Telegram
+                  </Text>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>
