@@ -102,6 +102,7 @@ const EditPassport = ({ navigation }) => {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       quality: 1,
+      aspect: [4, 3],
     });
 
     if (!result.canceled) {

@@ -30,6 +30,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../config";
 import { userGetAPI } from "../../../api";
 import * as SecureStore from "expo-secure-store";
+import { Ionicons } from "@expo/vector-icons";
 
 const AIME_EditProfile = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -48,6 +49,7 @@ const AIME_EditProfile = ({ navigation }) => {
   const [modalName, setModalName] = useState(false);
   const [modalEmail, setModalEmail] = useState(false);
   const [modalPhoneNum, setModalPhoneNum] = useState(false);
+  const [modalProfilePic, setModalProfilePic] = useState(false);
 
   // get token from secure storage
   const getToken = async (key) => {
@@ -104,23 +106,31 @@ const AIME_EditProfile = ({ navigation }) => {
     setPhone("+" + phoneCode + phoneNum);
   }, [phoneCode, phoneNum]);
 
-  // Pick an image function for passport photo
-  const pickImage = async () => {
+  // Pick an image function for profile photo
+  const handleCameraPress = async () => {
     return new Promise(async (resolve, reject) => {
       let result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         quality: 1,
+        aspect: [1, 1],
       });
-
-      if (result.canceled) {
-        result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.Images,
-          allowsEditing: true,
-          quality: 1,
-        });
+      if (!result.canceled) {
+        resolve(result.assets[0].uri);
+      } else {
+        reject("Image not selected");
       }
+    });
+  };
 
+  const handleGalleryPress = async () => {
+    return new Promise(async (resolve, reject) => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        quality: 1,
+        aspect: [1, 1],
+      });
       if (!result.canceled) {
         resolve(result.assets[0].uri);
       } else {
@@ -194,9 +204,7 @@ const AIME_EditProfile = ({ navigation }) => {
         <View style={styles.ProfilePictureContainer}>
           <TouchableOpacity
             onPress={() => {
-              pickImage()
-                .then((image) => uploadImage(image))
-                .catch((err) => console.log(err));
+              setModalProfilePic(true);
             }}
             activeOpacity={0.6}
           >
@@ -450,7 +458,92 @@ const AIME_EditProfile = ({ navigation }) => {
         </View>
       </Modal>
       {isLoading && <LoadingModal />}
+      <ImageOptionModal
+        visible={modalProfilePic}
+        onClose={() => setModalProfilePic(false)}
+        onCameraPress={() =>
+          handleCameraPress()
+            .then((res) => uploadImage(res))
+            .catch((error) => console.log(error))
+        }
+        onGalleryPress={() => {
+          handleGalleryPress()
+            .then((res) => uploadImage(res))
+            .catch((error) => console.log(error));
+        }}
+      />
     </View>
+  );
+};
+
+const ImageOptionModal = ({
+  visible,
+  onClose,
+  onCameraPress,
+  onGalleryPress,
+}) => {
+  return (
+    <Modal visible={visible} animationType={"slide"} transparent>
+      <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.5)" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            backgroundColor: "white",
+            position: "absolute",
+            bottom: 0,
+            width: "100%",
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            paddingVertical: 20,
+            paddingHorizontal: 20,
+          }}
+        >
+          <TouchableOpacity
+            onPress={onCameraPress}
+            style={{ alignItems: "center" }}
+          >
+            <Ionicons name="camera-outline" size={50} />
+            <Text
+              style={{
+                fontSize: 18,
+                fontFamily: "Poppins-Medium",
+                color: "black",
+              }}
+            >
+              Camera
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={onGalleryPress}
+            style={{ alignItems: "center" }}
+          >
+            <Ionicons name="image-outline" size={50} />
+            <Text
+              style={{
+                fontSize: 18,
+                fontFamily: "Poppins-Medium",
+                color: "black",
+              }}
+            >
+              Gallery
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onClose} style={{ alignItems: "center" }}>
+            <Ionicons name="close-circle-outline" size={50} color={"red"} />
+            <Text
+              style={{
+                fontSize: 18,
+                fontFamily: "Poppins-Medium",
+                color: "black",
+              }}
+            >
+              Cancel
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
   );
 };
 
